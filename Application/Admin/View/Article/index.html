@@ -1,0 +1,67 @@
+<include file="Public:header" />
+<div id="table" class="mt10">
+    <div id="search_bar" class="mt10" style="padding-bottom: 10px;">
+        <div class="box">
+            <div class="box_border">
+                <div class="box_top">
+                    <b class="pl15">资讯列表</b>
+                    <a href="{:U('/Admin/Article/add')}" target="main" style="margin: 3px;float: right" class="ext_btn"><span class="add"></span>添加</a>
+                </div>
+            </div>
+            <div style="border-top:1px solid #dadada;" class="box_bottom pb5 pt5 pr10">
+                <div style="text-align:right;" class="search_bar_btn">
+                    <form name="sform" method="get" action="__SELF__">
+                        标题：<input class="input-text lh25" type="text" size="15" name="title" value="{$Think.get.title}">
+                        <input type="submit" class="ext_btn ext_btn_submit" value="搜索">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box span10 oh">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <tr>
+                <th width="5%">ID</th>
+                <th width="27%">标题</th>
+                <th width="10%">所属分类</th>
+                <th width="7%">发布者</th>
+                <th width="5%">发布时间</th>
+                <th width="5%">排序值</th>
+                <th width="23%">操作</th>
+            </tr>
+            <if condition="empty($articlelist)">
+             <tr class="tr"><td colspan="8" style="text-align:center;">暂无任何信息</td></tr>
+            <else />
+            <foreach name='articlelist' item="article">
+            <tr class="tr">
+                <td class="td_center">{$article.articleid}</td>
+                <td class="td_center">{$article.title}</td>
+                <td class="td_center">{$article.category}</td>
+                <td class="td_center">{$article.username}</td>
+                <td class="td_center">{$article.posttime|date="Y-m-d H:i:s",###}</td>
+                <td class="td_center">{$article.list}</td>
+                <td class="td_center">
+                    <a href="javascript:;;" onclick="javascript:window.location.href='{:U('/Admin/Article/edit/',array('id'=>$article['articleid']))}'">【修改】</a>
+                    <if condition="$article.status eq 1">
+                        <a href="javascript:;;" onclick="confirm('确定要取消审核此记录吗？', '{:U('/Admin/Article/audit',array('id'=>$article['articleid'],'yz'=>0))}')">【取消审核】</a>
+                    <else />
+                        <a href="javascript:;;" onclick="confirm('确定要审核此记录吗？', '{:U('/Admin/Article/audit',array('id'=>$article['articleid'],'yz'=>1))}')">【通过审核】</a>
+                    </if>
+                    <if condition="$article.istop eq 1">
+                        <a href="javascript:;;" onclick="confirm('确定要取消置顶此记录吗？', '{:U('/Admin/Article/top',array('id'=>$article['articleid'],'istop'=>0))}')">【取消置顶】</a>
+                    <else />
+                        <a href="javascript:;;" onclick="confirm('确定要置顶此记录吗？', '{:U('/Admin/Article/top',array('id'=>$article['articleid'],'istop'=>1))}')">【置顶】</a>
+                    </if>
+                    <a href="javascript:;;" onclick="confirm('确定要删除此信息吗？', '{:U('/Admin/Article/delete',array('id'=>$article['articleid']))}')">【删除】</a>
+                </td>
+            </tr>
+            </foreach>
+            </if>
+        </table>
+        <div class="page mt10">
+            <div class='pagination'>{$pageshow}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+  

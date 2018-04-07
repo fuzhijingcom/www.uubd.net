@@ -1,0 +1,322 @@
+.hide{
+    display:none;
+}
+.clear {
+    clear:both;
+}
+.fl {
+    float: left;
+}
+a,a:link,a:visited,a:hover,a:active {
+    text-decoration: none;
+}
+
+/*商品详情tab部分*/
+.tabs {
+    width: 100%;
+    padding: 1rem 0;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    background: #ffffff;
+}
+.tabs a {
+    display: block;
+    float: left;
+    width: 33.3%;
+    text-align: center;
+    border-right: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    color: #666666;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.tabs a.active,.tabs.hover {
+    color: crimson;
+    text-decoration: none;
+}
+.tabs>a:last-of-type {
+    border-right: none;
+}
+
+/*评论区域*/
+.comment-box .comment-item {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #DDDDDD;
+}
+.comment-box .comment-item>.comment-content {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.comment-box .comment-item>.comment-info {
+    color: #aaaaaa;
+}
+.comment-box .comment-item>.comment-info .comment-name {
+    float: left;
+}
+.comment-box .comment-item>.comment-info .comment-time {
+    float: right;
+}
+
+/*线下门店部分*/
+.offline-stores .store-item {
+    position: relative;
+    padding: 1.5rem 1rem 2rem;
+    border-bottom: 1px dotted #DDDDDD;
+    font-size: 1.2rem;
+}
+.offline-stores .store-item>.store-img {
+    width: 8rem;
+    float: left;
+    margin-right: 1rem;
+}
+.offline-stores .store-item .store-name {
+    font-size: 1.4rem;
+    margin-bottom: .3rem;
+}
+.offline-stores .store-item .store-loacte span {
+    color: #888888;
+}
+.offline-stores .store-item .locate-img {
+    width: 2rem;
+    float: left;
+}
+.offline-stores .store-item .tele {
+    position: absolute;
+    top:1.8rem;
+    right: -.5rem;
+    width: 13%;
+}
+.offline-stores .store-item .tele img {
+    width: 100%;
+}
+.submit-eval{
+    float:right;
+}
+
+/*展示商品款式部分*/
+#glassDisplay {
+    position: fixed;
+    bottom: 5.6rem;
+    z-index: 9999;
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background: #ffffff;
+    color: #666666;
+    border-top: 1px solid #DDDDDD;
+}
+#glassDisplay .glass-img {
+    width: 7rem;
+    float: left;
+    margin-right: 1.5rem;
+}
+#glassDisplay .glass-price {
+    position: absolute;
+    right: 4rem;
+    bottom: 1.2rem;
+}
+#glassDisplay .glass-combo {
+    font-size: 1.2rem;
+}
+#glassDisplay .glass-style {
+    font-size: 1.3rem;
+    margin-bottom: .3rem;
+}
+#glassDisplay #ori_price {
+    text-decoration: line-through;
+    color: #999999;
+    font-size: 1.2rem;
+}
+#glassDisplay #cur_price {
+    color: #05bb04;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+/*修改选择时的标题*/
+.select-body-title {
+    position: relative;
+    padding: 4.5% 3%;
+    width: 100%;
+    font-size: 1.6rem;
+}
+.select-body-title::before {
+    background: #d8d8d8 none repeat scroll 0 0;
+    bottom: 3%;
+    left: 3%;
+    content: " ";
+    height: 1px;
+    position: absolute;
+    width: 94%;
+}
+.combo-box span.down {
+    background: url('../svg/zwg_goodcustomize_down_btn.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 45% auto;
+}
+.combo-box span.up {
+    background: url('../svg/zwg_goodcustomize_up_btn.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 45% auto;
+}
+
+.combo-box .switch-btn {
+    cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    position: absolute;
+    right: 5%;
+    top: 0;
+    width: 10%;
+}
+
+/*套餐列表的样式*/
+#select-combo .color-list {
+    width: 100%;
+    padding: 0 1rem;
+}
+#select-combo li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    padding: 1rem 1rem;
+    margin-right: 0;
+    border: 0;
+}
+#select-combo li .plus-item {
+    float: left;
+    margin: 2.2rem 1rem 0;
+    font-size: 1.6rem;
+    color: #999999;
+}
+#select-combo li .glass-img,#select-combo li .combo-img {
+    width: 7rem;
+    height: 6rem;
+    float: left;
+    overflow: hidden;
+    border: 1px solid #DDDDDD;
+}
+#select-combo li img {
+    width: 100%;
+}
+#select-combo li .good-info {
+    position: absolute;
+    right: 1rem;
+    top: 1.5rem;
+    text-align: right;
+}
+#select-combo li .good-info .style-name {
+    text-align: right;
+    font-size: 1.2rem;
+}
+#select-combo li .good-info .combo-name {
+    font-size: 1.2rem;
+}
+#select-combo li .good-info .combo-price {
+    text-align: right;
+    font-size: 1.6rem;
+    color: #05bb04;
+    font-weight: bold;
+}
+#select-combo li .good-info .combo-price .ori-price {
+    color: #BBBBBB;
+    text-decoration: line-through;
+    font-size: 1.2rem;
+}
+#select-combo li.onclick {
+    color: #666666;
+}
+#select-combo li.onclick .combo-name {
+    width: 9em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/*补充修改原来的样式*/
+.eval-null{
+    margin-top:20px;
+    text-align:center;
+    color:#ccc;
+    font-size:16px;
+}
+.zwg_details_common .select-option-body .color-list li {
+    padding: 2% 3%;
+    margin-right: 2%;
+}
+.zwg_gooddetail .glasses-basic-meg .pri_box {
+    margin-bottom: 1rem;
+}
+.zwg_gooddetail .good-details-bottom-nav {
+    height: 5.5rem;
+    border-top: 1px solid #DDDDDD;
+}
+.zwg_gooddetail .good-details-bottom-nav li:nth-child(3) p {
+    background: #E1F4E3;
+}
+.zwg_gooddetail .good-details-bottom-nav li:nth-child(3) p span {
+    color: #6CBE72;
+    font-size: 1.6rem;
+}
+.zwg_gooddetail .good-details-bottom-nav li:nth-child(4) p span {
+    font-size: 1.6rem;
+}
+.zwg_gooddetail .good-details-bottom-nav li:nth-child(1), .zwg_gooddetail .good-details-bottom-nav li:nth-child(2) {
+    border-top: 0;
+    border-right: 1px solid #DDDDDD;
+    border-left: 0;
+    box-sizing: border-box;
+}
+.zwg_details_common .select-option-body .color-list li:nth-last-child(1) {
+    margin-bottom: 0;
+}
+.zwg_gooddetail .select-option-wrap .select-option-body {
+    padding-bottom: 1.5rem;
+}
+.publish-eval textarea{
+    width: 95%;
+    margin:0 auto;
+}
+#eval-submit{
+    margin-top:10px;
+    margin-right: 10px;
+}
+.blank_info {
+    background: #ebede8;
+}
+.service-info {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2.5% 2%!important;
+}
+.service-info>span {
+    margin-right: 2rem;
+}
+.service-info>span:last-of-type {
+    margin-right: 0;
+}
+
+/*返回顶部按钮*/
+.backTop {
+    position: fixed;
+    z-index: 9999;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid #DDDDDD;
+    background: #ffffff;
+    color: #666666;
+    line-height: 4rem;
+    text-align: center;
+    font-size: 2rem;
+    bottom: 12%;
+    right: 5%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.disableds{
+    border: 1px solid red;
+    color: rgba(234, 234, 234, 0.44);
+}

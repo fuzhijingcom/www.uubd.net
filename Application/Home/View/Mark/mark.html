@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="shortcut icon" href="__PUBLIC__/Common/images/dingling.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/management.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/Home/css/daterangepicker-bs3.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/mark.js"></script>
+    <style type="text/css">
+        .control-box{
+            padding: 15px;
+            border-bottom: solid 2px #ddd;
+        }
+        .first-col{
+            padding-left:20px!important;
+        }
+        .green{
+            color:#449d44;
+        }
+        .red{
+            color:#9B410E;
+        }
+        .right-m{
+            margin-right:15px!important;
+        }
+        .type-select{
+            width:auto!important;
+            float: left;
+            margin-right:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-box container-fluid">
+        <div class="row">
+            <div class="control-box">
+                <select id="s_type" name="s_type" class="form-control type-select" onchange="searchData(null);">
+                    <option value="0" selected>门店</option>
+                    <!-- <option value="1">合伙人</option> -->
+                    <!--<option value="2">市场部</option>-->
+                </select>
+                <!--时间-->
+                <div class="calendar-box calendar-select">
+                    <fieldset>
+                        <div class="control-group">
+                            <div class="controls">
+                                <div class="input-prepend input-group">
+                                <span class="add-on input-group-addon"> <i class="glyphicon glyphicon-calendar"></i>
+                                </span>
+                                    <input type="text" readonly style="background: #fff; font-size:1.2rem;" name="reservation" id="reservation" class="form-control back-color-w" value="{$date.startT} - {$date.endT}" />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </div>
+                <button type="button" class="btn btn-default right-m" onclick="searchData(null);">查询</button>
+
+            </div>
+
+            <if condition="($type eq 0)">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="first-col">门店</th>
+                            <th>配镜业绩</th>
+                            <th>隐形业绩</th>
+                            <th>配镜单数</th>
+                            <th>隐形单数</th>
+                            <th>申请售后单数</th>
+                            <th>申请售后金额</th>
+                            <th>新增关注数</th>
+                            <th>取消关注数</th>
+                            <!-- <th>初级合伙人新增数</th>
+                            <th>校园合伙人新增数</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="tags" id="tag" empty="暂时没有数据">
+                        <tr>
+                            <td class="first-col">{$tag['s_name']}</td>
+                            <td>{$tag['custoCount']}</td>
+                            <td>{$tag['liushiCount']}</td>
+                            <td class="green"><b>{$tag['jingzengCount']}</b></td>
+                            <td>{$tag['tradeCount']}</td>
+                            <td>{$tag['payCount']}</td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            <else />
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="first-col">用户来源</th>
+                            <th>总推广人数</th>
+                            <th>总流失人数</th>
+                            <th>总净增人数</th>
+                            <th>发展用户下单总数</th>
+                            <th>总收入金额</th>
+                            <th>已提现金额</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="tags" id="tag" empty="暂时没有数据">
+                        <tr>
+                            <td class="first-col">{$tag['s_name']}</td>
+                            <td>{$tag['custoCount']}</td>
+                            <td>{$tag['liushiCount']}</td>
+                            <td class="green"><b>{$tag['jingzengCount']}</b></td>
+                            <td>{$tag['tradeCount']}</td>
+                            <td>***</td>
+                            <td>666</td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </if>
+        </div>
+    </div>
+</body>
+<script>
+    var URL="__URL__";
+    var MODULE="__MODULE__";
+    var sType = "{$type}";
+    var role = "{$role}";
+</script>
+</html>

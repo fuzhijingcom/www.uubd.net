@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$pageTitle}</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="__PUBLIC__/Home/goods/css/swiper.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="__PUBLIC__/Weixin/shop/css/public.css">-->
+    <link rel="stylesheet" href="__PUBLIC__/Weixin/shop/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/shop/css/page-manage.css?v=4">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jqueryui/1.10.1/jquery-ui.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body style="background: #ffffff">
+
+        <div class="page-header">
+            <h2></h2>
+        </div>
+        <div class="display-board">
+            <iframe src="" frameborder="0" id="pageDisplay"></iframe>
+        </div>
+        <div class="placehold-box">
+            <div class="clearfix"></div>
+        </div>
+        <div class="edit-board">
+                <div class="panel panel-primary add-ctrl">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">增加控件</div>
+                    <div class="panel-body">
+                        <li onclick="addBlankCtrl('title-item')"><p>标题</p></li>
+                        <li onclick="addBlankCtrl('img-item')"><p>图片导航</p></li>
+                        <li onclick="addBlankCtrl('swiper-item')"><p>轮播图</p></li>
+                        <li onclick="addBlankCtrl('tab-item')"><p>tab导航栏</p></li>
+                        <li onclick="addBlankCtrl('single-col-list')"><p>单列商品</p></li>
+                        <li onclick="addBlankCtrl('two-col-list')"><p>双列商品</p></li>
+                        <li onclick="addBlankCtrl('more-good-list')"><p>更多商品</p></li>
+                        <li onclick="addBlankCtrl('empty-item')"><p>占位空白</p></li>
+                    </div>
+                </div>
+                <div class="cur-all-ctrl">
+                    <div class="ctrl-head row">
+                        <div class="col-xs-4">
+                            <div class="ctrl-head-title input-group">
+                                <label class="input-group-addon" for="page_title">标题</label>
+                                <input type="text" class="form-control" placeholder="网页标题" id="page_title">
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="ctrl-head-name input-group">
+                                <label class="input-group-addon" for="page_name">地址</label>
+                                <input type="text" class="form-control" placeholder="网页链接" id="page_name">
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="ctrl-head-name input-group">
+                                <label class="input-group-addon" for="page_name">底色</label>
+                                <input type="text" class="form-control" placeholder="网页底色" id="page_bgcolor">
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="ctrl-body ui-sortable" id="all_ctrl_control">
+                    </ul>
+                </div>
+                <div class="submit-box text-right">
+                    <button class="btn btn-success" id="btn_submit">提交修改</button>
+                    <button class="btn btn-danger" id="btn_cancel">取消修改</button>
+                </div>
+        </div>
+
+        <div class="pop-box choose-img-pop" style="display: none">
+            <div class="pop-bg"></div>
+            <div class="pop-container">
+                <p class="pop-title">请选择要使用的图片</p>
+                <div class="pop-content">
+                    <div class="img-nav pull-left">
+                        <ul class="pop-list-group"></ul>
+                    </div>
+                    <div class="img-board pull-left"></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pop-box choose-page-pop" style="display: none">
+            <div class="pop-bg"></div>
+            <div class="pop-container">
+                <p class="pop-title">请选择要链接的页面</p>
+                <div class="pop-content">
+                    <ul class="pop-list-group"></ul>
+                </div>
+            </div>
+        </div>
+</body>
+<script>
+    var URL="__URL__";
+    var PUBLIC = "__PUBLIC__";
+    var MODULE = "__MODULE__";
+    var SITE_URL = "{:C('SITE_URL')}";
+    var pageInfo = {$pageInfo};
+    var pageList = null;
+    var imgList = null;
+    var cur_show_url = SITE_URL + '/index.php/Weixin/Shop/index?page=' + pageInfo['name'];
+    var oldInfo = new Object();
+
+    console.log(pageInfo);
+</script>
+<script src="__PUBLIC__/Home/shop/js/page-edit-components.js?v=2"></script>
+<script src="__PUBLIC__/Home/shop/js/page-edit.js?v=8"></script>
+</html>

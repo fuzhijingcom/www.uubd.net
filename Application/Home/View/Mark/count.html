@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://tongji.baidu.com/web/5473605/overview/index?siteId=1942168
+-->
+<html lang="zh-CN">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>
+            流量统计 - uubd
+        </title>
+        <link href="__PUBLIC__/Home/css/count.css" rel="stylesheet" type="text/css"
+        media="all">
+        <link href="__PUBLIC__/Home/css/overview_sole.css" rel="stylesheet" type="text/css"
+        media="all">
+
+        <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+        <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+        <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+    </head>
+    
+    <body>
+        <div id="report-wrapper" class="content clearfix">
+            <div id="content-header-wrapper" style="height: auto;">
+                <div id="content-header" class="content-header" style="width: auto; left: 0px;">
+                    <div class="title-bar clearfix">
+                        <div id="tool-bar" class="tool-bar r">
+                            <span>
+                                uubd，做年轻人最信赖的眼镜品牌！
+                            </span>
+                        </div>
+                        <h5 class="l">
+                            流量统计
+                        </h5>
+                    </div>
+                    <div class="report-tip" id="report-tip" style="display: none;">
+                        <div class="tip-arrow">
+                        </div>
+                    </div>
+                </div>
+                <div id="content-header" class="content-header" style="width: auto; left: 0px;">
+                    <button type="button" class="btn btn-info" onclick="history.go(-1)">返回</button>
+
+                    <div class="report-tip" id="report-tip" style="display: none;">
+                        <div class="tip-arrow">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-tip" id="PageTip" style="display:none">
+                    <a class="tip-close open trackable" memo="{id:'PageTip',type:'page-tip',global:0}"
+                    onclick="$(this).parent().hide();" href="javascript:void(0);">
+                    </a>
+                    <div class="text">
+                    </div>
+                </div>
+                <div class="page-tip" id="ConditionalPageTip" style="display:none">
+                    <a class="tip-close open trackable" memo="{id:'ConditionalPageTip',type:'page-tip',global:0}"
+                    onclick="$(this).parent().hide();" href="javascript:void(0);">
+                    </a>
+                    <div class="text">
+                    </div>
+                </div>
+                <div class="main-content">
+
+                    <div class="table-list" id="IndexPreview">
+                        <div class="overview-card-title-container">
+                            <label class="overview-card-title">
+                                今日流量
+                            </label>
+                        </div>
+                        <table cellspacing="0" cellpadding="0" class="list" id="IndexPreviewTableList">
+                            <tbody>
+                                <tr class="title">
+                                    <th>
+                                    </th>
+                                    <th>
+                                        浏览量(PV)
+                                    </th>
+                                    <th>
+                                        访客数(UV)
+                                    </th>
+                                    <th>
+                                        订单数
+                                    </th>
+                                    <th>
+                                        订单金额
+                                    </th>
+                                    <th class="empty-tr0">
+                                    </th>
+                                </tr>
+                                <tr class="highlight">
+                                    <td class="normal">
+                                        今日
+                                    </td>
+                                    <td class="">
+                                        {$data['today']['pv_count']}
+                                    </td>
+                                    <td class="">
+                                        {$data['today']['uv_count']}
+                                    </td>
+                                    <td>
+                                        {$data['today']['order_num']}
+                                    </td>
+                                    <td>
+                                        {$data['today']['order_price']}
+                                    </td>
+                                    <td class="empty-tr0">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="normal">
+                                        昨日
+                                    </td>
+                                    <td class="">
+                                        {$data['yesterday']['pv_count']?$data['yesterday']['pv_count']:0}
+                                    </td>
+                                    <td class="">
+                                        {$data['yesterday']['uv_count']?$data['yesterday']['uv_count']:0}
+                                    </td>
+                                    <td>
+                                        {$data['yesterday']['order_num']}
+                                    </td>
+                                    <td>
+                                        {$data['yesterday']['order_price']}
+                                    </td>
+                                    <td class="empty-tr0">
+                                    </td>
+                                </tr>
+
+                                <tr class="empty-tr1">
+                                </tr>
+                                <tr class="fade toggleable-hidden empty-tr2">
+                                    <td colspan="9">
+                                    </td>
+                                </tr>
+
+                                <tr class="fade toggleable-hidden empty-tr3">
+                                    <td colspan="9">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="fold  btw ">
+                        <a href="javascript:void(0)" id="TogglePreviewTableBtn" targets=".fade"
+                        class="toggleable recordable trackable close">
+                        </a>
+                    </div>
+                    <div class="overview-gap">
+                    </div>
+                    <div class="overview-detail">
+                        <div id="DateSelectBar">
+                            <!--<div class="control-bar-wrapper clearfix" id="control-bar-wrapper">-->
+                                <!--<div class="control-bar bg-iframe l" id="control-bar">-->
+                                    <!--<span class="l label">-->
+                                        <!--时间：-->
+                                    <!--</span>-->
+                                    <!--<div class="l date-select-bar" id="date-select-bar">-->
+                                    <!--<a href="#00" class="trackable date-bar-single-day cur" memo="{id:'time_tody'}">-->
+                                        <!--今天-->
+                                    <!--</a>-->
+                                    <!--<span class="seprator">-->
+                                        <!--</span>-->
+                                    <!--<a href="#-1" class="trackable date-bar-single-day" memo="{id:'time_yest'}">-->
+                                        <!--昨天-->
+                                    <!--</a>-->
+                                    <!--<span class="seprator">-->
+                                        <!--</span>-->
+                                    <!--<a href="#-6" class="trackable" memo="{id:'time_week'}">-->
+                                        <!--最近7天-->
+                                    <!--</a>-->
+                                    <!--<span class="seprator">-->
+                                        <!--</span>-->
+                                    <!--<a href="#-29" class="trackable" memo="{id:'time_month'}">-->
+                                        <!--最近30天-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                                    <!--<div class="l time-select-bar" id="custom-date-select">-->
+                                        <!--<div class="select-bar-item l">-->
+                                            <!--<input onfocus="javascript:this.blur();" readonly="readonly" class="text trackable"-->
+                                            <!--memo="{id:'time_selt'}" id="date-select" value="自定义时间段">-->
+                                            <!--<a class="dropdown">-->
+                                            <!--</a>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        </div>
+                        <div class="overview-gap">
+                        </div>
+                        <div class="index-site" id="IndexSite">
+                            <div class="first-row">
+                                <div class="clearfix table-grid">
+                                    <div class="left">
+                                        <div class="table-grid-item">
+                                            <div class="title clearfix">
+                                                <div class="l">
+                                                    昨日/今日PV折线图
+                                                </div>
+                                                <div class="r">
+                                                    <a id="event-monitor-trend" class="detail-report-btn" href="/web/5473605/trend/time?siteId=1942168&amp;isTab=1">
+                                                        &nbsp;
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div id="PVzhexianCharts" style="height: 300px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="table-grid-item">
+                                            <div class="title clearfix">
+                                                <div class="l">
+                                                    昨日/今日UV折线图
+                                                </div>
+                                                <div class="r">
+                                                    <a id="event-monitor-source" class="detail-report-btn" href="/web/5473605/source/all?viewType=site&amp;siteId=1942168">
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div id="UVzhexianCharts" style="height:300px;"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="first-row">
+                                    <div class="clearfix table-grid">
+                                        <div class="left">
+                                            <div class="table-grid-item">
+                                                <div class="title clearfix">
+                                                    <div class="l">
+                                                        今日购买商品饼状图
+                                                    </div>
+                                                    <div class="r">
+
+                                                    </div>
+                                                </div>
+                                                <div id="toPayCharts" style="height: 300px;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="table-grid-item">
+                                                <div class="title clearfix">
+                                                    <div class="l">
+                                                        今日加入购物车商品饼状图
+                                                    </div>
+                                                    <div class="r">
+
+                                                    </div>
+                                                </div>
+
+                                                <div id="toCartCharts" style="height:300px;"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div id="IndexSiteContent">
+                                <div class="clearfix table-grid">
+                                    <div class="left" id="search-word-container">
+                                        <div class="table-grid-item">
+                                            <div class="title clearfix">
+                                                <div class="l">
+                                                    {$data['search_goods']['text']}
+                                                </div>
+                                                <div class="r">
+                                                </div>
+                                            </div>
+                                            <div class="table-data clearfix">
+                                                <table cellpadding="0" cellspacing="0" class="table-layout-01">
+                                                    <thead>
+                                                    <tr>
+                                                        <td class="al url">
+                                                            搜索词
+                                                        </td>
+                                                        <td class="ar" width="20%">
+                                                            搜索次数
+                                                        </td>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <?php foreach($data['search_goods']['data'] as $k => $v): ?>
+                                                    <tr>
+                                                        <td class="al url">
+                                                                <span class="ellipsis" title="{$k}">
+                                                                    {$k}
+                                                                </span>
+                                                        </td>
+                                                        <td class="ar">
+                                                            {$v}
+                                                        </td>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right" id="search-word-container">
+                                        <div class="table-grid-item">
+                                            <div class="title clearfix">
+                                                <div class="l">
+                                                    {$data['page_browse']['text']}
+                                                </div>
+                                                <div class="r">
+                                                </div>
+                                            </div>
+                                            <div class="table-data clearfix">
+                                                <table cellpadding="0" cellspacing="0" class="table-layout-01">
+                                                    <thead>
+                                                    <tr>
+                                                        <td class="al url">
+                                                            页面链接
+                                                        </td>
+                                                        <td class="ar" width="20%">
+                                                            访问次数
+                                                        </td>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <?php foreach($data['page_browse']['data'] as $k => $v): ?>
+                                                    <tr>
+                                                        <td class="al url">
+                                                                <span class="ellipsis" title="{$k}">
+                                                                    {$k}
+                                                                </span>
+                                                        </td>
+                                                        <td class="ar">
+                                                            {$v}
+                                                        </td>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="right">-->
+                                        <!--<div class="table-grid-item">-->
+                                            <!--<div class="title clearfix">-->
+                                                <!--<div class="l">-->
+                                                    <!--新老访客-->
+                                                <!--</div>-->
+                                                <!--<div class="r">-->
+                                                    <!--<a id="event-monitor-visitor" class="detail-report-btn" href="/web/5473605/visit/type?siteId=1942168">-->
+                                                    <!--</a>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="table-data clearfix">-->
+                                                <!--<div class="visit-type-summary clearfix">-->
+                                                    <!--<table>-->
+                                                        <!--<tbody>-->
+                                                        <!--<tr>-->
+                                                            <!--<td class="visit-type-icon">-->
+                                                                <!--<div>-->
+                                                                <!--</div>-->
+                                                            <!--</td>-->
+                                                            <!--<td class="visit-type-new">-->
+                                                                <!--<div>-->
+                                                                    <!--<div class="visit-type-summary-title">-->
+                                                                        <!--新访客-->
+                                                                    <!--</div>-->
+                                                                    <!--<div class="visit-type-summary-data">-->
+                                                                        <!--85.54-->
+                                                                        <!--<span class="ratil-unit">-->
+                                                                                <!--%-->
+                                                                            <!--</span>-->
+                                                                    <!--</div>-->
+                                                                <!--</div>-->
+                                                            <!--</td>-->
+                                                            <!--<td class="visit-type-old">-->
+                                                                <!--<div>-->
+                                                                    <!--<div class="visit-type-summary-title">-->
+                                                                        <!--老访客-->
+                                                                    <!--</div>-->
+                                                                    <!--<div class="visit-type-summary-data">-->
+                                                                        <!--14.46-->
+                                                                        <!--<span class="ratil-unit">-->
+                                                                                <!--%-->
+                                                                            <!--</span>-->
+                                                                    <!--</div>-->
+                                                                <!--</div>-->
+                                                            <!--</td>-->
+                                                        <!--</tr>-->
+                                                        <!--</tbody>-->
+                                                    <!--</table>-->
+                                                <!--</div>-->
+                                                <!--<div class="visit-type-detail">-->
+                                                    <!--<table>-->
+                                                        <!--<tbody>-->
+                                                        <!--<tr>-->
+                                                            <!--<td class="visit-type-detail-name">-->
+                                                                <!--浏览量-->
+                                                            <!--</td>-->
+                                                            <!--<td class="visit-type-detail-new">-->
+                                                                <!--181-->
+                                                            <!--</td>-->
+                                                            <!--<td class="visit-type-detail-old">-->
+                                                                <!--44-->
+                                                            <!--</td>-->
+                                                        <!--</tr>-->
+                                                        <!--<tr>-->
+                                                            <!--<td class="visit-type-detail-name">-->
+                                                                <!--访客数-->
+                                                            <!--</td>-->
+                                                            <!--<td class="visit-type-detail-new">-->
+                                                                <!--142-->
+                                                            <!--</td>-->
+                                                            <!--<td class="visit-type-detail-old">-->
+                                                                <!--24-->
+                                                            <!--</td>-->
+                                                        <!--</tr>-->
+
+                                                        <!--</tbody>-->
+                                                    <!--</table>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </body>
+    <script>
+        var URL = '__CONTROLLER__';
+        $(document).ready(function() {
+            $.ajax({
+                url: URL + '/getTodayZheXianCharts',
+                type: 'post',
+                data: {'type': 0},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.sign != -1) {
+                        Highcharts.chart('PVzhexianCharts', {
+                            title: {
+                                text: '昨日/今日PV值对比图',
+                                x: -20 //center
+                            },
+                            subtitle: {
+                                text: '来源: uubd',
+                                x: -20
+                            },
+                            xAxis: {
+                                categories: ['1', '2', '3', '4', '5', '6',
+                                    '7', '8', '9', '10', '11', '12']
+                            },
+                            yAxis: {
+                                title: {
+                                    text: '浏览量（次）'
+                                },
+                                plotLines: [{
+                                    value: 0,
+                                    width: 1,
+                                    color: '#808080'
+                                }]
+                            },
+                            tooltip: {
+                                valueSuffix: '次访问'
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'middle',
+                                borderWidth: 0
+                            },
+                            series:eval(res)
+                        });
+                    }else{
+                        $('#PVzhexianCharts').html(res.msg);
+                    }
+                }
+            });
+            $.ajax({
+                url: URL + '/getTodayZheXianCharts',
+                type: 'post',
+                data: {'type': 1},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.sign != -1) {
+                        Highcharts.chart('UVzhexianCharts', {
+                            title: {
+                                text: '昨日/今日UV值对比图',
+                                x: -20 //center
+                            },
+                            subtitle: {
+                                text: '来源: uubd',
+                                x: -20
+                            },
+                            xAxis: {
+                                categories: ['1', '2', '3', '4', '5', '6',
+                                    '7', '8', '9', '10', '11', '12']
+                            },
+                            yAxis: {
+                                title: {
+                                    text: '浏览量（次）'
+                                },
+                                plotLines: [{
+                                    value: 0,
+                                    width: 1,
+                                    color: '#808080'
+                                }]
+                            },
+                            tooltip: {
+                                valueSuffix: '次访问'
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'middle',
+                                borderWidth: 0
+                            },
+                            series:eval(res)
+                        });
+                    }else{
+                        $('#UVzhexianCharts').html(res.msg);
+                    }
+                }
+            });
+            $.ajax({
+                url: URL + '/getGoodsActionDataCharts',
+                type: 'post',
+                data: {'action': 0},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.sign != -1) {
+                        $('#toPayCharts').highcharts({
+                            chart: {
+                                plotBackgroundColor: null,
+                                plotBorderWidth: null,
+                                plotShadow: false
+                            },
+                            title: {
+                                text: res.text
+                            },
+                            tooltip: {
+                                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: false
+                                    },
+                                    showInLegend: true
+                                }
+                            },
+                            series: eval(res.data)
+                        });
+                    }else{
+                        $('#toPayCharts').html(res.msg);
+                    }
+                }
+            });
+            $.ajax({
+                url: URL + '/getGoodsActionDataCharts',
+                type: 'post',
+                data: {'action': 1},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.sign != -1) {
+                        $('#toCartCharts').highcharts({
+                            chart: {
+                                plotBackgroundColor: null,
+                                plotBorderWidth: null,
+                                plotShadow: false
+                            },
+                            title: {
+                                text: res.text
+                            },
+                            tooltip: {
+                                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: false
+                                    },
+                                    showInLegend: true
+                                }
+                            },
+                            series: eval(res.data)
+                        });
+                    }else{
+                        $('#toCartCharts').html(res.msg);
+                    }
+
+                }
+            });
+        });
+    </script>
+</html>

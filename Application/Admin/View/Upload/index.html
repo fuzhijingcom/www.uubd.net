@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=7" />
+    <title></title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+<form name="form1" method="post" action="{:U('/Admin/Upload/index')}" enctype="multipart/form-data">
+  <input id="postfile" type="file" name="postfile" style="height:20px; background-color:#EBEBEB; border:1 solid black;" onMouseOver ="this.style.backgroundColor='#F0F0F0'" onMouseOut ="this.style.backgroundColor='#FAFAFA'"  onblur="post('')">
+  <input  type="submit" name="Submit" value="上传文件" style="height:20px; background-color:#EBEBEB; border:1 solid black;" onMouseOver ="this.style.backgroundColor='#F0F0F0'" onMouseOut ="this.style.backgroundColor='#FAFAFA'" >
+  <input type="hidden" name="action" value="{$fn}">
+  <input type="hidden" name="label" value="{$label}">
+</form>
+</body>
+<script type="text/javascript">
+<!--
+function post(va){
+	
+	if(document.getElementById("postfile").value!=''){
+		document.form1.submit();
+	}
+	
+}
+//-->
+</SCRIPT>
+</html>

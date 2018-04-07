@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="25px" height="23px" viewBox="0 0 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.3 (16044) - http://www.bohemiancoding.com/sketch -->
+    <title>iconfont-xihuan</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="商品详情" sketch:type="MSArtboardGroup" transform="translate(-240.000000, -1668.000000)" fill="#FF5F00">
+            <g id="底部栏" sketch:type="MSLayerGroup" transform="translate(0.000000, 1668.000000)">
+                <g id="先收藏-copy-2" transform="translate(240.000000, 0.000000)" sketch:type="MSShapeGroup">
+                    <g id="iconfont-xihuan">
+                        <g id="图形">
+                            <path d="M12.499812,22.9932971 C11.9204574,22.9932971 11.3645677,22.8066357 10.8925752,22.4536843 C3.07659774,16.60462 0.335338346,13.2373214 0.0281328321,9.10865714 L0.0254072682,9.07169286 L0.0252192982,7.61260571 L0.0281641604,7.57452429 C0.392387218,2.81493714 3.42694236,0.353805714 6.09229323,0.0814857143 C6.47380952,0.0410057143 6.85736216,0.0201742857 7.22913534,0.0201742857 C9.81757519,0.0201742857 11.2848684,1.09233571 12.500094,2.44273143 C13.7159461,1.09220429 15.183114,0.0201742857 17.7695802,0.0201742857 C18.1413534,0.0201742857 18.5248747,0.0410057143 18.9100564,0.0817157143 C21.5720551,0.353805714 24.6067356,2.81250571 24.9714286,7.56663857 L24.9744048,7.60478571 L24.9748434,9.06410286 L24.9720238,9.10136286 C24.6649749,13.2347257 21.9232456,16.6038314 14.1063283,22.4534214 C13.6349311,22.8067014 13.0792293,22.9933629 12.4997807,22.9933629 L12.499812,22.9932971 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

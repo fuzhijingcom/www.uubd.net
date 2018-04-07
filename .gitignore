@@ -1,0 +1,11 @@
+*.html.php
+.DS_Store
+.ide
+*.log
+Attachment
+Application/Runtime
+*.lock
+.idea
+
+Application/Common/Conf/config.php
+

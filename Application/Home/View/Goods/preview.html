@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>uubd商城</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="__PUBLIC__/Home/goods/css/wapReset.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/goods/css/preview.css">
+
+    <link href="__PUBLIC__/Home/goods/css/details.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/Home/goods/css/meals_template.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/Home/goods/css/swiper.min.css" rel="stylesheet">
+
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="__PUBLIC__/Home/goods/js/jquery.lazyload.js"></script>
+    <script src="__PUBLIC__/Home/goods/js/vue.js"></script>
+</head>
+<body class="zwg_details_common zwg_gooddetail">
+
+<div id="vueAction" class="preview-style">
+    <div class="wrap">
+        <div class="height5_5rem transparent_b_b"></div>
+        <!--头部-->
+        <div class="common_top preview-style" id="topBar">
+
+            <a href="javascript:history.go(-1);" class="common_top_left back_prev_btn"></a>
+            <a href="__APP__" class="common_top_return_index">
+                <img src="__PUBLIC__/Home/goods/pic/zwg_gooddetails_return_index.png"></a>
+
+            <a class="common_top_center page_theme_text" href="javascript:;">商品详情</a>
+
+            <a class="shopcar-btn" href="#"><img
+                    src="__PUBLIC__/Home/goods/pic/zwg_index_shopcar.png"><span class="product-count"
+                                                                                            style="display: none;">0</span></a>
+
+        </div>
+        <!--头部-->
+
+        <!-- banner切换 Start ================================ -->
+        <!-- Swiper -->
+        <div class="swiper-container main-carousel">
+            <div class="swiper-wrapper">
+                <volist name="slideImgList" id="vo">
+                    <div class="swiper-slide"><a><img
+                            src="{$vo.big_url}"></a></div>
+                </volist>
+                </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span
+                    class="swiper-pagination-bullet"></span><span
+                    class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span
+                    class="swiper-pagination-bullet"></span></div>
+        </div>
+        <script src="__PUBLIC__/Home/goods/js/swiper.min.js"></script>
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                paginationClickable: true,
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: 2500,
+                autoplayDisableOnInteraction: false
+            });
+        </script>
+        <!--眼镜基本信息-->
+
+        <div class="glasses-basic-meg clearfix">
+            <p class="product-name">{$goods_name}</p>
+            <p class="pri_box clearfix"><span class="current-pri">优惠价：¥ {$price}</span><span
+                    class="primary-pri">原价：¥ {$price}</span></p>
+
+            <!--标签-->
+        </div>
+
+        <div class="blank_info"></div>
+        <div id="select-glass-frame-color-wrap" class="select-option-wrap">
+            <div class="select-option-top">
+                <span class="select-option-word-tips">已选{$attr_name}：<span class="selected-color">{$current_style}</span></span>
+                <span class="switch-btn"></span>
+            </div>
+            <div class="select-option-body">
+                <div class="select-option-body-title">
+                    <p class="select-option-word-tips">选择{$attr_name}</p>
+                    <span class="switch-btn"></span>
+                </div>
+                <ul class="color-list clearfix" id="SkuColor">
+                    <volist name="styleList" id="vo">
+                        <li class="{$vo.selected_class}">{$vo.name}</li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+
+        <div class="good-details collection-ul-wrap">
+            <div class="collection-ul-title">
+                <span></span><span class="text">商品详情</span><span></span>
+            </div>
+            <div class="good-details-img-list">
+                <p>
+                    <volist name="pageImgList" id="vo"><img src="{$vo.url}"
+                                                            style=""></volist>
+                    <img src="__PUBLIC__/Goods/extra/glass-wrap.jpg" style="display: block;">
+                </p>
+                <img src="__PUBLIC__/Goods/extra/glass-intro1.jpg">
+                <img src="__PUBLIC__/Goods/extra/glass-intro2.jpg">
+                <img src="__PUBLIC__/Goods/extra/glass-intro3.jpg">
+                <img src="__PUBLIC__/Goods/extra/glass-intro4.jpg">
+                <img src="__PUBLIC__/Goods/extra/glass-intro5.jpg">
+                <img src="__PUBLIC__/Goods/extra/glass-intro6.jpg">
+                <img src="__PUBLIC__/Goods/extra/glass-intro7.jpg">
+                <img src="__PUBLIC__/Goods/extra/glass-intro8.jpg">
+            </div>
+        </div>
+
+        <!--底部操作项-->
+        <div id="footButtom" class="good-details-bottom-nav preview-style">
+            <ul class="clearfix">
+                <li class="share-product-link">
+                    <p>
+                    </p>
+                </li>
+                <li class="collect-product">
+                    <p>
+                    </p>
+                </li>
+                <li class="plain_version">
+                    <p>
+                        <span>加入购物车</span>
+                    </p>
+                </li>
+                <li class="has_degree_version">
+                    <p>
+                        <span>立即购买</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div style="padding-bottom: 49px; width: 100%; overflow: hidden; background: #ededed;">
+        </div>
+    </div>
+
+    <!--专门负责放置弹框-----start-->
+    <!--fixed-->
+    <div id="pop-Layer-bg" class="pop-Layer-bg">
+
+        <div class="pop-layer-content-wrap pop-layer-content-wrap-bottom0top0">
+            <div class="pop-layer-content">
+                <div class="service-illustrate-pop-layer">
+                    <div class="service-illustrate-frame">
+                        <div class="service-illustrate-frame-title">
+                            <span>服务说明</span>
+                        </div>
+                        <div class="service-illustrate-frame-content">
+                            <ul class="illustrate-list">
+                                <li class="first-illustrate">
+                                    <h2>
+                                        <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_service_illustrate_place_tick_icon.svg">厂家直销
+                                    </h2>
+                                    <p>品牌方直接提供货物，避免中间商差价</p>
+                                </li>
+                                <li>
+                                    <h2>
+                                        <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_service_illustrate_place_tick_icon.svg">质量保证
+                                    </h2>
+                                    <p>工厂一线生产线加工，该商品拥有国家质检报告，品质保证</p>
+                                </li>
+                                <li>
+                                    <h2>
+                                        <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_service_illustrate_place_tick_icon.svg">售后无忧
+                                    </h2>
+                                    <p>7天无理由退换货(品牌配件以及防伪标签齐全完整，撕毁无效)</p>
+                                </li>
+                                <li>
+                                    <h2>
+                                        <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_service_illustrate_place_tick_icon.svg">专业配镜
+                                    </h2>
+                                    <p>有证验光师客服，一对一贴心服务，专业、便捷</p>
+                                </li>
+                                <li>
+                                    <h2>
+                                        <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_service_illustrate_place_tick_icon.svg">专属定制
+                                    </h2>
+                                    <p>该商品可以进行个性化刻字定制，四个字符以内提供客服样式可以进行刻字定制</p>
+                                </li>
+                                <li>
+                                    <h2>
+                                        <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_service_illustrate_place_tick_icon.svg">急速物流
+                                    </h2>
+                                    <p>uubd与多家大型物流配送服务商合作，同时通过先进的互联网技术进行订单实时跟踪，并免费提供订单状态后台显示以及短信提醒</p>
+                                </li>
+                            </ul>
+
+
+                        </div>
+                        <div class="service-illustrate-frame-bottom">
+                            <p>关闭</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pop-layer-content-wrap pop-layer-content-wrap-bottom0">
+            <div class="pop-layer-content">
+                <div class="share-product-link-pop-layer">
+                    <div class="share-product-link-frame">
+                        <div class="share-product-link-frame-content">
+                            <div class="share_btn_wrap"
+                                 style="width: 100%; margin: 0 auto; background: #fff; overflow: hidden;">
+                                <ul class="clearfix" style="width: 100%; margin-top: 3%; margin-bottom: 3%;">
+                                    <li style="width: 33.33%; float: left;">
+                                        <a class="wks_moments"
+                                           style="width: 50%; margin-left: auto; margin-right: auto; display: block; text-align: center; overflow: hidden;">
+                                            <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_moments_icon.svg"
+                                                 style="width: 100%; display: block; margin-bottom: 7%;">
+                                            <span style="font-size: 1.18rem; color: #717171;">朋友圈</span>
+                                        </a>
+                                    </li>
+                                    <li style="width: 33.33%; float: left;">
+                                        <a class="wks_sina"
+                                           style="width: 50%; margin-left: auto; margin-right: auto; display: block; text-align: center; overflow: hidden;"
+                                           href="#">
+                                            <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_microblog_icon.svg"
+                                                 style="width: 100%; display: block; margin-bottom: 7%;">
+                                            <span style="font-size: 1.18rem; color: #717171;">新浪微博</span>
+                                        </a>
+                                    </li>
+                                    <li style="width: 33.33%; float: left;">
+                                        <a class="wks_weixin"
+                                           style="width: 50%; margin-left: auto; margin-right: auto; display: block; text-align: center; overflow: hidden;">
+                                            <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_we_chat_icon.svg"
+                                                 style="width: 100%; display: block; margin-bottom: 7%;">
+                                            <span style="font-size: 1.18rem; color: #717171;">微信好友</span>
+                                        </a>
+                                    </li>
+                                    <li style="width: 33.33%; float: left; margin-top: 5%;">
+                                        <a class="wks_qzone"
+                                           style="width: 50%; margin-left: auto; margin-right: auto; display: block; text-align: center; overflow: hidden;"
+                                           href="#">
+                                            <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_qq_zone_icon.svg"
+                                                 style="width: 100%; display: block; margin-bottom: 7%;">
+                                            <span style="font-size: 1.18rem; color: #717171;">QQ空间</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="share-product-link-frame-bottom">
+                            <p>取消</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="pop-layer-content-wrap pop-layer-content-wrap-bottom0">
+            <div class="pop-layer-content">
+                <div class="select-color-count-pop-frame">
+                    <div class="brand-sunglasses-img">
+                        <img src="__PUBLIC__/Home/goods/pic/160419144531453nJSVu.jpg">
+                    </div>
+                    <!--眼镜基本信息-->
+                    <div class="modify-product-count-wrap">
+                        <span class="modify-product-count-word-tips">购买数量：</span>
+                        <div class="modify-product-count">
+                            <span class="decrease"></span>
+                                <span class="product-count-wrap">
+                                    <span class="product-count">1</span>
+                                </span>
+                            <span class="increase"></span>
+                        </div>
+                    </div>
+
+                    <!--商品详情页和定制页的通用的底部-->
+                    <div class="details-customize-common-bottom">
+                        <ul class="clearfix">
+                            <li>
+                                <p>商品单价</p>
+                                <p>279</p>
+                            </li>
+                            <li>
+                                <span>取消</span>
+                            </li>
+                            <li id="confirm">
+                                <span>确定</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pop-layer-content-wrap pop-layer-content-wrap-bottom0top0">
+            <div class="pop-layer-content appraisal-pop-layer">
+                <!--头部-->
+                <div class="common_top">
+                    <a class="common_top_left back_prev_btn"></a>
+                    <a class="common_top_center page_theme_text">评价</a>
+                </div>
+                <div class="appraisal-wrap" id="Comment">
+                    <div class="sel-item-wrap">
+                        <ul class="grade-count clearfix">
+                            <li>
+                                    <span class="grade">
+                                        <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_sales_icon.svg">
+                                        <span>5</span>
+                                    </span>
+                            </li>
+                            <li>
+                                    <span class="count">
+                                        <img src="__PUBLIC__/Home/goods/svg/zwg_gooddetails_count-icon.svg">
+                                        <span></span>
+                                    </span>
+
+                            </li>
+                        </ul>
+
+                        <div id="Commentlabel" class="row2 clearfix">
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="commentList" class="pure-g appraise-list">
+
+                    </div>
+                    <div id="commentLoad" class="load-more" href="javascript:;"><span></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="__PUBLIC__/Home/goods/js/goodsdetail.js"></script>
+</body>
+</html>

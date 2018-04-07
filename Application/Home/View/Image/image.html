@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品管理</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/image.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="__PUBLIC__/Common/js/jquery-1.11.3.min.js"></script>
+    <!-- 引入排序相关插件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/chili-1.8b.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <link href="__PUBLIC__/Home/css/ssi-uploader.min.css" rel="stylesheet"/>
+    <script src="__PUBLIC__/Home/js/ssi-uploader.min.js"></script>
+</head>
+<body>
+<a id="backToTop" href="javascript:void(0)" class="to-top btn btn-primary">Top</a>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="javascript:void(0)" onclick="changeImageModule(this)">其他图片管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12" id="content">
+            <div id="controlBox-father">
+                <form class="form-inline control-box" style="width: 100%!important;" id="controlBox"
+                      onsubmit="return false;">
+
+                </form>
+            </div>
+
+            <div id="image-table">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var URL = "__URL__";
+    var MODULE = "__MODULE__";
+    var CONTROLLER = "__CONTROLLER__";
+    var SITE_URL = '{$SITE_URL}';
+</script>
+<!-- 商品管理相关 js -->
+<script src="__PUBLIC__/Home/js/image.js"></script>
+<script src="__PUBLIC__/Home/js/image-components.js"></script>
+<script src="__PUBLIC__/Home/js/image-controller.js"></script>
+</body>
+</html>

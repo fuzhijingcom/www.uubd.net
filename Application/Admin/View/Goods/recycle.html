@@ -1,0 +1,60 @@
+<include file="Public:header" />
+<div id="table" class="mt10">
+    <div id="search_bar" class="mt10" style="padding-bottom: 10px;">
+        <div class="box">
+			<div class="box_border">
+                <div class="box_top">
+                    <b class="pl15">商品回收站</b>
+                </div>
+            </div>
+            <div style="border-top:1px solid #dadada;" class="box_bottom pb5 pt5 pr10">
+                <div style="text-align:right;" class="search_bar_btn">
+                    <form name="sform" method="get" action="__SELF__">
+                        商品名称：<input class="input-text lh25" type="text" size="15" name="title" value="{$Think.get.title}">
+                        <input type="submit" class="ext_btn ext_btn_submit" value="搜索">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box span10 oh">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <tr>
+				<th width="70">商品二维码</th>
+                <th width="380">商品名称</th>
+				<th width="100">分类</th>
+				<th width="50">价格</th>
+				<th width="50">库存量</th>
+				<th width="50">排序</th>
+				<th width="60">审核状态</th>
+				<th width="60">管理操作</th>
+            </tr>
+            <if condition="empty($infolist)">
+             <tr class="tr"><td colspan="11" style="text-align:center;">暂无任何信息</td></tr>
+            <else />
+            <foreach name='infolist' item="info">
+            <tr class="tr">
+                <td class="td_center">
+					<a href="{$info.qrcode}" target="_blank"><img src="{$info.qrcode}" width="50px;" height="50px;" /></a>
+				</td>
+				<td class="td_center">{$info.title}</td>
+                <td align='center'>{$info.catename}</td>
+				<td align='center'>{$info.price}</td>
+				<td align='center'>{$info.inventory}</td>
+				<td align='center'>{$info.list}</td>
+				<td align='center'>{$info.show_label}</td>
+				<td align='center'>
+					<a href="javascript:;;" onclick="confirm('确定要恢复此商品吗？恢复后将进入商品列表', '{:U('/Admin/Goods/restore',array('id'=>$info['goodsid']))}')" target="main">【恢复】</a>
+					<a href="javascript:;;" onclick="confirm('确定要删除此商品吗？商品彻底删除', '{:U('/Admin/Goods/remove',array('id'=>$info['goodsid']))}')" target="main">【删除】</a>
+				</td>
+            </tr>
+            </foreach>
+            </if>
+        </table>
+        <div class="page mt10">
+            <div class='pagination'>{$pageshow}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+  

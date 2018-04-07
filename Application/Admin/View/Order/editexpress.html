@@ -1,0 +1,73 @@
+<include file="Public:header" />
+<script type="text/javascript">
+    $(function(){
+		//表单提交校验
+        $('form').validate({
+            errorPlacement: function(error, element){
+                $(element).next('.field_notice').hide();
+                $(element).after(error);
+            },
+            success       : function(label){
+                label.addClass('right').text('OK!');
+            },
+            onfocusout : false,
+            onkeyup    : false,
+            rules : {
+                express : {
+                    required : true,
+                },
+                express_sn : {
+                    required : true,
+                },
+            },
+            messages : {
+            	express : {
+                    required : '提示：请填写快递公司名称',
+                },
+                express_sn : {
+                    required : '提示：请填写快递单号',
+                },
+            }
+        });
+    });
+</script>
+<div id="forms" class="mt10">
+    <div class="box">
+        <div class="box_border">
+            <div class="box_top"><b class="pl15">修改快递信息</b></div>
+            <div class="box_center">
+                <form class="jqtransform" name="form1" action="{:U('/Admin/Order/editExpress')}" method="post">
+                    <table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="td_right">快递公司名称：</td>
+                            <td class="">
+                               <select class="select" name="express" style="width: 258px;">
+                                    <foreach name="express" key="key" item="cate">
+                                        <option value="{$key}" <if condition="$info[express] eq $key">checked="checked"</if>>{$cate.name}</option>
+                                    </foreach>
+                                </select>
+							</td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">快递单号：</td>
+                            <td class="">
+               						<input name="express_sn" type="text" class="input-text lh30" size="40">
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="td_right">&nbsp;</td>
+                            <td class="">
+                            	<input type="hidden" name="id" value="{$id}">
+                                <input type="submit" name="button" class="btn btn82 btn_save2" style="width:120px;" value="发货">
+                                <input type="button" onclick="javascript:history.go(-1);" name="button" class="btn btn82 btn_res" value="返回">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+  

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.3 (16044) - http://www.bohemiancoding.com/sketch -->
+    <title>图形</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="商品详情" sketch:type="MSArtboardGroup" transform="translate(-27.000000, -594.000000)" fill="#FF5F00" opacity="0.6">
+            <g id="商品信息" sketch:type="MSLayerGroup" transform="translate(0.000000, 475.000000)">
+                <g id="标签" transform="translate(27.000000, 117.000000)" sketch:type="MSShapeGroup">
+                    <g id="iconfont-biaoqian" transform="translate(0.000000, 2.000000)">
+                        <g id="图形">
+                            <path d="M0,0 L0,7.77170614 L11.4208995,18.9880011 L19.0036032,11.8913958 L7.77170614,0 L0,0 Z M3.88585308,5.55121868 C2.96657127,5.55121868 2.22048748,4.80513489 2.22048748,3.88585308 C2.22048748,2.96657127 2.96657127,2.22048748 3.88585308,2.22048748 C4.80513489,2.22048748 5.55121868,2.96657127 5.55121868,3.88585308 C5.55121868,4.80513489 4.80513489,5.55121868 3.88585308,5.55121868 L3.88585308,5.55121868 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单管理</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="shortcut icon" href="__PUBLIC__/Common/images/dingling.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/management.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/Home/css/daterangepicker-bs3.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/package.js"></script>
+</head>
+<body>
+    <div class="form-box">
+        <div class="panel panel-default">
+            <div class="panel-heading">组件管理</div>
+            <div class="panel-body" id="allpackages">
+                <ol class="breadcrumb" style="margin-bottom:5px">
+                    <li class="active">名称</li>
+                    <li class="active">name</li>
+                    <li class="active">type</li>
+                </ol>
+                <ol class="breadcrumb" style="margin-bottom:5px">
+                    <li class="active">名称</li>
+                    <li class="active">name</li>
+                    <li class="active">type</li>
+                </ol>
+                <ol class="breadcrumb" style="margin-bottom:5px">
+                    <li class="active">名称</li>
+                    <li class="active">name</li>
+                    <li class="active">type</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">操作</h3>
+            </div>
+            <div class="panel-body">
+                <form id="pform">
+                    <input type="hidden" id="id" value="">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="p-option">标签名称*：</span>
+                        <input type="text" class="form-control" placeholder="例如：input" aria-describedby="p-option" id="option"></div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="p-name">name*：</span>
+                        <input type="text" class="form-control" placeholder="name" aria-describedby="p-name" id="name"></div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="p-type">type：</span>
+                        <input type="text" class="form-control" placeholder="type" aria-describedby="p-type" id="type"></div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="p-status">可用：</span>
+                        <select class="form-control select-status">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </form>
+                <br>
+                <button type="button" class="btn btn-default" onclick="addPackage();">添加</button>
+                <button type="button" class="btn btn-default" onclick="savePackage();">保存</button>
+                <button type="button" class="btn btn-default" onclick="deletePackage();">删除</button>
+            </div>
+        </div>
+    </div>
+</body>
+    <script>var URL="__URL__";</script>
+</html>

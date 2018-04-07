@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录 - {$SystemName}</title>
+<link href="/Public/css/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Public/script/jquery.min.js"></script>
+</head>
+
+<body>
+<div id="login_top">
+    <div id="welcome">
+        欢迎使用{$SystemName}管理系统
+    </div>
+    <div id="back">
+        <a href="/" target="_blank">返回首页</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+        <a href="/help.html" target="_blank">帮助</a>
+    </div>
+</div>
+<div id="login_center">
+    <div id="login_area">
+        <div id="login_form">
+            <form action="{:U('Admin/Login/login/')}" method="post">
+                <div id="login_tip">
+                    用户登录&nbsp;&nbsp;UserLogin
+                </div>
+                <div><input type="text" name="username" class="username"></div>
+                <div><input type="password" name="password" class="pwd"></div>
+                <div id="btn_area">
+                    <input type="submit" name="submit" id="sub_btn" value="登&nbsp;&nbsp;录">&nbsp;&nbsp;
+                    <input type="text" name="captcha" class="verify">
+                    <img src="{:U('Admin/Login/captcha')}" style="width:112px;height:37px; cursor:pointer" onclick="this.src='{:U('Admin/Login/captcha')}?d='+Math.random();" title="点击更换验证码">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="login_bottom">
+    版权所有
+</div>
+</body>
+</html>

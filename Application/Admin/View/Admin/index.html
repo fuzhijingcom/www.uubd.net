@@ -1,0 +1,62 @@
+<include file="Public:header" />
+<div id="table" class="mt10">
+    <div id="search_bar" class="mt10" style="padding-bottom: 10px;">
+        <div class="box">
+            <div class="box_border">
+                <div class="box_top">
+                    <b class="pl15">管理员列表</b>
+                    <a href="{:U('/Admin/Admin/add')}" target="main" style="margin: 3px;float: right" class="ext_btn"><span class="add"></span>添加</a>
+                </div>
+                <div style="border-top:1px solid #dadada;" class="box_bottom pb5 pt5 pr10">
+                    <div style="text-align:right;" class="search_bar_btn">
+                        <form name="sform" method="get" action="__SELF__">
+                            用户名：<input class="input-text lh25" type="text" size="15" name="username" value="{$Think.get.username}">
+                            <input type="submit" class="ext_btn ext_btn_submit" value="搜索">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box span10 oh">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <tr>
+                <th width="5%">ID</th>
+                <th width="15%">管理员名称</th>
+                <th width="20%">所在用户组</th>
+                <th width="30%">邮箱</th>
+                <th width="13%">操作</th>
+            </tr>
+            <if condition="empty($masterlist)">
+             <tr class="tr"><td colspan="5" style="text-align:center;">暂无任何信息</td></tr>
+            <else />
+            <foreach name='masterlist' item="master">
+            <tr class="tr">
+                <td class="td_center">{$master.userid}</td>
+                <td class="td_center">{$master.username}</td>
+                <td class="td_center">{$master.groupname}</td>
+                <td class="td_center">{$master.email}</td>
+                <td class="td_center">
+                    <a href="javascript:;;" onclick="javascript:window.location.href='{:U('/Admin/Admin/edit/',array('id'=>$master['userid']))}'">【修改】</a>
+                    <if condition="$master.status eq 1">
+                        <a href="javascript:;;" onclick="confirm('确定要锁定此记录吗？','{:U('/Admin/Admin/lock',array('id'=>$master['userid'],'lock'=>0))}')">【锁定】</a>
+                    <else />
+                        <a href="javascript:;;" onclick="confirm('确定要解锁此记录吗？','{:U('/Admin/Admin/lock',array('id'=>$master['userid'],'lock'=>1))}')">【解锁】</a>
+                    </if>
+					<if condition="$master.issuper eq 0">
+                    <a href="javascript:;;" onclick="confirm('确定要删除此信息吗？', '{:U('/Admin/Admin/delete',array('id'=>$master['userid']))}')">【删除】</a>
+					<else/>
+					 <a href="javascript:;;" onclick="alert('超级管理员无法删除')" style="color:gray;">【删除】</a>
+					</if>
+                </td>
+            </tr>
+            </foreach>
+            </if>
+        </table>
+        <div class="page mt10">
+            <div class='pagination'>{$pageshow}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+  

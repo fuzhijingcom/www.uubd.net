@@ -1,0 +1,125 @@
+/*通用设置*/
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    padding: 2% 8%;
+}
+a {
+    color: #666666;
+}
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.main-container {
+    height: 100%;
+}
+
+/*选项卡样式*/
+.nav-tabs>li:hover a {
+    color: #666;
+}
+.choose-info-type>li>a {
+    position: relative;
+}
+.num-point {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 0 6px;
+    height: 18px;
+    border-radius: 10px;
+    margin-left: 5px;
+    background: #337ab7;
+    color: #ffffff;
+}
+
+/*信息盒子样式*/
+.info-box {
+    border: 1px solid #DDDDDD;
+    height: 90%;
+    border-top: 0;
+    padding: 2% 1%;
+    border-radius: 0 0 10px 10px;
+}
+.info-box>div.width-50 {
+    height: 100%;
+    width: 50%;
+    float: left;
+}
+.info-display {
+    padding: 10px 15px;
+    height: 100%;
+    overflow-y: auto;
+}
+.info-box .chat-board {
+    position: relative;
+    border: 3px solid #DDDDDD;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.info-box .chat-board>.close-btn {
+    position: absolute;
+    font-size: 18px;
+    right:-9px;
+    top: -9px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.info-box .chat-board>iframe {
+    width: 100%;
+    height: 100%;
+}
+.info-display .info-item {
+    position: relative;
+    border: 1px solid #DDDDDD;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.info-display .info-item .num-point {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+}
+.info-display .info-item .user-avatar {
+    width: 60px;
+    height: 60px;
+    margin-right: 2%;
+    overflow: hidden;
+    float: left;
+    border: 1px solid #DDDDDD;
+}
+.info-display .info-item .user-avatar>img {
+    width: 100%;
+}
+.info-display .info-item .user-nickname {
+    font-size: 18px;
+}
+.info-display .info-item .info-content>p:not(.user-nickname) {
+    color: #666666;
+    width: 12em;
+    margin-bottom: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.info-display .info-item .info-time {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: #999999;
+}
+.info-display .info-item .remark {
+    position: absolute;
+    right: 40px;
+    color: #999999;
+    bottom: 5px;
+}

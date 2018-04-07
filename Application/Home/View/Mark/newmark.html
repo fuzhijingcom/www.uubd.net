@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/mark.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/Home/css/daterangepicker-bs3.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/chili-1.8b.js"></script>
+
+    <!--库存管理相关js-->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/mark/mark-new.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/mark/mark-components.js"></script>
+
+    <!--图表相关js-->
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+</head>
+<body>
+<a id="backToTop" href="javascript:void(0)" class="to-top btn btn-primary" >Top</a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="list-group" id="modules-box">
+                <a href="javascript:void(0)" class="list-group-item active" onclick="changeModule(this)">业绩汇总</a>
+                <a href="javascript:void(0)" class="list-group-item" onclick="changeModule(this)">订单统计</a>
+                <a href="javascript:void(0)" class="list-group-item" onclick="changeModule(this)">服务评价</a>
+                <a href="{:C('SITE_URL')}{:U('Home/Mark/Count')}" class="list-group-item" >统计概况</a>
+            </div>
+            <div style="height:5px;"></div>
+        </div>
+
+        <div class="col-md-10" id="content">
+            <div id="controlBox-father">
+                <form class="form-inline control-box" id="controlBox" onSubmit="return false;">
+                </form>
+            </div>
+            <div id="bodyChart" style="display: none;position: relative;">
+
+            </div>
+            <div id="chartType" style="display: none;">
+                <button type="button" class="btn btn-default" onclick="initOrderChart(false,'charts0')">销售数量</button>
+                <button type="button" class="btn btn-default" onclick="initOrderChart(false,'charts1')">销售金额</button>
+            </div>
+            <table class="table table-hover table-bordered tablesorter sorterID" id="bodyTable">
+                <thead id="tableHead">
+                </thead>
+
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    var URL = "__URL__";
+    var MODULE = "__MODULE__";
+    var CONTROLLER = "__CONTROLLER__";
+    var initStartT = '{$date.startT}';
+    var initEndT = '{$date.endT}';
+    var role = '{$role}';
+    var storeList = '{$storeList}';
+    var orderData = [];
+    var chartsShowType = 'charts0';
+    $(window).scroll(function(event){
+        offset = $("#bodyChart").offset();
+        offsettop = offset.top;
+//        alert(offsettop);return false;
+        if(offsettop <= 50){
+            $("#bodyChart").css("margin-top",'100px');
+        }
+
+
+    });
+    $(selector).scroll(function(){
+
+    });
+
+</script>

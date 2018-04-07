@@ -1,0 +1,57 @@
+<include file="Public:header" />
+<div id="table" class="mt10">
+    <div id="search_bar" class="mt10" style="padding-bottom: 10px;">
+        <div class="box">
+            <div class="box_border">
+                <div class="box_top">
+                    <b class="pl15">等级列表</b>
+                    <a href="{:U('/Admin/MemberLevel/add')}" target="main" style="margin: 3px;float: right" class="ext_btn"><span class="add"></span>添加</a>
+                </div>
+            </div>
+            <div style="border-top:1px solid #dadada;" class="box_bottom pb5 pt5 pr10">
+                <div style="text-align:right;" class="search_bar_btn">
+                    <form name="sform" method="get" action="__SELF__">
+                        名称：<input class="input-text lh25" type="text" size="15" name="name" value="{$Think.get.name}">
+                        <input type="submit" class="ext_btn ext_btn_submit" value="搜索">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box span10 oh">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <tr>
+                <th width="5%">ID</th>
+                <th width="15%">名称</th>
+                <th width="20%">描述</th>
+                <th width="15%">排序值</th>
+				<th width="15%">积分值</th>
+                <th width="15%">经验值</th>
+                <th width="15%">操作</th>
+            </tr>
+            <if condition="empty($levellist)">
+             <tr class="tr"><td colspan="7" style="text-align:center;">暂无任何信息</td></tr>
+            <else />
+            <foreach name='levellist' item="level">
+            <tr class="tr">
+                <td class="td_center">{$level.levelid}</td>
+                <td class="td_center">{$level.name}</td>
+                <td class="td_center">{$level.description}</td>
+                <td class="td_center">{$level.list}</td>
+                <td class="td_center">{$level.point}</td>
+				<td class="td_center">{$level.experience}</td>
+                <td class="td_center">
+                    <a href="javascript:;;" onclick="javascript:window.location.href='{:U('/Admin/MemberLevel/edit/',array('id'=>$level['levelid']))}'">【修改】</a>
+                    <a href="javascript:;;" onclick="confirm('确定要删除此信息吗？', '{:U('/Admin/MemberLevel/delete',array('id'=>$level['levelid']))}')">【删除】</a>
+                </td>
+            </tr>
+            </foreach>
+            </if>
+        </table>
+        <div class="page mt10">
+            <div class='pagination'>{$pageshow}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+  

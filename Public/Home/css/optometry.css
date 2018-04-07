@@ -1,0 +1,125 @@
+*{padding:0 0;margin:0 0;}
+img{border:none; display:block}
+html {
+    font-size: 62.5%;
+    height:100%;
+    /*10 ÷ 16 × 100% = 62.5%*/
+}
+body{
+    height:100%;
+}
+.clear{clear:both}
+
+.form-box{
+    width:100%;
+}
+.select-btn{
+    width:10rem!important;
+    margin-right:1rem;
+    float: left;
+}
+.calendar-select{
+    width:20rem;
+    margin-right:1rem;
+    float: left;
+}
+
+.navbar-left{
+    margin:0 0!important;
+    padding:0 0!important;
+}
+.search-box{
+    width:13.7rem!important;
+    margin-right:0.6rem!important;
+}
+
+.order-iframe{
+    width:100%;
+    padding-left:2.5rem;
+    padding-right:2.5rem;
+    /* border-bottom:solid 1px #ddd; */
+}
+.page-change-box{
+    padding-left:2.5rem;
+    height:4rem;
+}
+.page-btn-box{
+    margin:0.8rem 0 0 0!important;
+}
+
+.btn-box-form{
+    padding:0 0 1.5rem 0;
+}
+.btn-box{
+    padding:0 2.5rem;
+}
+.table-content-box-head{
+    /*background: #eee;*/
+    border-top:solid 0.1rem #ddd;
+    border-right:solid 0.1rem #ddd;
+    border-left:solid 0.1rem #ddd;
+}
+.table-head-height{
+    margin-bottom:0!important;
+}
+.table-head-height thead tr th{
+    font-size:1.4rem;
+    padding:0.8rem 1rem 0.8rem 1rem!important;
+}
+
+.text-num{
+    font-size:1.6rem;
+    display: inline-block;
+    margin-left:1rem;
+}
+.text-num span{
+    color:#ff7800;
+}
+
+.dormOrder-btn-Box{
+    padding-top:1rem!important;
+}
+.optometry-item{
+    border-bottom:solid 1px #ccc;
+    padding:1rem 1rem!important;
+}
+.optometry-item p{
+    margin-bottom:0!important;
+    font-size:14px;
+    color:#007ece;
+    font-weight: 700;
+}
+.table-box{
+    cursor: pointer;
+    width:96%;
+    border:solid 1px #ddd;
+    border-radius: 5px;
+    margin:2rem 1.5rem;
+}
+.table-box-selected{
+    border:solid 1px #ccc;
+    background:#f5f5f5;
+}
+.table-box:hover{
+    border:solid 1px #ccc;
+    background:#f5f5f5;
+}
+.table-box table{
+    margin-bottom:0!important;
+}
+.table-box table tr td{
+    text-align:center;
+}
+.table-box table thead tr th{
+    text-align:center;
+}
+.panel-heading{
+    font-size:16px!important;
+}
+
+#optometry-table{
+    padding:2rem 0 0 2rem;
+}
+#optometry-control-box{
+    padding-top:2rem;
+}

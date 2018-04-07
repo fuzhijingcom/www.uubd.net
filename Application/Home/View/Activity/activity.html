@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人员管理</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="shortcut icon" href="__PUBLIC__/Common/images/dingling.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/management.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/Home/css/daterangepicker-bs3.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/activity.js"></script>
+    <style type="text/css">
+    .alert {
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+    .alert-warning {
+        background-color: #f5f5f5;
+        border-color: #f5f5f5;
+    }
+    .list-inline>li {
+        display: inline-block;
+        padding-right: 25px;
+        padding-left: 5px;
+    }
+    .dropdown-toggle{
+        border:0;
+        background-color: #f5f5f5;
+    }
+    #roleUl{
+        padding: 0;
+        margin-left: 15px;
+        height: 34px;
+    }
+    .rolelists{
+        padding: 0;
+    }
+    .titleNum{
+        margin-right: 15px;
+    }
+    </style>
+</head>
+<body>
+    <div class="form-box container-fluid">
+        <div class="row">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+
+                    <div class="form-inline">
+                        <div class="form-group">
+                            分享活动 --
+                            <span class='titleNum' style="color: red">剩余免费太阳镜数:{$leftNum}</span>
+                            <span class='titleNum' style="color: red">分享人数:{$people}</span>
+                            <span class='titleNum' style="color: red">总人气:{$hit}</span>
+                        </div>
+                        <div class="form-group">
+                            <a href="__URL__/activity?po=12">显示已推送太阳镜</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" id="userLists">
+                    <table class="table table-bordered style-table">
+                        <thead>
+                            <tr>
+                                <th>昵称</th>
+                                <th data-sortable="true">分享次数</th>
+                                <th>当前人气</th>
+                                <th>人气成员</th>
+                                <th>取关人员</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="shares" id="share" empty="暂时没有数据">
+                                <tr onclick="setUserForm(this)">
+                                    <td>{$share['nick']}</td>
+                                    <td>{$share['share_num']}</td>
+                                    <td>{$share['pnum']}</td>
+                                    <td width="70%" style="table-layout:fixed;">
+                                        <foreach name="share['shareds']" item="shared" >
+                                            <if condition="$shared['is_follow'] eq 1">{$shared['nick']}，</if>
+                                        </foreach>
+                                    </td>
+                                    <td width="10%" style="table-layout:fixed;">
+                                        <foreach name="share['shareds']" item="shared" >
+                                            <if condition="$shared['is_follow'] eq 0">{$shared['nick']}，</if>
+                                        </foreach>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    <script>
+    var URL="__URL__";
+    var MODULE="__MODULE__";
+</script>
+</html>

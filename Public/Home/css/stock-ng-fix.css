@@ -1,0 +1,65 @@
+/*弹出框样式修整*/
+.popover .goods-window {
+    padding-left: 5%;
+}
+
+.popover .goods-name {
+    width: 604px!important;
+}
+.popover .goods-style {
+    width: 132px !important;
+}
+.popover label[class $= pop-label] {
+    min-width: 6em;
+    text-align: right;
+}
+.popover label.form-check-inline {
+    width: 66px;
+    height: 44px;
+    text-align: center;
+}
+
+.popover .dushu ~ .reason input.form-control {
+    width: 604px !important;
+}
+.popover .hanshui ~ .reason input.form-control {
+    width: 132px !important;
+}
+
+.popover .pop-btn {
+    text-align: center;
+    margin-left: 0 !important;
+}
+#controlBox-father {
+    z-index: 1011 !important;
+}
+
+.popover .good-item-id + div .goods-name {
+    width: 368px !important;
+}
+
+
+/*通用样式*/
+.width-12 {
+    width: 12%;
+    float: left;
+    padding-right:15px;
+    padding-left:15px
+}
+.width-88 {
+    width: 88%;
+    float: left;
+    padding-right:15px;
+    padding-left:15px
+}
+.width-132 {
+    width: 132px !important;
+}
+.width-52 {
+    width: 52px !important;
+}
+.list-group-item {
+    padding-left: 20%!important;
+}
+.fl {float: left}
+

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合伙人管理</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="shortcut icon" href="__PUBLIC__/Common/images/dingling.jpg" type="image/x-icon" />
+    <!--<link rel="stylesheet" href="__PUBLIC__/Home/css/management.css">-->
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/Home/css/daterangepicker-bs3.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Common/js/jquery.form.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/partner.js"></script>
+
+    <style type="text/css">
+        .btn-default{
+            border:none;
+            background-color: #f5f5f5;
+        }
+        .campus-heading{
+            padding: 0;
+        }
+        .setting-avatar {
+            display: block;
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            opacity: 0;
+            bottom: 0;
+            border:1px solid #F00;
+        }
+        img{
+            height: 200px;
+            width: 200px;
+            cursor:pointer;
+        }
+        #code_pic_td{
+            height: 60px;
+            width: 60px;
+        }
+        .searchbox{
+            height: 30px;
+            width:150px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-left:20px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="form-box container-fluid">
+    <div class="clear"></div>
+    <div class="row">
+        <div class="col-xs-9">
+
+            <div class="panel panel-info">
+                <div class="panel-heading"><span>合伙人列表</span>
+                    <select class="searchbox" name="selectP" id="selectP">
+                        <option value="">全部</option>
+                        <option value="1">创业合伙人</option>
+                        <option value="2">全职合伙人</option>
+                        <option value="3">校园合伙人</option>
+                        <option value="4">初级合伙人</option>
+                    </select>
+                    <input type="text" class="searchbox" id="keyword" placeholder="搜索">
+                    <input type="button" class="btn btn-default" onclick="searchPartner();" value="搜索"></div>
+                <div class="panel-body" id="PartnerLists"></div>
+            </div>
+        </div>
+
+
+
+        <div class="col-xs-2">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-success" style="position:fixed;">
+                    <div class="panel-heading" role="tab" id="partner-headingTwo">
+                        <h4 class="panel-title">
+                            <a id="edit-optometry-time" role="button" data-toggle="collapse" data-parent="#accordion" href="#partner-collapseTwo" aria-expanded="true" aria-controls="partner-collapseOne">操作</a>
+                        </h4>
+                    </div>
+                    <div id="partner-collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="partner-headingTwo">
+                        <div class="panel-body">
+                            <div id="pform" enctype="multipart/form-data" method="post">
+                                <input type="hidden" name="id" id="id" value="">
+                                <div class="input-group">
+                                    <span class="input-group-addon">类型：</span>
+                                    <select id="promotion_type" class="form-control" name="promotion_type" onchange="addressInputChange()">
+                                        <option value="0">请选择合伙人类型...</option>
+                                        <option value="3">校园合伙人</option>
+                                        <option value="2">全职合伙人</option>
+                                        <option value="1">创业合伙人</option>
+                                        <option value="4">初级合伙人</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon">名称：</span>
+                                    <input type="text" class="form-control" placeholder="名称" aria-describedby="p-name" name="p_name" id="p_name">
+                                </div>
+                                <br>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">电话：</span>
+                                    <input type="text" class="form-control" placeholder="联系电话" aria-describedby="p-name" name="p_phone" id="p_phone"></div>
+                                <br />
+                                <div class="checkbox">
+                                    <label>
+                                        <input onchange="changeCheckValue()" id="is_withdraw" type="checkbox" name="is_withdraw" value="1" class="is_withdraw">是否可提现
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon">门店：</span>
+                                    <select id="promotion_store" class="form-control" name="promotion_store">
+                                        <option value="0">请选择所属门店...</option>
+                                        <option value="8">科贸门店</option>
+                                        <option value="9">新天地门店</option>
+                                        <option value="10">总店</option>
+                                        <option value="22">南亭门店</option>
+                                        <option value="36">广大门店</option>
+                                    </select>
+                                </div>
+                                <br />
+                                <div class="input-group">
+                                    <span class="input-group-addon">有效期：</span>
+                                    <select id="effectiveyear" class="form-control" name="effectiveyear">
+                                        <option value="0">请选择...</option>
+                                        <option value="1">1年</option>
+                                        <option value="2">2年</option>
+                                        <option value="3">3年</option>
+                                    </select>
+                                </div>
+                                <br />
+                                <img src="__PUBLIC__/Home/images/brand-logo-default.jpg" class="setting-upload-preview img-thumbnail" id="code_pic_edit"/>
+
+                                <!--<a class="sthumbnail">-->
+                                <!--<input type="file" class="setting-avatar" value="" name="s_code" id="s_code" onchange="selectIcon();"/>-->
+                                <!--</a>-->
+                                </form>
+                                <br>
+                                <button type="button" class="btn btn-default" onclick="addPartner();">添加</button>
+                                <button type="button" class="btn btn-default" onclick="savePartner();">保存</button>
+                                <button type="button" class="btn btn-default" onclick="deletePartner();">删除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var URL="__URL__";
+    var MODULE="__MODULE__";
+    var PUBLIC="__PUBLIC__";
+</script>
+</html>

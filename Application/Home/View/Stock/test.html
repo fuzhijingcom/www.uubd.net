@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>获取商品信息列表提交测试表单</h3>
+<p style="color: red;">sku_id 对用户是不可视的，实际操作中用户是可修改的</p>
+<p>cat_id 是商品类型标志，用一个字母表示，其中：K->框架眼镜；T->太阳镜；G->功能眼镜；Y->隐形眼镜；H->其他商品</p>
+<p>测试不同类型商品，将 K 换上相应分类 cat_id 值，以及相关的表弟项信息</p>
+<p>search_id 可以是商城编号或生产编号</p>
+<form method="post" action="{$post_url}/index.php/Home/Stock/getgoodslist.html">
+    <p>cat_id（商品分类标志号，对用户不可见）: <input type="text" name="cat_id" value="K"></p>
+    <p>search_id（搜索商城编号或生产编号）: <input type="text" name="search_id" placeholder="默认为空"></p>
+    <p>is_listing（上下架状态，1->上架；0->下架）: <input type="text" name="is_listing" value="1"></p>
+    <p>warehouse（仓库名：总仓，新天地门店，广大门店，南亭门店，科贸门店）: <input type="text" name="warehouse" value="总仓"></p>
+
+    <input type="submit" value="Submit" />
+</form>
+<hr>
+<h3>新增商品提交测试表单</h3>
+<p style="color: red;">sku_id 对用户是不可视的，实际操作中用户是可修改的</p>
+<p>cat_id 是商品类型标志，用一个字母表示，其中：K->框架眼镜；T->太阳镜；G->功能眼镜；Y->隐形眼镜；H->其他商品</p>
+<p>测试不同类型商品，将 K 换上相应分类 cat_id 值，以及相关的表弟项信息</p>
+<form method="post" action="{$post_url}/index.php/Home/Stock/addgoods.html">
+    <p>cat_id（商品分类标志号，对用户不可见）: <input type="text" name="cat_id" value="K"></p>
+    <p>selling_id（商城编号）: <input type="text" name="selling_id" value="K888"></p>
+    <p>goods_name（商品名）: <input type="text" name="goods_name" value="好就好框架 K888"></p>
+    <p>price（价格）: <input type="text" name="price" value="88.00"></p>
+    <p>quantity（库存数量）: <input type="text" name="quantity" value="88"></p>
+    <p>is_listing（上下架状态，1->上架；0->下架）: <input type="text" name="is_listing" value="1"></p>
+    <p>is_replenish（能否补货，1->能；0->否）: <input type="text" name="is_replenish" value="1"></p>
+    <p>procurement_price（采购价）: <input type="text" name="procurement_price" value="66.00"></p>
+    <p>supplier（供货商）: <input type="text" name="supplier" value="就是好厂家"></p>
+    <p>brand（品牌）: <input type="text" name="brand" value="品牌好"></p>
+    <p>warehouse（仓库名：总仓，新天地门店，广大门店，南亭门店，科贸门店）: <input type="text" name="warehouse" value="总仓"></p>
+
+    <p>product_id（生产编号）: <input type="text" name="product_id" value="PP88"></p>
+    <p>style（款式，对框架眼镜、太阳镜、功能眼镜有效）: <input type="text" name="style" value="C88就是好款式"></p>
+
+    <p>degree（度数，对功能眼镜、隐形眼镜有效）: <input type="text" name="degree" value="200"></p>
+    <p>custom（定制类型）: <input type="text" name="custom" value="半年抛"></p>
+    <p>water（含水量）: <input type="text" name="water" value="30%"></p>
+
+
+    <input type="submit" value="Submit" />
+</form>
+<hr>
+<h3>新增品类（属性）提交测试表单</h3>
+<h3>新增商品提交测试表单</h3>
+<p style="color: red;">sku_id 对用户是不可视的，实际操作中用户是可修改的</p>
+<p>cat_id 是商品类型标志，用一个字母表示，其中：K->框架眼镜；T->太阳镜；G->功能眼镜；Y->隐形眼镜；H->其他商品</p>
+<p>测试不同类型商品，将 K 换上相应分类 cat_id 值，以及相关的表弟项信息</p>
+<form method="post" action="{$post_url}/index.php/Home/Stock/addattr.html">
+    <p>cat_id（商品分类标志号，对用户不可见）: <input type="text" name="cat_id" value="K"></p>
+    <p>selling_id（商城编号）: <input type="text" name="selling_id" value="K888"></p>
+    <p>goods_name（商品名）: <input type="text" name="goods_name" value="好就好框架 K888"></p>
+    <p>price（价格）: <input type="text" name="price" value="88.00"></p>
+    <p>quantity（库存数量）: <input type="text" name="quantity" value="88"></p>
+    <p>is_listing（上下架状态，1->上架；0->下架）: <input type="text" name="is_listing" value="1"></p>
+    <p>is_replenish（能否补货，1->能；0->否）: <input type="text" name="is_replenish" value="1"></p>
+    <p>procurement_price（采购价）: <input type="text" name="procurement_price" value="66.00"></p>
+    <p>supplier（供货商）: <input type="text" name="supplier" value="就是好厂家"></p>
+    <p>brand（品牌）: <input type="text" name="brand" value="品牌好"></p>
+    <p>warehouse（仓库名：总仓，新天地门店，广大门店，南亭门店，科贸门店）: <input type="text" name="warehouse" value="总仓"></p>
+
+    <p>product_id（生产编号）: <input type="text" name="product_id" value="PP88"></p>
+    <p>style（款式，对框架眼镜、太阳镜、功能眼镜有效）: <input type="text" name="style" value="C88就是好款式"></p>
+
+    <p>degree（度数，对功能眼镜、隐形眼镜有效）: <input type="text" name="degree" value="200"></p>
+    <p>custom（定制类型）: <input type="text" name="custom" value="半年抛"></p>
+    <p>water（含水量）: <input type="text" name="water" value="30%"></p>
+
+    <input type="submit" value="Submit" />
+</form>
+<hr>
+<h3>商品信息修改提交测试表单</h3>
+<h3>新增商品提交测试表单</h3>
+<p style="color: red;">sku_id 对用户是不可视的，实际操作中用户是可修改的</p>
+<p>sku_id 是商品库存单元标记，对用户是不可见的</p>
+<p>测试不同类型商品，将 K 换上相应分类 cat_id 值，以及相关的表弟项信息</p>
+<form method="post" action="{$post_url}/index.php/Home/Stock/editgoods.html">
+    <p>sku_id（商品库存单元标记，对用户不可见）: <input type="text" name="sku_id" value="K888C88"></p>
+    <p>selling_id（商城编号）: <input type="text" name="selling_id" value="K888"></p>
+    <p>goods_name（商品名）: <input type="text" name="goods_name" value="好就好框架 K888"></p>
+    <p>price（价格）: <input type="text" name="price" value="88.00"></p>
+    <p>quantity（库存数量）: <input type="text" name="quantity" value="88"></p>
+    <p>is_listing（上下架状态，1->上架；0->下架）: <input type="text" name="is_listing" value="1"></p>
+    <p>is_replenish（能否补货，1->能；0->否）: <input type="text" name="is_replenish" value="1"></p>
+    <p>procurement_price（采购价）: <input type="text" name="procurement_price" value="66.00"></p>
+    <p>supplier（供货商）: <input type="text" name="supplier" value="就是好厂家"></p>
+    <p>brand（品牌）: <input type="text" name="brand" value="品牌好"></p>
+    <p>warehouse（仓库名：总仓，新天地门店，广大门店，南亭门店，科贸门店）: <input type="text" name="warehouse" value="总仓"></p>
+
+    <p>product_id（生产编号）: <input type="text" name="product_id" value="PP88"></p>
+    <p>style（款式，对框架眼镜、太阳镜、功能眼镜有效）: <input type="text" name="style" value="C88就是好款式"></p>
+
+    <p>degree（度数，对功能眼镜、隐形眼镜有效）: <input type="text" name="degree" value="200"></p>
+    <p>custom（定制类型）: <input type="text" name="custom" value="半年抛"></p>
+    <p>water（含水量）: <input type="text" name="water" value="30%"></p>
+
+    <input type="submit" value="Submit" />
+</form>
+<hr>
+<h3>获取特定 sku_id 的各门店库存数量数量信息</h3>
+<p>测试传递参数：sku_id，比如框架眼镜 K1001C1，泳镜 G6401C1D200，隐形眼镜 Y0141D300</p>
+<form method="post" action="{$post_url}/index.php/Home/Stock/getquantity.html">
+    <p>sku_id（商品库存单元标记，对用户不可见）: <input type="text" name="sku_id" value="K1001C15"></p>
+
+    <input type="submit" value="Submit" />
+</form>
+<hr>
+<h3>获取属性信息列表，或者是二级联动信息列表</h3>
+<p>测试传递参数：sku_id，比如框架眼镜 K1001C1，泳镜 G6401C1D200，隐形眼镜 Y0141D300</p>
+<form method="post" action="{$post_url}/index.php/Home/Stock/getattrlist.html">
+    <p>sku_id（商品库存单元标记，对用户不可见）: <input type="text" name="sku_id" value="K1001C15"></p>
+
+    <input type="submit" value="Submit" />
+</form>
+<hr>
+<h3>获取属性信息列表，或者是二级联动信息列表</h3>
+<p>测试传递参数：sku_id，比如框架眼镜 K1001C1，泳镜 G6401C1D200，隐形眼镜 Y0141D300</p>
+<form method="post" action="{$post_url}/index.php/Home/Stock/getquantity.html">
+    <p>sku_id（商品库存单元标记，对用户不可见）: <input type="text" name="sku_id" value="K1001C15"></p>
+
+    <input type="submit" value="Submit" />
+</form>
+<hr>
+<h3>获取进货提醒的数据信息</h3>
+<p>cat_id 是商品类型标志，用一个字母表示，其中：K->框架眼镜；T->太阳镜；G->功能眼镜；Y->隐形眼镜；H->其他商品</p>
+<p>search_id 可以是商城编号或生产编号</p>
+<form method="post" action="{$post_url}/index.php/Home/Stock/searchnotice.html">
+    <p>cat_id（商品分类标志号，对用户不可见）: <input type="text" name="cat_id" value="K"></p>
+    <p>search_id（搜索商城编号或生产编号）: <input type="text" name="search_id" placeholder="默认为空"></p>
+    <p>warehouse（仓库名：总仓，新天地门店，广大门店，南亭门店，科贸门店）: <input type="text" name="warehouse" value="总仓"></p>
+    <p>period（进货提醒天数？）: <input type="text" name="period" value="3"></p>
+    <input type="submit" value="Submit" />
+</form>
+</body>
+</html>

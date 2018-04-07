@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单表格</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/order.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/order.js"></script>
+    <style type="text/css">
+    a{
+        cursor: pointer;
+    }
+    .buyer-remark-row {
+        font-size: 12px;
+        /*background: #fffaeb;*/
+        color: #f90;
+    }
+    .seller-remark-row {
+        font-size: 12px;
+        /*background: #ffebeb;*/
+        color: #ff5f64;
+    }
+    .page-change-box {
+        padding-left: 0;
+        height: 4rem;
+    }
+    #mark{
+        cursor: pointer;
+    }
+    .row {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .func-btn{
+        float: right;
+        margin-left:1rem;
+    }
+    .func-btn-box{
+        padding-top:0.5rem;
+        position: relative;
+    }
+    .pop-element{
+        margin-bottom:1rem;
+    }
+
+    .separation-row {
+        box-sizing: padding-box!important;
+        padding: 8px 9px!important;
+        border-left: 1px solid #FFFFFF;
+        border-right: 1px solid #FFFFFF;
+    }
+    .func-btn {
+        font-size: 13px!important;
+        margin-top: 6px !important;
+        padding: 4px 8px !important;
+    }
+    .aftermarket-cell,.customer-cell,.pay-price-cell,.state-cell,.time-cell,.address-cell {
+        vertical-align: middle !important;
+    }
+    .aftermarket-cell p,.customer-cell p,.state-cell p {
+        margin: 0!important;
+    }
+    .mark-btn {
+        cursor: pointer;
+    }
+    .warning-txt{
+        text-align: center;
+        color:red;
+    }
+    .spec-code {
+        cursor: pointer;
+    }
+    .spec-code-input {
+        width: 90px!important;
+        margin-right: 5px;
+    }
+
+    </style>
+</head>
+<body>
+    <form>
+        <!--表身-->
+        <div class="table-content-box-body">
+                <volist name="trades" id="trade" empty="暂时没有数据">
+                    <table class="table table-bordered">
+                        <tbody class="widget-list-item" style="position: relative">
+                            <if condition="$trade.mark eq 1">
+                                <tr class="header-row" style="background:#fffaeb;" data-tid="{$trade.tid}" data-shop="{$trade.shop}" data-refund="{$trade.refund_state}" style="color:#999;">
+                            <else />
+                                <tr class="header-row" style="background:#EfEfEf;" data-tid="{$trade.tid}" data-shop="{$trade.shop}" data-refund="{$trade.refund_state}" style="color:#999;">
+                            </if>
+                                <td colspan="9">
+                                    <div class="row">
+                                        <if condition="$trade.mark eq 1">
+                                            <div class="navbar-brand abs mark-btn" onclick="markOrder('{$trade.tid}',this,0);" title="已标记"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></div>
+                                        <else />
+                                            <div id="mark" class="navbar-brand abs mark-btn" title="点击标记订单" onclick="markOrder('{$trade.tid}',this,1);"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></div>
+                                        </if>
+                                        <div class="col-xs-5 abs-right">
+                                            <div style="margin-top: 15px;margin-right: 15px" class="pull-left">
+                                                订单号: {$trade.tid}
+                                            </div>
+                                            <div style="margin-top: 15px;" class="pull-left">
+                                                支付流水号:
+                                                <span class="c-gray" style="color:#999;margin-right: 5px">{$trade.water}</span>
+                                            </div>
+                                            <div style="margin-top: 15px;" class="pull-left">
+                                                <span class="spec-code">特权码：</span>
+                                                <span class="c-gray" style="color:green;margin-right: 5px">
+                                                    {$trade.privilege_id}
+                                                    <?php if($trade.service): ?>
+                                                    ({$trade.service})
+                                                    <?php endif; ?>
+                                                </span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                            <div class="col-xs-6 func-btn-box">
+                                                <if condition="($trade.status eq tosend) OR ($trade.status eq send) OR ($trade.status eq success)">
+                                                    <div class="btn btn-info func-btn download-btn" data-content='下载中...' data-original-title='发货单' >下载发货单</div>
+                                                </if>
+                                                <if condition="($trade.shop eq 其他支付方式)">
+                                                    <div class="btn btn-info func-btn fill-order">补填订单</div>
+                                                </if>
+                                                <?php if(strlen($trade['tid'])<=14): ?>
+                                                    <div class="btn btn-info func-btn seller-remark" title="{$trade.tid}">添加备注</div>
+                                                    <if condition="$trade.status eq tosend">
+                                                        <div class="btn btn-info func-btn send-product" title="{$trade.tid}">确认发货</div>
+                                                    </if>
+                                                    <if condition="$trade.status eq topay">
+                                                        <div class="btn btn-info func-btn confirm-pay" title="{$trade.tid}">确认收款</div>
+                                                    </if>
+                                                    <if condition="($trade.status eq safeguard)">
+                                                        <div class="btn btn-info func-btn feed-back" title="{$trade.tid}">确认退款</div>
+                                                        <div class="btn btn-info func-btn close-feed-back" title="{$trade.tid}">结束售后</div>
+                                                    </if>
+                                                <?php else: ?>
+                                                <?php endif;?>
+                                            </div>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </volist>
+        </div>
+        <!--换页按钮-->
+        <div class="page-change-box">{$page}</div>
+    </form>
+</body>
+    <script>
+var URL="__URL__";
+var MODULE="__MODULE__";
+        window.onload = function(){
+            //展示所有订单的详情
+            showOrderDetail();
+
+            var fb = document.getElementsByClassName('feed-back');
+            var sp = document.getElementsByClassName('send-product');
+            var sr = document.getElementsByClassName('seller-remark');
+            var cfp = document.getElementsByClassName('confirm-pay');
+            var cfb = document.getElementsByClassName('close-feed-back');
+//            console.log(fb);
+//            console.log(sp);
+            if(fb.length){
+                console.log(fb);
+                for(var i=0; i<fb.length; i++){
+                    fb[i].addEventListener('click',confirmFeedBack,false);
+                }
+            }
+            if(cfb.length){
+                console.log(cfb);
+                for(var i=0; i<cfb.length; i++){
+                    cfb[i].addEventListener('click',closeFeedBack,false);
+                }
+            }
+            if(sp.length){
+                for(var i=0; i<sp.length; i++){
+                    sp[i].addEventListener('click',confirmSendProduct,false);
+                }
+            }
+            if(sr.length){
+                for(var i=0; i<sr.length; i++){
+                    sr[i].addEventListener('click',addRemark,false);
+                }
+            }
+            if(cfp.length){
+                for(var i=0; i<cfp.length; i++) {
+                    cfp[i].addEventListener('click',addRemark,false);
+                }
+            }
+
+        };
+
+        function confirmFeedBack(e){
+            e.stopPropagation();
+            if(confirm('确定退款吗？')){
+                // 获取点击tid
+                var tid = e.target.title;
+                var popEle = $(e.target);
+
+                var content = '<label>退款金额：</label><input class="form-control pop-element" type="text"/> <div class="btn btn-primary" id="feedBackBtn">确认</div>';
+                var option = {
+                    title: '请填写实际退款金额',
+                    placement: 'bottom',
+                    content: content,
+                    html: true
+                };
+
+                $(e.target).popover(option);
+                $(e.target).popover('show');
+
+                // 禁止事件冒泡
+                $('.pop-element').bind('click',function(e){
+                    e.stopPropagation();
+                });
+                $('.popover').bind('click',function(e){
+                    e.stopPropagation();
+                });
+
+                // 点击确认按钮
+                $('#feedBackBtn').bind('click',function(e) {
+                    e.stopPropagation();
+                    var realPrice = $(e.target).prev().val();
+                    if(realPrice==''){
+                        alert('请先填写实际退款金额');
+                        return false;
+                    }
+                    var ajaxData = {
+                        'fb_price': realPrice,
+                        'tid': tid
+                    };
+                    console.log(ajaxData);
+                    // 发送请求
+                    $.ajax({
+                        type: 'post',
+                        data: ajaxData,
+                        url: '__URL__/orderExitPrice',
+                        success: function (res) {
+                            popEle.popover('hide');
+                            if (res) {
+                                alert('退款完成！');
+                            }
+                        }
+                    })
+                })
+            }
+        }
+
+        function closeFeedBack(e){
+            e.stopPropagation();
+            if(confirm('确定结束售后服务吗？')){
+                // 获取点击tid
+                var tid = e.target.title;
+                var popEle = $(e.target);
+                var ajaxData = {
+                    'tid': tid
+                };
+                console.log(ajaxData);
+                // 发送请求
+                $.ajax({
+                    type: 'post',
+                    data: ajaxData,
+                    url: '__URL__/rightProtectionClose',
+                    success: function (res) {
+                        if (res) {
+                            alert('已取消该订单的售后服务！');
+                        }
+                    }
+                })
+            }
+        }
+
+        function confirmSendProduct(e) {
+            console.log('in');
+            e.stopPropagation();
+            if(confirm('确定已经发货了吗？')){
+                // 获取点击tid
+                var tid = e.target.title;
+                var popEle = $(e.target);
+
+                var content = '<label class="radio-inline">' +
+                              '<input type="radio" name="send_type" id="sendType" value="express" checked/>快递'+
+                              '</label>' +
+                              '<label class="radio-inline">' +
+                              '<input type="radio" name="send_type" id="sendType" value="selfTake"/>门店自取'+
+                              '</label>' +
+                            '<br><label>填写快递单号：</label><input class="form-control pop-element" id="express_id" type="text"/><div class="btn btn-primary" id="sendProBtn">确认</div>';
+                    var option = {
+                    title: '填写快递单号',
+                    placement: 'bottom',
+                    content: content,
+                    html: true
+                };
+
+                $(e.target).popover(option);
+                $(e.target).popover('show');
+
+                // 禁止事件冒泡
+                $('.pop-element').bind('click',function(e){
+                    e.stopPropagation();
+                });
+                $('.popover').bind('click',function(e){
+                    e.stopPropagation();
+                });
+
+                // 确认按钮添加啊事件监听
+                $('#sendProBtn').bind('click',function(e){
+                    e.stopPropagation();
+                    var expressId = $(e.target).prev().val();
+                    var sendType = $('input[type="radio"][name="send_type"]:checked').val();
+                    console.log(sendType);
+                    if(sendType=='express'&&expressId==''){
+                        alert('请先填写快递单号');
+                        return false;
+                    }
+                    var ajaxData = {
+                        'send_type': sendType,
+                        'express_id': expressId,
+                        'tid': tid
+                    };
+                    console.log(ajaxData);
+                    // 发送请求
+                    $.ajax({
+                        type:'post',
+                        data: ajaxData,
+                        url: '__URL__/orderDelivery',
+                        success: function(res){
+                            popEle.popover('hide');
+                            if(res){
+                                alert('已给用户发送通知');
+                            }
+                        }
+                    })
+                });
+            }
+        }
+
+        // 添加卖家备注
+        function addRemark(e) {
+            console.log('in');
+            e.stopPropagation();
+            // 获取点击tid
+            var tid = e.target.title;
+            var popEle = $(e.target);
+
+            if(popEle.hasClass('seller-remark')) {
+                var content = '<label>填写卖家备注：</label><input class="form-control pop-element" type="text"/><div class="btn btn-primary seller-remark-confirm" id="ReBtn">确认</div>';
+                var option = {
+                    title: '填写卖家备注',
+                    placement: 'bottom',
+                    content: content,
+                    html: true
+                };
+            }else {
+                var content = '<p class="warning-txt">请谨慎操作！</p><label>收款人姓名：</label><input class="form-control pop-element" type="text"/><label>收款金额：</label><input class="form-control pop-element" type="text"><div class="btn btn-primary payer-remark-confirm" id="ReBtn">确认</div>';
+                var option = {
+                    title: '填写收款人姓名',
+                    placement: 'bottom',
+                    content: content,
+                    html: true
+                };
+            }
+
+            $(e.target).popover(option);
+            $(e.target).popover('toggle');
+//            $(document).bind('click',hidePop = function (event) {
+//                if($(event.target) != popEle) {
+//                    popEle.popover('hide');
+//                    $(document).unbind('click',hidePop);
+//                }
+//            });
+
+            // 禁止事件冒泡
+            $('.pop-element').bind('click',function(e){
+                e.stopPropagation();
+            });
+            $('.popover').bind('click',function(e){
+                e.stopPropagation();
+            });
+
+            // 确认按钮添加啊事件监听
+            $('#ReBtn').bind('click',function(e){
+                e.stopPropagation();
+                var remark_func = $(e.target).hasClass('payer-remark-confirm')?1:0;
+                if(popEle.hasClass('seller-remark')){
+                    var content = $(e.target).prev().val();
+//                if(remark_func) content = '[收款人]' + content;
+                    if(content==''){
+                        alert('请先填写内容');
+                        return false;
+                    }
+
+                    var ajaxData = {
+                        'remark_content': content,
+                        'tid': tid,
+                        'remark_func': remark_func,
+                    };
+
+                }else{
+                    var name = $(e.target).prev().prev().prev().val();
+                    var price = $(e.target).prev().val();
+                    if(name.length < 2){
+                        alert('请认真填写收款人！');return false;
+                    }
+                    if(parseInt(price) <= 0 || !price){
+                        alert('请认真填写收款金额！');return false
+                    }
+
+                    var ajaxData = {
+                        'name' : name,
+                        'tid'  : tid,
+                        'remark_func' : remark_func,
+                    };
+                }
+
+
+                console.log(ajaxData);
+                // 发送请求
+                $.ajax({
+                    type:'post',
+                    data: ajaxData,
+                    url: '__URL__/sellerRemark',
+                    success: function(res){
+                        popEle.popover('hide');
+                        if(res){
+                            alert('添加成功,请刷新查看');
+                        }
+                    }
+                })
+            });
+        }
+
+        //展示订单详情的
+        function showOrderDetail() {
+            var orders = document.getElementsByClassName('header-row');
+            for(var i = 0; i<orders.length; i++) {
+                getOrderDetail(orders[i]);
+            }
+        }
+</script>
+<script src="__PUBLIC__/Home/js/order-newfunc.js"></script>
+</html>

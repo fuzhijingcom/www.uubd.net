@@ -1,0 +1,95 @@
+@charset "utf-8";
+html,body,img,p,input,form,select,textarea,div{margin:0;padding:0;border:0; color:#666666; font-size:12px;font-family:arial,微软雅黑,宋体,sans-serif;}
+img{vertical-align:top;border:0;}
+a{color:#0066CC; text-decoration:none; cursor:pointer;}
+a:hover{text-decoration:underline; color:#0066CC;}
+a, input, textarea, select{outline:none;}
+textarea{resize: none;}
+
+.clear{clear:both;}
+.left{float:left;}
+.right{float:right;}
+.block{display:block;}
+.br{clear:both; height:10px;}
+.center{margin:0px auto;}
+.blue{color:#0066CC;}
+
+input[type="text"]{ height:16px; line-height:16px; font-size:14px; padding:5px; border:1px solid #CCCCCC; color:#000000;}
+input[type="text"]:focus{border-color:#333333;}
+input[type="password"]{ height:16px; line-height:16px; font-size:14px; padding:5px; border:1px solid #CCCCCC; color:#000000;}
+input[type="password"]:focus{border-color:#333333;}
+input[type="checkbox"]{float:left; width:14px; height:14px; margin-top:7px; cursor:pointer; border:1px solid #CCCCCC; border:0px\9;}
+input[type="radio"]{float:left; width:14px; height:14px;  margin-top:7px; cursor:pointer;}
+input[type="file"]{cursor:pointer; font-size:14px; height:26px; line-height:26px; border:1px solid #CCCCCC\9; }
+input[type="submit"]{ height:26px; line-height:26px; font-size:14px;  padding:0px 20px 0px 20px; color:#FFFFFF; background-color:#0066CC; border:1px solid #0066CC; cursor:pointer;}
+label{display:block; float:left; padding-left:5px; font-size:14px; cursor:pointer; height:26px; line-height:26px;}
+select{height:22px; font-size:14px; margin-top:3px; border:1px solid #CCCCCC;}
+textarea{height:56px; font-size:14px; line-height:20px; border:1px solid #CCCCCC; overflow:auto; padding:5px; color:#000000;}
+textarea:focus{border-color:#333333;}
+.button{ display:block; height:28px; line-height:28px; font-size:12px; font-weight:bold;  padding:0px 20px 0px 20px; color:#FFCC00; background-color:#333333; cursor:pointer;}
+.button:hover{text-decoration:none; color:#FFCC00;}
+.button:active{color:#FFCC00; background-color:#000000;}
+.warning{float:left; margin-left:5px; height:28px; line-height:28px; font-size:12px; color:#CC3333; text-align:left; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+
+.module{margin:10px; min-width:1000px;}
+
+
+
+.top{width:100%; height:50px; background:url(../image/image_backend_v1.png) repeat-x 0px 0px; line-height:50px; color:#DDDDDD;}
+.top .logo{float:left; display:block; height:20px; width:240px; margin:15px 0 0 15px; background:url(../image/image_backend_v1.png) no-repeat -140px -50px; }
+.top .welcome{float:right; line-height:50px; font-size:14px; color:#DDDDDD; text-decoration:none; cursor:default; margin-right:20px;}
+.top .welcome strong{color:#FFCC00; font-size:14px; margin:0px 5px 0px 5px;}
+.top .link{float:right; padding-left:23px; margin-right:20px; color:#DDDDDD; background:url(../image/image_backend_v1.png) no-repeat 0px 0px;}
+.top .homePage{background-position:-140px -70px;}
+.top .updatePassword{background-position:-270px -70px;}
+.top .logOut{background-position:-400px -70px;}
+
+.left{background:url(../image/image_backend_v1.png) repeat-y 0px -50px;}
+.left .menu{display:block; height:28px; line-height:28px; width:70px; padding:0px 30px 0px 40px; background:url(../image/image_backend_v1.png) no-repeat -140px -120px; color:#999999; font-weight:bold; margin-top:10px;}
+.left .menu:hover{text-decoration:none; color:#DDDDDD;}
+.left .on{background-position:-280px -120px;}
+.left .subMenu{width:100px; margin-left:40px; display:none;}
+.left .subMenu a{display:block; margin:10px 0px 10px 0px; color:#DDDDDD;}
+.left .subMenu .on{font-weight:bold; color:#FFCC00;}
+
+.nav{height:30px; line-height:30px; background-color:#666666; margin:10px; box-shadow: 2px 2px 5px #999999; min-width:1000px; }
+.nav a{display:block; float:left; color:#DDDDDD; padding:0px 15px; }
+.nav .on{color:#FFCC00; background-color:#333333; font-weight:bold;}
+
+.title{font-size:18px; height:28px; line-height:28px; min-width:1000px; margin:10px; color:#000000;}
+
+
+
+
+
+
+.list .row {overflow:hidden; border-bottom:1px dotted #DDDDDD; padding:10px; }
+.list .row:hover{background-color:#F5F5F5;}
+.list .row div{float:left; padding:0px 5px 0px 5px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; padding-bottom:100000px; margin-bottom:-100000px;}
+.list .row .left{float:left;}
+.list .row .right{float:right;}
+.list .header {border-top:1px solid #DDDDDD; border-bottom:1px solid #DDDDDD; background-color:#F5F5F5; font-weight:bold;}
+.list .header div{color:#000000;}
+.list .footer {border-bottom:1px solid #DDDDDD; background-color:#F5F5F5; padding:10px;}
+
+.item{height:auto; width:auto; overflow:auto; margin-bottom:10px; float:left;}
+.item .name{float:left; margin-right:5px; height:28px; line-height:28px; font-size:12px; color:#666666; text-align:right; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.item .comment{float:left; margin-left:5px; height:28px; line-height:28px; font-size:12px; color:#999999; text-align:left; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.item .control{float:left;}
+.item .control a{line-height:28px;}
+
+.pagination{float:right; height:22px; text-align:right; width:auto;}
+.pagination .description{float:left; height:22px; line-height:22px; padding:0px 10px 0px 10px;}
+.pagination .pages{float:left; padding:0px 10px 0px 10px;}
+.pagination .pages a{float:left; display:block; height:20px; line-height:20px; padding:0px 6px 0px 6px; border:1px solid #CCCCCC; margin-right:5px; color:#999999;}
+.pagination .pages a:hover{text-decoration:none; border-color:#666666; color:#000000;}
+.pagination .pages .on{font-weight:bold; border:1px solid transparent; color:#000000; font-size:14px; cursor:default; border:0px;}
+.pagination .select{float:left; padding:0px 10px 0px 10px;}
+.pagination .select select{float:left; height:22px; line-height:22px; width:65px; border:1px solid #CCCCCC;}
+.pagination .select input{float:left; height:14px; line-height:14px; width:40px; padding:3px; border:1px solid #CCCCCC;}
+.pagination .select a{float:left; display:block; cursor:pointer; height:14px; line-height:14px; width:20px; padding:3px; border:1px solid #CCCCCC; background-color:#CCCCCC; color:#000000;}
+
+
+
+

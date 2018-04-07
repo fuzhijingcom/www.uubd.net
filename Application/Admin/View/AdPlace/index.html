@@ -1,0 +1,55 @@
+<include file="Public:header" />
+<div id="table" class="mt10">
+    <div id="search_bar" class="mt10" style="padding-bottom: 10px;">
+        <div class="box">
+            <div class="box_border">
+                <div class="box_top">
+                    <b class="pl15">广告位列表</b>
+                    <a href="{:U('/Admin/AdPlace/add')}" target="main" style="margin: 3px;float: right" class="ext_btn"><span class="add"></span>添加</a>
+                </div>
+            </div>
+            <div style="border-top:1px solid #dadada;" class="box_bottom pb5 pt5 pr10">
+                <div style="text-align:right;" class="search_bar_btn">
+                    <form name="sform" method="get" action="__SELF__">
+                        名称：<input class="input-text lh25" type="text" size="15" name="name" value="{$Think.get.name}">
+                        <input type="submit" class="ext_btn ext_btn_submit" value="搜索">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box span10 oh">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <tr>
+                <th width="5%">ID</th>
+                <th width="15%">名称</th>
+                <th width="20%">标签</th>
+                <th width="15%">排序值</th>
+                <th width="15%">是否显示</th>
+                <th width="9%">操作</th>
+            </tr>
+            <if condition="empty($adplacelist)">
+             <tr class="tr"><td colspan="6" style="text-align:center;">暂无任何信息</td></tr>
+            <else />
+            <foreach name='adplacelist' item="adplace">
+            <tr class="tr">
+                <td class="td_center">{$adplace.placeid}</td>
+                <td class="td_center">{$adplace.name}</td>
+                <td class="td_center">{$adplace.label}</td>
+                <td class="td_center">{$adplace.list}</td>
+                <td class="td_center">{$adplace.showname}</td>
+                <td class="td_center">
+                    <a href="javascript:;;" onclick="javascript:window.location.href='{:U('/Admin/AdPlace/edit/',array('id'=>$adplace['placeid']))}'">【修改】</a>
+                    <a href="javascript:;;" onclick="confirm('确定要删除此信息吗？', '{:U('/Admin/AdPlace/delete',array('id'=>$adplace['placeid']))}')">【删除】</a>
+                </td>
+            </tr>
+            </foreach>
+            </if>
+        </table>
+        <div class="page mt10">
+            <div class='pagination'>{$pageshow}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+  

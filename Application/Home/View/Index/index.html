@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理系统</title>
+    <link rel="icon" href="__PUBLIC__/Home/images/66mj.png" type="image/x-icon"/>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/all.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Home/js/index.js"></script>
+    <style type="text/css"></style>
+    <style type="text/css">
+    .nav .dropdown-toggle{
+        height:3rem;
+        color:#666;
+    }
+    </style>
+</head>
+<body>
+    <ul id="leftNav" class="left-nav">
+    <foreach name="menus" item="menu" >
+        <li onclick="selectModule('__MODULE__{$menu['m_flow']}?m_id={$menu['m_id']}')">
+            <span class="glyphicon {$menu['m_icon']} nav-icon"></span>
+            <p class="nav-text">{$menu['m_name']}</p>
+            <if condition="$menu['m_red'] eq 1">
+            <p class="red-point" style="display: block;">0</p>
+            </if>
+        </li>
+    </foreach>
+    </ul>
+    <div class="content">
+        <!--头部-->
+        <!-- <div class="header">
+        <img src="" class="dingling-logo"/>
+        <p>{$userinfo['username']}</p>
+        <a href="">注销</a>
+        <a>修改密码</a>
+        <div class="clear"></div>
+    </div>
+    -->
+    <div class="bs-example header" data-example-id="nav-pills-with-dropdown">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:" role="button" aria-haspopup="true" aria-expanded="false">
+                    {$userinfo['nickname']}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="javascript:" onclick="selectModule('__MODULE__/Index/changepwd')">修改密码</a>
+                    </li>
+                    <li>
+                        <a href="__MODULE__/Index/logout">注销</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+    <iframe src="" id="main-content" class="right-content" frameborder="no" scrolling="yes"></iframe>
+</div>
+</body>
+<script>
+var URL="__URL__";
+var MODULE="__MODULE__";
+</script>
+</html>

@@ -1,0 +1,94 @@
+<include file="Public:header" />
+<div id="table" class="mt10">
+    <div id="search_bar" class="mt10" style="padding-bottom: 10px;">
+        <div class="box">
+            <div class="box_border">
+                <div class="box_top">
+                    <b class="pl15">商品列表</b>
+                    <a href="{:U('/Admin/Goods/add')}" target="main" style="margin: 3px;float: right" class="ext_btn"><span class="add"></span>添加</a>
+                </div>
+            </div>
+            <div style="border-top:1px solid #dadada;" class="box_bottom pb5 pt5 pr10">
+                <div style="text-align:right;" class="search_bar_btn">
+                    <form name="sform" method="get" action="__SELF__">
+                        商品名称：<input class="input-text lh25" type="text" size="15" name="title" value="{$Think.get.title}">
+                        <input type="submit" class="ext_btn ext_btn_submit" value="搜索">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box span10 oh">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <tr>
+				<th width="50">商品二维码</th>
+                <th width="200">商品名称</th>
+				<th width="50">分类</th>
+				<th width="50">价格</th>
+				<th width="50">库存量</th>
+				<th width="50">实际销量</th>
+				<th width="50">推广销量</th>
+				<th width="50">排序</th>
+				<th width="50">审核状态</th>
+				<th width="50">出售状态</th>
+				<th width="100">管理操作</th>
+            </tr>
+            <if condition="empty($infolist)">
+             <tr class="tr"><td colspan="13" style="text-align:center;">暂无任何信息</td></tr>
+            <else />
+            <foreach name='infolist' item="info">
+            <tr class="tr">
+                <td class="td_center">
+					<a href="{$info.qrcode}" target="_blank"><img src="{$info.qrcode}" width="50px;" height="50px;" /></a>
+				</td>
+				<td class="td_center">{$info.title}</td>
+                <td align='center'>{$info.catename}</td>
+				<td align='center'>{$info.price}</td>
+				<td align='center'>{$info.inventory}</td>
+				<td align='center'>{$info.sales}</td>
+				<td align='center'>{$info.tg_sales}</td>
+				<td align='center'>{$info.list}</td>
+				<td align='center'>{$info.show_label}</td>
+				<td align='center'>{$info.sell_label}</td>
+				<td align='center'>
+					<a href="javascript:;;" onclick="javascript:window.location.href='{:U('/Admin/Goods/edit/',array('id'=>$info['goodsid']))}'" target="main">【修改】</a>
+					
+					<if condition="$info.is_sell eq 1">
+                    <a href="javascript:;;" onclick="confirm('确定要下架此商品吗？', '{:U('/Admin/Goods/sales',array('id'=>$info['goodsid'],'sell'=>0))}')">【下架】</a>
+                    <else />
+                    <a href="javascript:;;" onclick="confirm('确定要上架此商品吗？', '{:U('/Admin/Goods/sales',array('id'=>$info['goodsid'],'sell'=>1))}')">【上架】</a>
+                    </if>
+					<if condition="$info.status eq 1">
+                    <a href="javascript:;;" onclick="confirm('确定要取消审核此商品吗？', '{:U('/Admin/Goods/audit',array('id'=>$info['goodsid'],'yz'=>0))}')">【取消审核】</a>
+                    <else />
+                    <a href="javascript:;;" onclick="confirm('确定要审核此商品吗？', '{:U('/Admin/Goods/audit',array('id'=>$info['goodsid'],'yz'=>1))}')">【通过审核】</a>
+                    </if>
+                    <if condition="$info.istop eq 1">
+                    <a href="javascript:;;" onclick="confirm('确定要取消置顶此商品吗？', '{:U('/Admin/Goods/top',array('id'=>$info['goodsid'],'istop'=>0))}')">【取消置顶】</a>
+                    <else />
+                    <a href="javascript:;;" onclick="confirm('确定要置顶此商品吗？', '{:U('/Admin/Goods/top',array('id'=>$info['goodsid'],'istop'=>1))}')">【置顶】</a>
+                    </if>
+                    <if condition="$info.isrecom eq 1">
+                    <a href="javascript:;;" onclick="confirm('确定要取消推荐此商品吗？', '{:U('/Admin/Goods/recom',array('id'=>$info['goodsid'],'isrecom'=>0))}')">【取消推荐】</a>
+                    <else />
+                    <a href="javascript:;;" onclick="confirm('确定要推荐此商品吗？', '{:U('/Admin/Goods/recom',array('id'=>$info['goodsid'],'isrecom'=>1))}')">【推荐】</a>
+                    </if>
+					<a href="javascript:;;" onclick="confirm('确定要删除此商品吗？删除后将进入商品回收站', '{:U('/Admin/Goods/delete',array('id'=>$info['goodsid']))}')" target="main">【删除】</a>
+					<a href="javascript:;;" onclick="confirm('确定要设置此商品推广销量吗？', '{:U('/Admin/Goods/set_sales',array('id'=>$info['goodsid']))}')" target="main">【设置推广销量】</a>
+					<if condition="$info.is_tg eq 1">
+                    <a href="javascript:;;" onclick="confirm('确定要取消此商品推广销量显示吗？', '{:U('/Admin/Goods/set_tg',array('id'=>$info['goodsid'],'tg'=>0))}')">【取消推广销量】</a>
+                    <else />
+                    <a href="javascript:;;" onclick="confirm('确定要开启此商品推广销量显示吗？', '{:U('/Admin/Goods/set_tg',array('id'=>$info['goodsid'],'tg'=>1))}')">【开启推广销量】</a>
+                    </if>
+				</td>
+            </tr>
+            </foreach>
+            </if>
+        </table>
+        <div class="page mt10">
+            <div class='pagination'>{$pageshow}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+  

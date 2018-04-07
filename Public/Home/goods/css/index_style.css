@@ -1,0 +1,627 @@
+@charset "UTF-8";
+body {
+  padding-top: 64px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1003;
+  background: #fff;
+  padding: 0 8%;
+  line-height: 62px;
+  opacity: .9;
+}
+nav .brand-logo {
+  position: static;
+  height: 66px !important;
+}
+nav .brand-logo img {
+  width: 80%;
+  height: auto;
+  margin: 15px 0;
+}
+nav .button-collapse {
+  color: #333;
+}
+nav ul li a {
+  color: #333;
+}
+nav ul li a:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+nav ul li.active a.active {
+  background-color: #333;
+  color: #fff;
+}
+nav ul#nav-mobile {
+  border: none;
+  box-shadow: none;
+  margin: 0;
+}
+nav ul#nav-mobile li {
+  position: relative;
+  width: 90px;
+}
+nav ul#nav-mobile li .collapsible-header {
+  border-bottom: none;
+  line-height: 4.3rem;
+}
+nav ul#nav-mobile li .collapsible-header i {
+  color: #333;
+  font-size: 38px;
+}
+@media only screen and (max-width: 413px) {
+  nav ul#nav-mobile li .collapsible-header {
+    margin-left: 13%;
+  }
+}
+nav ul#nav-mobile li .collapsible-header:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+nav ul#nav-mobile li .collapsible-body.table-of-contents li a {
+  height: auto;
+  padding: 1em;
+}
+nav ul#nav-mobile li .collapsible-body.table-of-contents li a:hover {
+  color: #fff;
+}
+nav ul#nav-mobile li .collapsible-body {
+  background-color: #f2f2f2;
+}
+nav ul#nav-mobile li .collapsible-body li {
+  float: left;
+  width: 100%;
+}
+nav ul#nav-mobile li .collapsible-body li a {
+  display: block;
+  color: #333;
+  font-size: 0.85em;
+}
+nav ul#nav-mobile li .collapsible-body:before {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  pointer-events: none;
+  border-color: rgba(238, 238, 238, 0);
+  border-bottom-color: #e7e8ec;
+  border-width: 8px;
+}
+nav ul#nav-mobile li .section {
+  padding: 0;
+}
+nav ul#nav-mobile li #dropdown1, nav ul#nav-mobile li #dropdown2 {
+  z-index: 1;
+  position: absolute;
+  width: 260px !important;
+  top: 64px !important;
+  font-family: "微软雅黑";
+}
+nav .search-wrapper input[type=search] {
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin: 10px 0 0 0;
+  padding: 0.5em 1.6em;
+}
+nav .search-wrapper #modal1 h4 {
+  color: #333;
+}
+nav .search-wrapper #modal1 input {
+  width: 80%;
+  margin-bottom: 0;
+  border-bottom: 1px solid #333;
+  padding: 0.5em 3em;
+  color: rgba(0, 0, 0, 0.5);
+}
+nav .search-wrapper #modal1 label.active {
+  -webkit-transform: translateY(-30%);
+}
+nav .search-wrapper #modal1 .modal-footer .modal-action:hover {
+  background-color: #333;
+}
+nav #mobile-demo.side-nav .collapsible-header:hover {
+  background-color: #333;
+}
+nav #mobile-demo.side-nav .collapsible-body {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.banner-wrapper {
+  width: 90%;
+  margin: 0 5%;
+}
+.banner-wrapper .carousel .banner-arrows {
+  display: none;
+  margin-top: 13rem;
+}
+.banner-wrapper .carousel .banner-arrows .btn {
+  width: 16px;
+  padding: 0 1rem;
+  height: 60px;
+  line-height: 60px;
+  background: #333;
+}
+.banner-wrapper .carousel .carousel-fixed-item .btn {
+  display: inline-block;
+  padding: 0 2em;
+  height: 22px;
+  line-height: 22px;
+  box-shadow: none;
+  border: 1px solid #aaa;
+  background: #fff;
+  color: #333;
+  font-size: 0.38rem;
+}
+.banner-wrapper .carousel .carousel-fixed-item .btn i {
+  font-size: 0.7em;
+}
+.banner-wrapper .carousel .carousel-fixed-item .btn.active {
+  background: #333;
+  color: #fff;
+}
+.banner-wrapper .carousel .carousel-item.row .col {
+  padding: 0;
+}
+.banner-wrapper .carousel .carousel-item {
+  overflow: hidden;
+}
+.banner-wrapper .carousel .carousel-item .carousel-item-intro-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+@media only screen and (min-width: 769px) {
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro-img {
+    height: 100%;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro-img img {
+    height: 100%;
+  }
+}
+@media only screen and (min-width: 416px) and (max-width: 768px) {
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro-img {
+    height: 65%;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro-img img {
+    width: 170%;
+    height: 120%;
+    margin-left: -450px;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro-img {
+    height: 50%;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro-img img {
+    width: 200%;
+    height: 110%;
+    margin-left: -318px;
+  }
+}
+.banner-wrapper .carousel .carousel-item .carousel-item-intro {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: "微软雅黑";
+  font-weight: 100;
+}
+@media only screen and (min-width: 769px) {
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro {
+    top: 0;
+    left: 0;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt {
+    top: 10rem;
+    left: 5rem;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt div .btn {
+    margin: 2rem 0.5rem 0;
+  }
+}
+@media only screen and (min-width: 416px) and (max-width: 768px) {
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro {
+    top: 65%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt {
+    top: 1rem;
+    left: 10%;
+    color: #fff;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt .txt-btn .btn {
+    display: block;
+    margin: 1rem 0.5rem 0;
+    border-color: #fff;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt .txt-btn .btn i {
+    color: #fff;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt .txt-btn a {
+    color: #fff;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro {
+    top: 50%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt {
+    width: 100%;
+    top: 1rem;
+    text-align: center;
+    color: #fff;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt .txt-btn h4 {
+    font-size: 0.5rem !important;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt .txt-btn .btn {
+    margin: 1rem 0.5rem 0;
+    border-color: #fff;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt .txt-btn .btn i {
+    color: #fff;
+  }
+  .banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt .txt-btn a {
+    color: #fff;
+  }
+}
+.banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt {
+  position: absolute;
+}
+.banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt .btn {
+  display: inline-block;
+  padding: 0 1em;
+  height: 40px;
+  line-height: 40px;
+  box-shadow: none;
+  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0);
+  font-size: 0.95em;
+  color: #000000;
+}
+.banner-wrapper .carousel .carousel-item .carousel-item-intro .carousel-item-intro-txt .btn i {
+  font-size: 1em;
+}
+.banner-wrapper .carousel:hover .banner-arrows {
+  display: block;
+}
+
+.content1, .content2 {
+  width: 90%;
+  margin: 2rem 5%;
+}
+.content1 .card, .content2 .card {
+  height: 320px;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: .8;
+}
+.content1 .card:hover, .content2 .card:hover {
+  background: transparent;
+  opacity: 1;
+}
+
+.content1 .card .card-content dt {
+  font-family: "微软雅黑";
+}
+.content1 .card .card-content dd {
+  margin: 0;
+}
+@media only screen and (min-width: 769px) {
+  .content1 .card .card-content dt {
+    font-size: 28px;
+  }
+  .content1 .card .card-content dd {
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 416px) and (max-width: 768px) {
+  .content1 .card .card-content dt {
+    font-size: 28px;
+  }
+  .content1 .card .card-content dd {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .content1 .card .card-content {
+    padding: 0 15px;
+  }
+  .content1 .card .card-content dt {
+    font-size: 18px;
+  }
+  .content1 .card .card-content dd {
+    font-size: 14px;
+  }
+}
+
+.content3.row .col {
+  padding: 0;
+}
+
+.content3 {
+  width: 90%;
+  margin: 3rem 5%;
+  position: relative;
+  height: 550px;
+  overflow: hidden;
+}
+.content3 .content3-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+@media only screen and (min-width: 769px) {
+  .content3 .content3-img {
+    width: 100%;
+  }
+  .content3 .content3-img img {
+    height: 100%;
+  }
+}
+@media only screen and (min-width: 416px) and (max-width: 768px) {
+  .content3 .content3-img {
+    height: 65%;
+  }
+  .content3 .content3-img img {
+    width: 170%;
+    height: 120%;
+    margin-left: -450px;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .content3 .content3-img {
+    height: 50%;
+  }
+  .content3 .content3-img img {
+    width: 200%;
+    height: 110%;
+  }
+}
+.content3 .content3-intro {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: "微软雅黑";
+  font-weight: 100;
+}
+@media only screen and (min-width: 769px) {
+  .content3 .content3-intro {
+    top: 0;
+    left: 0;
+  }
+  .content3 .content3-intro .content3-intro-txt {
+    top: 10rem;
+    left: 5rem;
+  }
+  .content3 .content3-intro .content3-intro-txt div .btn {
+    margin: 2rem 0.5rem 0;
+  }
+}
+@media only screen and (min-width: 416px) and (max-width: 768px) {
+  .content3 .content3-intro {
+    top: 65%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .content3 .content3-intro .content3-intro-txt {
+    top: 1rem;
+    left: 10%;
+    color: #fff;
+  }
+  .content3 .content3-intro .content3-intro-txt .txt-btn .btn {
+    margin: 1rem 0.5rem 0;
+    border-color: #fff;
+  }
+  .content3 .content3-intro .content3-intro-txt .txt-btn .btn i {
+    color: #fff;
+  }
+  .content3 .content3-intro .content3-intro-txt .txt-btn a {
+    color: #fff;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .content3 .content3-intro {
+    top: 50%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .content3 .content3-intro .content3-intro-txt {
+    width: 100%;
+    top: 1rem;
+    text-align: center;
+    color: #fff;
+  }
+  .content3 .content3-intro .content3-intro-txt .txt-btn .btn {
+    margin: 1rem 0.5rem 0;
+    border-color: #fff;
+  }
+  .content3 .content3-intro .content3-intro-txt .txt-btn .btn i {
+    color: #fff;
+  }
+  .content3 .content3-intro .content3-intro-txt .txt-btn a {
+    color: #fff;
+  }
+}
+.content3 .content3-intro .content3-intro-txt {
+  position: absolute;
+}
+.content3 .content3-intro .content3-intro-txt .btn {
+  display: inline-block;
+  padding: 0 1em;
+  height: 40px;
+  line-height: 40px;
+  box-shadow: none;
+  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0);
+  font-size: 0.95em;
+  color: #000000;
+}
+.content3 .content3-intro .content3-intro-txt .btn i {
+  font-size: 1em;
+}
+
+.content4 {
+  width: 90%;
+  margin: 2rem 5%;
+}
+.content4 .col {
+  box-shadow: none;
+  margin-top: 10px;
+}
+.content4 .card {
+  height: 560px;
+}
+.content4 .card .card-image {
+  height: 40%;
+  overflow: hidden;
+}
+.content4 .card .card-image img {
+  height: 100%;
+}
+.content4 .card .card-content h5 {
+  text-align: center;
+}
+.content4 .card .card-content ul {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.content4 .card .card-content ul li {
+  margin: 0.5rem;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+.content4 .card .card-content ul li a {
+  color: #555;
+  padding: 0.4em 0.6em;
+}
+.content4 .card .card-content ul li:hover {
+  background: #333;
+}
+.content4 .card .card-content ul li:hover a {
+  color: #fff;
+}
+.content4 .card:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+footer.page-footer {
+  background: #eee;
+  padding: 0 5%;
+}
+footer.page-footer .footer-b ul {
+  margin: 0;
+}
+footer.page-footer .footer-b ul li a {
+  color: #666;
+  font-size: 0.88em;
+}
+footer.page-footer .footer-b .collapsible {
+  border: none;
+  box-shadow: none;
+}
+footer.page-footer .footer-b .collapsible p {
+  margin: 0;
+}
+footer.page-footer .footer-b .collapsible .collapsible-header {
+  background-color: #555;
+  color: #fff;
+}
+footer.page-footer .footer-b .collapsible .collapsible-body ul {
+  padding: 1em 0;
+  padding-left: 1em;
+  background-color: #fff;
+}
+footer.page-footer .footer-b .collapsible .collapsible-body ul li a {
+  padding: 0.2em 0;
+  font-size: 0.8em;
+  color: #333;
+}
+footer.page-footer .footer-copyright {
+  font-size: 0.7em;
+}
+footer.page-footer .footer-copyright .row {
+  margin-bottom: 0;
+}
+footer.page-footer .footer-copyright .row .col {
+  height: auto;
+}
+footer.page-footer .footer-copyright .some1 {
+  height: 30px;
+  line-height: 30px;
+}
+footer.page-footer .footer-copyright .some1 i {
+  font-size: 2em;
+}
+footer.page-footer .footer-copyright .some2 {
+  height: 30px !important;
+  overflow: hidden;
+}
+footer.page-footer .footer-copyright .some2 a {
+  margin: 0 0.5rem;
+  color: #666;
+  line-height: 30px;
+}
+footer.page-footer a:hover {
+  text-decoration: underline;
+}
+
+.fixed-txt {
+  position: fixed;
+  top: 50%;
+  right: -2.5%;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+.fixed-txt a {
+  padding: 0.5em 1em 0.2em;
+  border: 1px solid #333;
+  border-bottom: none;
+  color: #333;
+}
+.fixed-txt a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn-floating {
+  position: relative;
+  padding: 0;
+  display: inline-block;
+  overflow: hidden;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  line-height: 40px;
+  color: #333;
+  border: 1px solid #333;
+  background-color: #fff;
+  -webkit-transition: .3s;
+          transition: .3s;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.btn-floating:hover {
+  color: #fff;
+  background-color: #333;
+}

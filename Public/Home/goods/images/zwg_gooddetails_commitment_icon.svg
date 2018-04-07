@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.3 (16044) - http://www.bohemiancoding.com/sketch -->
+    <title>iconfont-zhengque</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="商品详情" sketch:type="MSArtboardGroup" transform="translate(-20.000000, -735.000000)">
+            <g id="服务说明" sketch:type="MSLayerGroup" transform="translate(0.000000, 712.000000)">
+                <g id="iconfont-zhengque" transform="translate(22.000000, 25.000000)" sketch:type="MSShapeGroup">
+                    <g id="图形">
+                        <path d="M-1.77635684e-15,7.99999085 C-1.77635684e-15,12.418189 3.58170128,15.9999817 7.99999085,15.9999817 C12.4182072,15.9999817 16,12.4181889 16,7.99999085 C16,3.58170128 12.4182987,0 7.99999085,0 C3.58170128,0 -1.77635684e-15,3.58170128 -1.77635684e-15,7.99999085 Z" id="Shape" stroke="#FF5F00" stroke-width="2" fill="#FFFFFF"></path>
+                        <path d="M9,10 L5.99077797,10 C5.45097518,10 5,10.4477153 5,11 C5,11.5561352 5.44358641,12 5.99077797,12 L10.009222,12 C10.2783737,12 10.5254416,11.8886922 10.7055337,11.7086132 C10.8902563,11.5255733 11,11.2779556 11,11.0046024 L11,2.99539757 C11,2.4556644 10.5522847,2 10,2 C9.44386482,2 9,2.44565467 9,2.99539757 L9,10 Z" id="Rectangle-329" fill="#FF5F00" transform="translate(8.000000, 7.000000) rotate(-315.000000) translate(-8.000000, -7.000000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

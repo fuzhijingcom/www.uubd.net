@@ -1,0 +1,384 @@
+<include file="Public:header" />
+<style>
+    #btnUploadImage{
+        float:left;
+        padding-left:10px;
+    }
+    .uploadify-queue{
+        float: left;
+        clear: both;
+    }
+    .uploadify-queue-item{
+        width: auto;
+    }
+    .cancel{
+        float: right;
+        padding-left: 10px;
+    }
+    .uploadify{
+        background-color: gray;
+        margin-left: 10px;
+    }
+    .uploadify-button{
+        line-height: 28px;
+        text-align: center
+    }
+</style>
+<script type="text/javascript" src="/Public/plugin/laydate/laydate.js"></script>
+<script language="javascript" type="text/javascript" src="/Public/plugin/KindEditor/kindeditor-min.js"></script>
+<script language="javascript" type="text/javascript" src="/Public/plugin/KindEditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+    var editor;
+    KindEditor.ready(function(K) {
+    	editor = K.create('textarea[name="description"]', {
+            resizeType : 1,
+            allowPreviewEmoticons : false,
+            allowImageUpload : true,
+            items : [
+                'source','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
+            afterBlur: function(){this.sync();}
+        });
+    });
+    $(function(){
+        $('form').validate({
+            errorPlacement: function(error, element){
+                $(element).next('.field_notice').hide();
+                $(".ke-container").addClass("kindeditor-error");
+                $(element).after(error);
+            },
+            success       : function(label){
+                label.addClass('right').text('OK!');
+                $(".ke-container").removeClass("kindeditor-error");
+            },
+            onfocusout : false,
+            onkeyup    : false,
+            rules : {
+                title : {
+                    required : true,
+                },
+               
+                content : {
+                    required : true,
+                },
+            },
+            messages : {
+                title : {
+                    required : '提示：活动标题不能为空',
+                },
+
+                content : {
+                    required : '提示：请填写活动内容'
+                }
+            }
+        });
+    });
+</script>
+<div id="forms" class="mt10">
+    <div class="box">
+        <div class="box_border">
+            <div class="box_top"><b class="pl15">添加活动信息</b></div>
+            <div class="box_center">
+                <form class="jqtransform" name="form1" action="{:U('/Admin/Activity/add')}" method="post">
+                    <table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="td_right">活动名称：</td>
+                            <td class=""><input name="title" type="text" class="input-text lh30" size="40"></td>
+                        </tr>
+                        
+                          <tr>
+                            <td class="td_right">活动图片：</td>
+                            <td class="">
+                                <input name="thumb" style="float: left" readonly="readonly" id="thumb" type="text" class="input-text lh30" size="40">
+                                <input class="ext_btn ext_btn_submit" type="button" id="btnUploadImage" value="上传图片" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">排序值：</td>
+                            <td class=""><input name="list" type="text" value="0" class="input-text lh30" size="40"><span style="color:red;padding-left:3px;">提示：排序值影响活动显示顺序，从大到小显示</span></td>
+                        </tr>
+						<tr>
+                            <td class="td_right">开始时间：</td>
+                            <td class=""><input name="begintime" id="begintime" type="text" class="input-text lh30 laydate-icon" size="40"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">结束时间：</td>
+                            <td class=""><input name="endtime" id="endtime" type="text" class="input-text lh30 laydate-icon" size="40"></td>
+                        </tr>
+						<tr>
+                            <td class="td_right">取货时间：</td>
+                            <td class=""><input name="picktime" id="picktime" type="text" class="input-text lh30 laydate-icon" size="40"></td>
+                        </tr>
+						<tr>
+                            <td class="td_right">取货地址：</td>
+                            <td class="">
+								<select name="province" class="nva">
+									<option value="0">选择省</option>
+								</select>
+								<select name="city" class="nva">
+									<option value="0">选择市</option>
+								</select>
+								<select name="district" class="nva">
+									<option value="0">选择区/县</option>
+								</select>
+								<input name="pickaddress" type="text" class="input-text lh30" size="40">
+							</td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">活动介绍：</td>
+                            <td class=""><textarea style="width: 700px; height: 182px; resize:none;" name="description" cols="" rows="" class="textarea"></textarea></td>
+                        </tr>
+						<tr>
+							<td class="td_right">活动商品：</td>
+                            <td class="">
+								<a href="javascript:;" onclick="add_goods();" style="margin: 3px;" class="ext_btn"><span class="add"></span>添加</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_right">&nbsp;</td>
+                            <td class="">
+								<table class="table table-bordered" id="spec_input_tab" style="width:100%;" cellspacing="0">
+									<tr>
+										<td style="width:270px;"><b>商品名称</b></td>
+										<td style="width:70px;"><b>限购数量</b></td>
+										<foreach name="levellist" item="level">
+										<td style="width:130px;"><b>{$level.name}活动价格</b></td>
+										</foreach>
+										<td><b>操作</b></td>
+									</tr>
+									<tr>
+										<td style="width:270px;">
+											<input name="goods_name[]" class="input-text lh30" style="width:270px;">
+										</td>
+										<td style="width:70px;">
+											<input class="input-text" name="limit_number[]" onkeyup="clearNoNum(this)" style="width:70px;" value="0" onkeyup="this.value=this.value.replace(/[^\d.]/g,"")" onpaste="this.value=this.value.replace(/[^\d.]/g,"")">
+										</td>
+										<foreach name="levellist" item="level">
+										<td style="width:130px;">
+											<input class="input-text lh30" style="width:130px;" name="sale_price[{$level.levelid}][]" onkeyup="clearNoNum(this)" style="width:70px;" value="0.00" onkeyup="this.value=this.value.replace(/[^\d.]/g,"")" onpaste="this.value=this.value.replace(/[^\d.]/g,"")">
+										</td>
+										</foreach>
+										<td>
+											<input type="hidden" class="goods_id" name="goods_id[]" value="0" />
+											<a href="javascript:;" title="选择商品" onclick="search_goods(this,'选择采购商品','{:U("/Admin/Goods/get_goods_list")}','800','500');" class="btn btn-primary radius">选择商品</a>
+											<a href="javascript:;" title="删除该项目" onclick="remove(this);" class="btn btn-primary radius">删除</a>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+                        <tr>
+                            <td class="td_right">&nbsp;</td>
+                            <td class="">
+                                <input type="submit" name="button" class="btn btn82 btn_save2" value="保存">
+                                <input type="button" onclick="javascript:history.go(-1);" name="button" class="btn btn82 btn_res" value="返回">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<table style="display:none;" id="clone_table">
+	<tr>
+		<td style="width:270px;">
+			<input name="goods_name[]" class="input-text lh30" style="width:270px;">
+		</td>
+		<td style="width:70px;">
+			<input class="input-text" name="limit_number[]" onkeyup="clearNoNum(this)" style="width:70px;" value="0" onkeyup="this.value=this.value.replace(/[^\d.]/g,"")" onpaste="this.value=this.value.replace(/[^\d.]/g,"")">
+		</td>
+		<foreach name="levellist" item="level">
+		<td style="width:130px;">
+			<input class="input-text lh30" style="width:130px;" name="sale_price[{$level.levelid}][]" onkeyup="clearNoNum(this)" style="width:70px;" value="0.00" onkeyup="this.value=this.value.replace(/[^\d.]/g,"")" onpaste="this.value=this.value.replace(/[^\d.]/g,"")">
+		</td>
+		</foreach>
+		<td>
+			<input type="hidden" class="goods_id" name="goods_id[]" value="0" />
+			<a href="javascript:;" title="选择商品" onclick="search_goods(this,'选择采购商品','{:U("/Admin/Goods/get_goods_list")}','800','500');" class="btn btn-primary radius">选择商品</a>
+			<a href="javascript:;" title="删除该项目" onclick="remove(this);" class="btn btn-primary radius">删除</a>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript">
+	var current_button = {};
+	var begintime = {
+        elem: '#begintime',
+        format: 'YYYY/MM/DD hh:mm:ss',
+        max: '2099-06-16 23:59:59',
+        istime: true,
+        istoday: false,
+        choose: function(datas){
+        }
+    };
+    var endtime = {
+        elem: '#endtime',
+        format: 'YYYY/MM/DD hh:mm:ss',
+        max: '2099-06-16 23:59:59',
+        istime: true,
+        istoday: false,
+        choose: function(datas){
+        }
+    };
+	var picktime = {
+        elem: '#picktime',
+        format: 'YYYY/MM/DD hh:mm:ss',
+        max: '2099-06-16 23:59:59',
+        istime: true,
+        istoday: false,
+        choose: function(datas){
+        }
+    };
+    laydate.skin('molv');
+    laydate(begintime);
+    laydate(endtime);
+	laydate(picktime);
+	//加载省份
+    function _load_provice(province){
+        $.ajax({
+			type:'get',
+            url: "{:U('/Admin/Area/GetProvinve')}",
+            cache: false,
+            beforeSend:function(){
+                layer.load("数据加载中...");
+            },
+            success: function(response){
+                $(response.data).each(function(i,data) {
+                    if(data.proid==province){
+                        $("select[name=province]").append("<option value='"+data.proid+"' selected='selected'>"+data.name+"</option>");
+                    }else{
+                        $("select[name=province]").append("<option value='"+data.proid+"'>"+data.name+"</option>");
+                    }
+                });
+            },
+			complete:function(){
+				layer.close(layer.index);
+			}
+        });
+    }
+    //加载市
+    function _load_city(province,city){
+        $.ajax({
+            type:'get',
+            url: "{:U('/Admin/Area/GetCity')}",
+            beforeSend:function(){
+                layer.load("数据加载中...");
+            },
+            cache: false,
+            data:{proid:province},
+            success: function(response){
+                $("select[name=city] option").filter(function(index){
+                    if(index>0){
+                        $(this).remove();
+                    }
+                });
+                $("select[name=district] option").filter(function(index){
+                    if(index>0){
+                        $(this).remove();
+                    }
+                });
+                $(response.data).each(function(i,data) {
+                    if(data.cityid==city){
+                        $("select[name=city]").append("<option value='"+data.cityid+"' selected='selected'>"+data.name+"</option>");
+                    }else{
+                        $("select[name=city]").append("<option value='"+data.cityid+"'>"+data.name+"</option>");
+                    }
+                });
+            },
+			complete:function(){
+				layer.close(layer.index);
+			}
+        });
+    }
+    //加载区
+    function _load_district(province,city,district){
+        $.ajax({
+            type:'get',
+            url: "{:U('/Admin/Area/GetDistrict')}",
+            beforeSend:function(){
+                layer.load("数据加载中...");
+            },
+            cache: false,
+            data:{cityid:city},
+            success: function(response){
+                $("select[name=district] option").filter(function(index){
+                    if(index>0){
+                        $(this).remove();
+                    }
+                });
+                $(response.data).each(function(i,data) {
+                    if(data.disid==district){
+                        $("select[name=district]").append("<option value='"+data.disid+"' selected='selected'>"+data.name+"</option>");
+                    }else{
+                        $("select[name=district]").append("<option value='"+data.disid+"'>"+data.name+"</option>");
+                    }
+                });
+            },
+			complete:function(){
+				layer.close(layer.index);
+			}
+        });
+    };
+	function add_goods(){
+		$("#spec_input_tab").append($("#clone_table").html());
+	}
+	function remove(obj){
+		$(obj).parent().parent().remove();
+	}
+	function search_goods(obj,title,url,w,h){
+		current_button = obj;
+		layer_show(title,url,w,h);
+	}
+    $(function(){
+		_load_provice({$province});//加载省
+        _load_city({$province},{$city});//加载市
+        _load_district({$province},{$city},{$district});//加载区
+        //按省筛选小区
+        $("select[name=province]").change(function(){
+            _load_city($(this).val(),0);
+        });
+        //按市筛选小区
+        $("select[name=city]").change(function(){
+            _load_district($("select[name=province]").val(),$(this).val(),0);
+        });
+        //上传幻灯片
+        $("#btnUploadImage").uploadify({
+            'formData'     : {
+                '{:session_name()}':'{:session_id()}'
+            },
+            'fileSizeLimit'	: '2048KB',//限制大小 2M
+            'buttonText'	: '上传图片',
+            'fileObjName'   : 'Filedata',
+            'width'         : 94,
+            'height'        : 28,
+            'multi'         : false,//多个 默认true
+            'progressData' 	: 'percentage',
+            'fileTypeDesc'  : '请选择图片...',
+            'fileTypeExts'  : '*.jpg;*.jpeg;*.png',
+            'swf'           : '/Public/plugin/uploadify/uploadify.swf',
+            'uploader'      : "{:U('/Admin/Upload/upload/')}",
+            'onFallback' 	: function() {
+                $(this).click(function(){alert('浏览器检测不到Flash插件，无法上传！','error')});
+            },
+            'onUploadStart' : function(file) {
+            },
+            'onUploadSuccess' : function(file, data, response) {
+                data = $.parseJSON(data);
+                if(data.error==false){
+                    $("input[name=thumb]").val(data.picpath);
+                }else{
+                    alert(data.message);
+                }
+            },
+            'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                if("Cancelled"!=errorString){
+                    alert('文件 ' + file.name + ' 上传失败 ','error');
+                }
+            }
+        });
+    });
+	
+</script>
+<include file="Public:footer" />
+  

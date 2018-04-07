@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<foreach name="list" item="vo" key="k" >
+    {$vo.user_id}
+</foreach>
+<div>{$show}</div>
+<select class="form-control select-btn" id="status">
+    <foreach name="list" item="vo" key="k" >
+        <option value="{$k}">{$vo}</option>
+    </foreach>
+</select>
+<foreach name="list" item="vo" key="k" >
+    <option value="{$k}">{$vo}</option>
+</foreach>
+<if condition="$test eq $test2">ThinkPHP
+    <else /> other Framework
+</if>
+</body>
+</html>

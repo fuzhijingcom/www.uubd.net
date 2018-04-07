@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收入管理</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="shortcut icon" href="__PUBLIC__/Common/images/dingling.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/management.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/Home/css/daterangepicker-bs3.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/order.js"></script>
+    <style type="text/css">
+    .table {
+        margin-bottom: 0;
+    }
+    .form-box {
+        height: 100%;
+    }
+    .order-iframe {
+        height: 80%;
+        padding: 0;
+    }
+    h3 nav a{
+        float: left;
+    }
+    .pager .next>a, .pager .next>span {
+        float: left;
+    }
+    .control-panel{
+        width:100%;
+        background: #eee;
+        margin:0 auto;
+        padding:1rem 1rem;
+    }
+    .danger{
+        color:red;
+        font-weight:700;
+    }
+    th {
+        text-align: center !important;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <!--时间-->
+        <div class="calendar-box calendar-select">
+            <fieldset>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-prepend input-group">
+                            <span class="add-on input-group-addon"> <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                            <input type="text" readonly style="background: #fff; font-size:1.2rem;" name="reservation" id="reservation" class="form-control back-color-w" value="{$startDate} - {$endDate}" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <select class="form-control select-btn" id="store">
+            <option value="">选择门店</option>
+            <volist name="stores" id="store">
+                <option value="{$store.s_name}">{$store.s_name}</option>
+            </volist>
+        </select>
+        <!--<select class="form-control select-btn" id="status">-->
+            <!--<option value="topay">待付款</option>-->
+            <!--<option value="tosend" selected>待发货</option>-->
+            <!--<option value="send">已发货</option>-->
+            <!--<option value="success">已完成</option>-->
+            <!--<option value="cancel">已关闭</option>-->
+            <!--<option value="safeguard">售后订单</option>-->
+        <!--</select>-->
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control search-box" id="keyword" placeholder="搜索"></div>
+            <button type="button" class="btn btn-default" onclick="searchTrades();">查询</button>
+        </form>
+        <div class="pull-right">
+            <button type="button" class="btn btn-info" onclick="exportOrder();">导出订单信息</button>
+            <button type="button" class="btn btn-success" onclick="exportSendOrder();">导出发货信息</button>
+            <button type="button" class="btn btn-warning" onclick="exportOrderList();">导出发货清单</button>
+            <button type="button" class="btn btn-primary" onclick="exportAnalysis();">导出统计信息</button>
+        </div>
+        <div class="clear"></div>
+        <br><br>
+
+        <div class="control-panel">
+            <ul class="nav nav-pills" role="tablist">
+                <li class="tosend active" role="presentation"><a href="#" onclick="getCertainOrder('tosend')">待发货: <span>{$wait_send_order_count}</span></a></li>
+                <li class="topay" role="presentation"><a href="#" onclick="getCertainOrder('topay')">待付款: <span>{$wait_pay_order_count}</span></a></li>
+                <li class="send" role="presentation"><a href="#" onclick="getCertainOrder('send')">已发货: <span >{$send_order_count}</span></a></li>
+                <li class="success" role="presentation"><a href="#" onclick="getCertainOrder('success')">已完成: <span >{$success_order_count}</span></a></li>
+                <li class="safeguard" role="presentation"><a href="#" onclick="getCertainOrder('safeguard')">申请售后: <span class="danger">{$wait_rightprotection_count}</span></a></li>
+                <li class="safeguardend" role="presentation"><a href="#" onclick="getCertainOrder('safeguardend')">售后结束: <span>{$rightprotection_end_count}</span></a></li>
+                <li class="batch-send-txt" role="presentation"><a>批量发货: </a></li>
+                <li><form id="excelForm"><input type="file" name="tids" class="form-control file-box send" /></li>
+                <li><button type="button" class="btn btn-success batch-send-goods" onclick="uploadExcel()">开始上传</button></form></li>
+                <li><input type="hidden" value="tosend" id="status"></li>
+            </ul>
+
+        </div>
+
+        <table class="table table-head" id="table">
+            <thead>
+                <tr style="width: 100%;">
+                    <th width="25%">商品</th>
+                    <th width="8%">门店</th>
+                    <th width="13%">买家</th>
+                    <th width="8%">实付金额</th>
+                    <th width="8%">订单状态</th>
+                    <th width="13%">下单时间</th>
+                    <th width="25%">收货地址</th>
+                    <th width="16"></th>
+                </tr>
+            </thead>
+        </table>
+        <div class="clear"></div>
+
+        <iframe id="orderTable" src="__MODULE__/Order/ordertable" class="order-iframe" frameborder="no" scrolling="auto"></iframe>
+    </div>
+</body>
+    <script>
+    var URL="__URL__";
+    var MODULE="__MODULE__";
+    var bsg = document.getElementsByClassName('batch-send-goods');
+
+    //定时器，每隔5分钟钟刷新订单
+    var int=self.setInterval("clock()",300000);
+    function clock(){
+        $("#orderTable").attr("src","__MODULE__/Order/ordertable");
+    }
+
+    var selected = 'tosend';
+    function getCertainOrder(flag){
+        var url = "__MODULE__/Order/ordertable";
+        $('#status').val(flag);
+        url +="?status="+flag;
+        if(selected!=null){
+            $('.'+selected).removeClass('active');
+        }
+        $('.'+flag).addClass('active');
+        selected = flag;
+        $('#orderTable').attr('src',url);
+    }
+
+    function uploadExcel(){
+        var formData = new FormData($( "#excelForm" )[0]);
+
+        $.ajax({
+            url: URL+'/uploadSendExcel' ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                if(returndata.info){
+                    //ThinkPHP框架的文件上传返回的错误
+                    alert(returndata.info);
+                }else{
+                    //批量发货失败的订单号
+                    if(returndata){
+                        alert(returndata);
+                    }else{
+                        alert('发货成功！');
+                    }
+                }
+            },
+            error: function (returndata) {
+                alert('貌似发生错误，请反馈给技术部，谢谢！');
+                console.log(returndata);
+            }
+        });
+
+
+    }
+
+
+</script>
+</html>

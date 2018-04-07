@@ -1,0 +1,148 @@
+<include file="Public:header" />
+<div id="forms" class="mt10">
+    <div class="box">
+        <div class="box_border">
+            <div class="box_top">
+				<b class="pl15">设置活动商品</b>
+				<a href="javascript:;" onclick="add_goods();" style="margin: 3px; float:right;" class="ext_btn"><span class="add"></span>添加</a>
+			</div>
+            <div class="box_center">
+                <form class="jqtransform" id="formGoods">
+                    <table class="table table-bordered" id="spec_input_tab" style="width:100%;" cellspacing="0">
+						<tr style="height:35px;">
+							<td style="width:475px;"><b>商品名称</b></td>
+							<td style="width:130px;"><b>限购数量</b></td>
+							<foreach name="levellist" item="level">
+							<td style="width:130px;"><b>{$level.name}活动价格</b></td>
+							</foreach>
+							<td><b>操作</b></td>
+						</tr>
+						<if condition="$goodslist">
+						<foreach name="goodslist" item="goods">
+						<tr>
+							<td style="width:475px;">
+								<input name="goods_name[]" value="{$goods.goods_name}" class="input-text lh30" style="width:470px;">
+							</td>
+							<td style="width:130px;">
+								<input class="input-text" name="limit_number[]" style="width:125px;" onkeyup="clearNoNum(this)" value="{$goods.buy_limit}" onkeyup="this.value=this.value.replace(/[^\d.]/g,"")" onpaste="this.value=this.value.replace(/[^\d.]/g,"")">
+							</td>
+							<foreach name="levellist" item="level">
+							<td style="width:130px;">
+								<input class="input-text lh30" name="sale_price[{$level.levelid}][]" onkeyup="clearNoNum(this)" style="width:125px;" value="{$goods['sale_price'][$level['levelid']]}" onkeyup="this.value=this.value.replace(/[^\d.]/g,"")" onpaste="this.value=this.value.replace(/[^\d.]/g,"")">
+							</td>
+							</foreach>
+							<td>
+								<input type="hidden" class="goods_id" name="goods_id[]" value="{$goods.goods_id}" />
+								<a href="javascript:;" title="选择商品" onclick="search_goods(this,'选择采购商品','{:U("/Admin/Goods/get_goods_list")}','800','500');" class="btn btn-primary radius">选择商品</a>
+								<a href="javascript:;" title="删除该项目" onclick="remove(this);" class="btn btn-primary radius">删除</a>
+							</td>
+						</tr>
+						</foreach>
+						<else/>
+						<tr>
+							<td style="width:475px;">
+								<input name="goods_name[]" class="input-text lh30" style="width:470px;">
+							</td>
+							<td style="width:130px;">
+								<input class="input-text" name="limit_number[]" style="width:125px;" onkeyup="clearNoNum(this)" value="0" onkeyup="this.value=this.value.replace(/[^\d.]/g,"")" onpaste="this.value=this.value.replace(/[^\d.]/g,"")">
+							</td>
+							<foreach name="levellist" item="level">
+							<td style="width:130px;">
+								<input class="input-text lh30" name="sale_price[{$level.levelid}][]" onkeyup="clearNoNum(this)" style="width:125px;" value="0.00" onkeyup="this.value=this.value.replace(/[^\d.]/g,"")" onpaste="this.value=this.value.replace(/[^\d.]/g,"")">
+							</td>
+							</foreach>
+							<td>
+								<input type="hidden" class="goods_id" name="goods_id[]" value="0" />
+								<a href="javascript:;" title="选择商品" onclick="search_goods(this,'选择采购商品','{:U("/Admin/Goods/get_goods_list")}','800','500');" class="btn btn-primary radius">选择商品</a>
+								<a href="javascript:;" title="删除该项目" onclick="remove(this);" class="btn btn-primary radius">删除</a>
+							</td>
+						</tr>
+						</if>
+					</table>
+					<table class="table table-bordered" id="spec_input_tab" style="width:100%;" cellspacing="0">
+						<tr>
+                            <td colspan="10" style="text-align:center;">
+                                <input type="button" name="button" class="btn btn82 btn_save2 btnSubmit" value="保存">
+                                <input type="button" onclick="javascript:history.go(-1);" name="button" class="btn btn82 btn_res" value="返回">
+                            </td>
+                        </tr>
+					</table>
+					<input type="hidden" name="act_id" value="{$info.act_id}" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<table style="display:none;" id="clone_table">
+	<tr>
+		<td style="width:475px;">
+			<input name="goods_name[]" class="input-text lh30" style="width:470px;">
+		</td>
+		<td style="width:130px;">
+			<input class="input-text" name="limit_number[]" style="width:125px;" onkeyup="clearNoNum(this)" value="0" onkeyup="this.value=this.value.replace(/[^\d.]/g,"")" onpaste="this.value=this.value.replace(/[^\d.]/g,"")">
+		</td>
+		<foreach name="levellist" item="level">
+		<td style="width:130px;">
+			<input class="input-text lh30" name="sale_price[{$level.levelid}][]" onkeyup="clearNoNum(this)" style="width:125px;" value="0.00" onkeyup="this.value=this.value.replace(/[^\d.]/g,"")" onpaste="this.value=this.value.replace(/[^\d.]/g,"")">
+		</td>
+		</foreach>
+		<td>
+			<input type="hidden" class="goods_id" name="goods_id[]" value="0" />
+			<a href="javascript:;" title="选择商品" onclick="search_goods(this,'选择商品','{:U("/Admin/Goods/get_goods_list")}','800','500');" class="btn btn-primary radius">选择商品</a>
+			<a href="javascript:;" title="删除该项目" onclick="remove(this);" class="btn btn-primary radius">删除</a>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript">
+	var current_button = {};
+	function add_goods(){
+		$("#spec_input_tab").append($("#clone_table").html());
+	}
+	function remove(obj){
+		$(obj).parent().parent().remove();
+	}
+	function search_goods(obj,title,url,w,h){
+		current_button = obj;
+		layer_show(title,url,w,h);
+	}
+	function set_goods_info(goods_id,goods_name){
+		var _is_selected = true;
+		$(".goods_id").each(function(){
+			if($(this).val() == goods_id){
+				_is_selected = false;
+			}
+		})
+		if(_is_selected == false){
+			layer.msg("活动中已经有该商品",{icon:2,time:2000});
+			return false;
+		}
+		$(current_button).parent().parent().find("input").eq(0).val(goods_name);
+		$(current_button).parent().parent().find("input[type=hidden]").eq(0).val(goods_id);
+		return true;
+	}
+	$(function(){
+		//提交
+		$(".btnSubmit").click(function(){
+			var _is_selected = false;
+			$(".goods_id").each(function(){
+				if($(this).val() != 0){
+					_is_selected = true;
+				}
+			})
+			if(_is_selected == false){
+				layer.msg("请选择活动商品",{icon:2,time:2000});
+				return;
+			}
+			ajaxForm(function(response){
+				if(response.status==1){
+					layer.msg(response.info,{icon:1,time:2000});
+					window.location.href="{:U('/Admin/Activity')}";
+				}else {
+					layer.msg(response.info,{icon:2,time:2000});
+				}
+			},$("#formGoods"),"{:U('/Admin/Activity/config')}");
+		})
+	})
+</script>
+<include file="Public:footer" />
+  

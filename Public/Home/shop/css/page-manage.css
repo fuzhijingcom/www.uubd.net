@@ -1,0 +1,312 @@
+/*页面管理模块样式*/
+.other-content {
+    width: 60%;
+    min-width: 680px;
+    margin: 30px auto 0;
+}
+.page-manage .control-btns {
+    margin-bottom: 15px;
+}
+.page-manage #pageTable .btn {
+    margin-right: 5px;
+}
+.page-manage .page-btns>.btn:last-of-type {
+    margin-right: 0;
+}
+
+/*页面编辑模块样式*/
+.page-header {
+    margin-top:0;
+    position: fixed;
+    z-index: 999;
+    background: #ffffff;
+    left: 0;
+    width: 100%;
+    padding-left: 10%;
+}
+
+/*显示区域*/
+.display-board {
+    position: fixed;
+    top: 100px;
+    left: 8%;
+}
+.display-board>iframe {
+    height: 70vh;
+    width: 320px;
+    /*margin-left: 10%;*/
+    border: 1px solid #DDDDDD;
+}
+
+/*编辑区域*/
+.placehold-box {
+    width: 26%;
+    min-width: 340px;
+    margin-left: 8%;
+    float: left;
+    height: 800px;
+}
+.edit-board {
+    float: left;
+    padding: 100px 0 100px;
+    width: 35%;
+    /*margin-left: 35%;*/
+}
+/*增加控件*/
+.add-ctrl {
+    position: fixed;
+    left: 82%;
+    width: 10%;
+    margin: 0 auto 40px;
+}
+.add-ctrl .panel-heading {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+}
+.add-ctrl .panel-body {
+    padding: 0px;
+}
+.add-ctrl .panel-body>li {
+    text-align: center;
+    border-bottom: 1px solid #cdcdcd;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.add-ctrl .panel-body>li:hover {
+    background: #EEEEEE;
+}
+.add-ctrl .panel-body>li:last-of-type {
+    border-bottom: 0;
+}
+
+/*弹出控件面板*/
+.popover {
+    max-width: 330px;
+}
+.popover-content {
+    padding: 0;
+}
+.pop-board>li {
+    float: left;
+    text-align: center;
+    border: 1px solid #DDDDDD;
+    cursor: pointer;
+     /*line-height: 40px;*/
+}
+.pop-board>li:hover {
+    background: #EEEEEE;
+}
+/*控件面板*/
+.ctrl-board {
+    width: 330px;
+}
+.ctrl-board>li {
+    width: 20%;
+    margin: 2.5%;
+    height: 35px;
+    line-height: 35px;
+}
+/*样式面板*/
+.style-board {
+     width: 200px;
+}
+.style-board>li {
+    width: 40%;
+    margin: 5%;
+    height: 35px;
+    line-height: 35px;
+}
+
+/*编辑控件*/
+.ctrl-head {
+    margin-bottom: 20px;
+}
+
+.ctrl-body .ctrl-item {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    position: relative;
+    border: 1px solid #DDDDDD;
+    cursor: move;
+}
+.ctrl-item .control-btns {
+    cursor: pointer;
+    color: #CCCCCC;
+}
+.ctrl-item>.invisible-btn {
+    position: absolute;
+    font-size: 24px;
+    background: #ffffff;
+    cursor: pointer;
+    display: none;
+}
+.ctrl-item>.del-ctrl-btn {
+    right: -12px;
+    top: -12px;
+}
+.ctrl-item>.add-ctrl-btn {
+    right: 18px;
+    top: -12px;
+}
+.ctrl-item .form>input:not(:last-child) {
+    margin-bottom: 10px;
+}
+.ctrl-item .form .data-gather {
+    padding: 0 1% 0 2%;
+}
+.ctrl-item .form .data-gather:not(:last-of-type) {
+    margin-bottom: 20px;
+}
+.ctrl-item .form .data-gather>:first-child {
+    float: left;
+    margin-right: 20px;
+}
+.ctrl-item .form .data-gather input.form-control {
+    width: 40%;
+    margin-right: 1%;
+}
+
+/*弹出框样式*/
+.pop-box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+.pop-box .pop-bg {
+    width: 100%;
+    height: 100%;
+    background: #888888;
+    opacity: .5;
+}
+.pop-box .pop-container {
+    width: 40%;
+    min-width: 480px;
+    height: 60vh;
+    padding-bottom: 5%;
+    background: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.pop-box .pop-container>.pop-title {
+    font-size: 2.4rem;
+    color: #999999;
+    padding: 2vh 0;
+    text-align: center;
+    margin-bottom: 0;
+}
+.pop-box .pop-list-group {
+     margin-bottom: 0;
+}
+.pop-box .pop-list-group>li {
+    border-bottom: 1px solid #DDDDDD;
+    padding: 5px 0;
+    text-align: center;
+    cursor: pointer;
+}
+.pop-box .pop-list-group>li:hover {
+    background: #EEEEEE;
+}
+.pop-box .pop-list-group>li.active {
+    background: #337ab7;
+    color: #ffffff;
+}
+.pop-box .pop-content {
+    height: 85%;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+}
+.choose-page-pop .pop-container {
+    width: 30%;
+}
+.choose-page-pop .pop-content {
+    overflow-y: auto;
+}
+.choose-img-pop .img-nav {
+    width: 25%;
+    border-right: 1px solid #DDDDDD;
+    height: 100%;
+    overflow-y: auto;
+}
+.choose-img-pop .img-board {
+    width: 75%;
+    height: 100%;
+    padding: 1.5%;
+    overflow-y: auto;
+}
+.choose-img-pop .img-board>img {
+    float: left;
+    width: 22%;
+    height: 5vw;
+    margin: 1.5%;
+    border: 1px solid #DDDDDD;
+    cursor: pointer;
+}
+.choose-img-pop .img-option:hover {
+    -webkit-filter: brightness(110%);
+    filter: brightness(110%);
+    border: 1px solid #aaa;
+}
+
+/*标题部分样式*/
+.choose-align>button.active {
+    background: #337ab7;
+    color: #ffffff;
+}
+.choose-align>button.active:active,
+.choose-align>button.active:focus,
+.choose-align>button:active,
+.choose-align>button:focus {
+    outline: 0;
+    background: #337ab7;
+    color: #ffffff;
+}
+.choose-align>button.active:hover,
+.choose-align>button:hover {
+    background: #337ab7;
+    color: #ffffff;
+}
+
+/*提交修改*/
+.submit-box {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    padding: 2vh 5% 2vh 0;
+    background: #ffffff;
+    border-top: 1px solid #DDDDDD;
+}
+
+/*页面公共部分编辑*/
+.sub-nav {
+    margin-top: 10px;
+    padding-left: 5%;
+}
+.sub-nav>.form-inline:not(:last-of-type) {
+    margin-bottom: 6px;
+}
+.form>.dataGather:not(:last-of-type) {
+    margin-bottom: 12px;
+}
+.link-input {
+    margin-right: .5%;
+}
+
+/*通用样式*/
+.width-30 {
+    width: 30%;
+}
+.width-40 {
+    width: 40%;
+}

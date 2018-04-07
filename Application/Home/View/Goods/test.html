@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>获取商品数据列表提交测试表单</h3>
+<p>cat_id 是商品类型标志，用一个字母表示，其中：K->框架眼镜；T->太阳镜；G->功能眼镜；U->镜腿；Y->隐形眼镜；H->其他商品</p>
+<p>测试不同类型商品，将 K 换上相应分类 cat_id 值，以及相关的表弟项信息</p>
+<p>search_id 可以是商城编号或生产编号</p>
+<form method="get" action="__URL__/goodslist.html">
+    <p>cat_id（商品分类标志号，可选）: <input type="text" name="cat_id" placeholder="默认为空"></p>
+    <p>selling_id（搜索商城编号）: <input type="text" name="selling_id" placeholder="默认为空"></p>
+    <p>goods_name（商品名称，可以模糊匹配）: <input type="text" name="goods_name" placeholder="默认为空"></p>
+
+    <input type="submit" value="Submit" />
+</form>
+
+<hr>
+<h3><a href="img.html">测试商品图片上传功能</a></h3>
+</body>
+</html>

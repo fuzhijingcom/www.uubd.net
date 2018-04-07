@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面公共部分编辑</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="__PUBLIC__/Home/goods/css/swiper.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="__PUBLIC__/Weixin/shop/css/public.css">-->
+    <link rel="stylesheet" href="__PUBLIC__/Weixin/shop/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/shop/css/page-manage.css?v=4">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jqueryui/1.10.1/jquery-ui.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body style="background: #ffffff">
+
+        <div class="page-header">
+            <h2>底部导航栏<small>  ——编辑页面</small></h2>
+        </div>
+        <div class="display-board">
+            <iframe src="{:C('SITE_URL')}/index.php/Weixin/Shop/index?page=bot_nav" frameborder="0" id="pageDisplay"></iframe>
+        </div>
+        <div class="placehold-box">
+            <div class="clearfix"></div>
+        </div>
+        <div class="edit-board">
+                <div class="cur-all-ctrl">
+                    <input type="hidden" id="page_name" value="bot_nav">
+                    <input type="hidden" id="page_title" value="底部导航栏">
+                    <input type="hidden" id="page_bgcolor" value="">
+                    <ul class="ctrl-body ui-sortable" id="all_ctrl_control">
+                        <li class="ctrl-item">
+                            <p class="ctrl-item-title">
+                                <span style="margin-right: 10px">导航栏</span>
+                            </p>
+                            <div class="form">
+                                <div class="dataGather">
+                                    <div class="form-inline">
+                                        <input type="text" class="form-control title-type-input" style="width: 15%;margin-right: 1%" value="" placeholder="标题">
+                                        <span class="control-btns" onclick="addOrDeleteInput()" style="margin-right: 2%">
+                                            <i class="glyphicon glyphicon-plus plus-btn"></i>
+                                            <i class="glyphicon glyphicon-minus minus-btn"></i>
+                                        </span>
+                                        <div class="sub-nav">
+                                            <div class="form-inline">
+                                                <input type="text" class="form-control title-type-input" style="width: 15%;margin-right: 5px" value="" placeholder="标题">
+                                                <input type="text" class="form-control link-input" placeholder="请填写外链或选择页面">
+                                                <button class="choose-pages-btn btn btn-success">页面</button>
+                                            </div>
+                                            <div class="form-inline">
+                                                <input type="text" class="form-control title-type-input" style="width: 15%;margin-right: 5px" value="" placeholder="标题">
+                                                <input type="text" class="form-control link-input" placeholder="请填写外链或选择页面">
+                                                <button class="choose-pages-btn btn btn-success">页面</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dataGather">
+                                    <div class="form-inline">
+                                        <input type="text" class="form-control title-type-input" style="width: 15%;margin-right: 1%" value="" placeholder="标题">
+                                        <span class="control-btns" onclick="addOrDeleteInput()" style="margin-right: 2%">
+                                            <i class="glyphicon glyphicon-plus plus-btn"></i>
+                                            <i class="glyphicon glyphicon-minus minus-btn"></i>
+                                        </span>
+                                        <input type="text" class="form-control link-input" placeholder="请填写外链或选择页面">
+                                        <button class="choose-pages-btn btn btn-success">页面</button>
+                                        <div class="sub-nav"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="submit-box text-right">
+                    <button class="btn btn-success" id="btn_submit">提交修改</button>
+                    <button class="btn btn-danger" id="btn_cancel">取消修改</button>
+                </div>
+        </div>
+
+        <div class="pop-box choose-img-pop" style="display: none">
+            <div class="pop-bg"></div>
+            <div class="pop-container">
+                <p class="pop-title">请选择要使用的图片</p>
+                <div class="pop-content">
+                    <div class="img-nav pull-left">
+                        <ul class="pop-list-group"></ul>
+                    </div>
+                    <div class="img-board pull-left"></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pop-box choose-page-pop" style="display: none">
+            <div class="pop-bg"></div>
+            <div class="pop-container">
+                <p class="pop-title">请选择要链接的页面</p>
+                <div class="pop-content">
+                    <ul class="pop-list-group"></ul>
+                </div>
+            </div>
+        </div>
+</body>
+<script>
+    var URL="__URL__";
+    var PUBLIC = "__PUBLIC__";
+    var MODULE = "__MODULE__";
+    var SITE_URL = "{:C('SITE_URL')}";
+    var commonInfo = {$commonInfo};
+    var pageList = null;
+    var imgList = null;
+    var cur_show_url = SITE_URL + '/index.php/Weixin/Shop/index?page=bot_nav';
+    var oldInfo = new Object();
+    console.log(commonInfo);
+</script>
+<script src="__PUBLIC__/Home/shop/js/page-edit-components.js?v=2"></script>
+<script src="__PUBLIC__/Home/shop/js/page-common-edit.js"></script>
+</html>

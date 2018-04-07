@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单管理</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="shortcut icon" href="__PUBLIC__/Common/images/dingling.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/management.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/Home/css/daterangepicker-bs3.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/menu.js"></script>
+</head>
+<body>
+<div class="form-box">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">菜单管理</div>
+                <div class="panel-body">
+                    <ul class="list-group" id="menuLists">
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-home nav-icon"></span>
+                            宿舍
+                        </li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">操作</h3>
+                </div>
+                <div class="panel-body">
+                    <form id="mform">
+                        <input type="hidden" id="id" value="">
+                        <div class="input-group">
+                            <span class="input-group-addon">名称：</span>
+                            <input type="text" class="form-control" placeholder="例如：订单" aria-describedby="m-name" id="name"></div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">地址：</span>
+                            <input type="text" class="form-control" placeholder="模块URL：/Menu/menu" aria-describedby="m-flow" id="flow"></div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">图标：</span>
+                            <input type="text" class="form-control" placeholder="Glyphicons 字体图标：glyphicon-home" aria-describedby="m-icon" id="icon"></div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">红点：</span>
+                            <select class="form-control select-red">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">可用：</span>
+                            <select class="form-control select-status">
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">是否在侧边栏显示：</span>
+                            <select class="form-control select-show">
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">排序：</span>
+                            <input type="text" class="form-control" placeholder="顺序号" aria-describedby="m-order" id="order"></div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">备注：</span>
+                            <textarea class="form-control" rows="3" placeholder="菜单备注"  id="note"></textarea>
+                        </div>
+                    </form>
+                    <br>
+                    <button type="button" class="btn btn-default" onclick="addMenu();">添加</button>
+                    <button type="button" class="btn btn-default" onclick="saveMenu();">保存</button>
+                    <button type="button" class="btn btn-default" onclick="deleteMenu();">删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+    <script>var URL="__URL__";</script>
+</html>

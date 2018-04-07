@@ -1,0 +1,462 @@
+body{
+    position: relative;
+}
+.container-fluid {
+    margin-top: 50px;
+}
+thead tr td{
+    font-weight:700;
+}
+tr{
+    cursor:pointer;
+}
+.tr-light{
+    background: #eee;
+}
+label{
+    font-weight:200!important;
+}
+.clear{
+    clear:both;
+}
+#headTable{
+    background: #fff;
+}
+#controlBox-father{
+    position:relative;
+    background: #fff;
+    /*overflow: auto;*/
+    padding: 15px 0;
+}
+.table{
+    margin-bottom:0!important;
+}
+.num-btn{
+    cursor:pointer;
+}
+.num-btn:hover{
+    background:#ffffcc;
+}
+.control-box{
+    background: #f8f8f8;
+    padding: 15px 15px 0 15px;
+}
+.calendar-box-block{
+    display:inherit!important;
+}
+.list-group{
+    margin: 15px 0 15px 0;
+}
+.control-text{
+    font-size:16px;
+    border-bottom:solid 1px #ddd;
+    padding-bottom:10px;
+    margin-bottom:15px;
+}
+.text-input{
+    margin-right:25px;
+}
+.form-group{
+    margin-bottom: 15px!important;
+}
+.pop-form-group{
+    margin-bottom:5px!important;
+}
+.popover-content{
+    padding-top:15px!important;
+    padding-bottom:15px!important;
+}
+.popover-control{
+    margin-bottom:10px;
+    width:150px;
+    margin-left:0!important;
+    float: left;
+}
+.pop-label{
+    float: left;
+    padding-top:8px;
+}
+.popNumBtn{
+    color:#666!important;
+    font-weight: 300!important;
+}
+.input-group{
+    margin-left:4px;
+}
+.group-control{
+    width:200px!important;
+}
+.table-p{
+    width:100%;
+    background: #eee;
+    text-align: center;
+    padding:10px 0;
+}
+.calendar-input-box{
+    width:220px;
+}
+.scroll-fixed{
+    position: fixed;
+}
+.to-top{
+    position: fixed;
+    bottom:20px;
+    right:20px;
+    z-index:999;
+    display: none;
+    border:solid 2px #fff!important;
+}
+.product-type-flag-not-on{
+    color:#ccc;
+}
+.product-type-flag-new{
+    color:#ccc;
+}
+.product-type-flag-on{
+    color:#f0ad4e;
+}
+.flag-text-not-on{
+    color:#ccc;
+}
+.flag-text-on{
+    color:#333;
+}
+.flag-text-new{
+    color:#5cb85c;
+}
+.flag-box{
+    width:150px;
+}
+.flag-btn{
+    padding:2px 4px!important;
+    margin-left:20px;
+}
+.little-margin{
+    margin-right:5px!important;
+}
+.price-box{
+    width:150px!important;
+}
+
+@keyframes light {
+    0% {background: #fff}
+    50% {background: #fffdb5}
+    100% {background: #fff}
+}
+
+.light{
+    animation: light 2s;
+    -moz-animation: light 2s;	/* Firefox */
+    -webkit-animation: light 2s;	/* Safari 和 Chrome */
+    -o-animation: light 2s;
+}
+
+.grey-text{
+    color:#999!important;
+}
+.reason-ul{
+    width:150px;
+    height:auto;
+    border: solid 1px #ccc;
+    position: absolute;
+    top:35px;
+    right:0;
+    background: #fff;
+    padding:10px 0 0 0!important;
+    visibility: hidden;
+    z-index:99999;
+}
+.reason-ul-exchange{
+    width:200px;
+    height:auto;
+    border: solid 1px #ccc;
+    position: absolute;
+    z-index:9999;
+    top:210px;
+    left:675px;
+    background: #fff;
+    padding:10px 0 0 0!important;
+    visibility: hidden;
+}
+.reason-ul li{
+    list-style: none;
+    text-align:left;
+    cursor: pointer;
+    padding:3px 0 3px 12px;
+    color:#333;
+    margin-bottom:10px;
+}
+.reason-ul-exchange li{
+    list-style: none;
+    text-align:left;
+    cursor: pointer;
+    padding:3px 0 3px 12px;
+    color:#333;
+    margin-bottom:10px;
+}
+.reason-ul li:hover{
+    background:#337ab7;
+    color:#fff;
+}
+.reason-ul-exchange li:hover{
+    background:#337ab7;
+    color:#fff;
+}
+.pop-reason-box{
+    position: relative;
+}
+.btn-inbound-guide{
+    margin-left:35px!important;
+}
+.btn-guide-export{
+    margin-bottom:15px!important;
+}
+
+.stock_warning{
+    background: #f0a537;
+    color:#fff;
+}
+.stock_danger{
+    background: #d9534f;
+    color:#fff;
+}
+.stock_none_data{
+    background: #eee;
+}
+
+/*销售数据导出选择框的样设*/
+.sales-export-box{
+    background: #fff;
+    padding:15px 15px;
+    border:solid 2px #ccc;
+    position:absolute;
+    top:64px;
+    left:775px;
+    display: none;
+    z-index:999999;
+}
+.sales-date-select{
+    padding-top:10px;
+    position:relative;
+    right:5px;
+    padding-bottom:10px;
+}
+.checkbox-title{
+    padding-bottom:5px;
+    font-weight:700;
+    border-bottom:solid 1px #eee;
+    margin-bottom:0!important;
+}
+.classifyBox{
+    padding-top:20px;
+    padding-bottom: 10px;
+}
+.checkbox{
+    padding-top:5px;
+}
+.s-check{
+    position: relative!important;
+    top:2px;
+}
+.checkbox label{
+    margin-right:10px;
+}
+.salesExport-btn{
+    position: relative;
+    top:10px;
+}
+.s-check-all{
+    position: relative!important;
+    top:2px;
+    margin-left:5px!important;
+}
+.s-select{
+    margin-top:10px;
+}
+
+.quantity-light{
+    background: #fff3e2;
+}
+.daterangepicker{
+    z-index:9999999!important;
+}
+
+table.tablesorter thead tr .header {
+    background-image: url(../images/bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+
+table.tablesorter thead tr .headerSortDown {
+    background-image: url(../images/desc.gif);
+}
+
+table.tablesorter thead tr .headerSortUp {
+    background-image: url(../images/asc.gif);
+}
+
+/* 弹出框样式调整 */
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1010;
+    display: none;
+    max-width: 800px;
+    padding: 1px;
+    text-align: left;
+    white-space: normal;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+}
+
+.popover div.goods-window:after{
+    content:'';display:block;clear:both;
+}
+
+.popover div.goods-window {
+    zoom: 1;
+}
+
+.popover .goods-window div {
+    float: left;
+}
+
+.popover-title {
+    /*margin-left: 200px;*/
+}
+
+.pop-btn {
+    margin-left: 200px;
+}
+
+.popover .pop-form-group {
+    margin-right: 20px;
+}
+
+.popover .pop-form-group .form-control {
+    width: 100px;
+}
+
+.popover .pop-form-group input.goods-name {
+    width: 436px;
+}
+
+.popover .pop-form-group input.goods-style {
+    width: 303px;
+}
+
+.popover p.pop-btn a {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.popover .popover-content table.table tbody tr td {
+    padding-top: 6px;
+    padding-bottom: 0;
+}
+
+.popover .popover-content .pop-btn {
+    padding-top: 10px;
+}
+
+#imageTbody img {
+    /*width: 110px;*/
+    height: 60px;
+}
+
+#ssi-uploadFiles {
+    background: #ddd;
+}
+
+
+/* 弹出窗样式 */
+/* 图片分组名的弹出窗样式 */
+.reason-ul{
+    width:150px;
+    height:auto;
+    border: solid 1px #ccc;
+    position: absolute;
+    top:35px;
+    right:0;
+    background: #fff;
+    padding:10px 0 0 0!important;
+    visibility: hidden;
+    z-index:99999;
+}
+.image-ul-exchange{
+    width:200px;
+    height:auto;
+    border: solid 1px #ccc;
+    position: absolute;
+    z-index:9999;
+    /*top:210px;*/
+    /*left:675px;*/
+    background: #fff;
+    padding:10px 0 0 0!important;
+    visibility: hidden;
+}
+.reason-ul li{
+    list-style: none;
+    text-align:left;
+    cursor: pointer;
+    padding:3px 0 3px 12px;
+    color:#333;
+    margin-bottom:10px;
+}
+.image-ul-exchange li{
+    list-style: none;
+    text-align:left;
+    cursor: pointer;
+    padding:3px 0 3px 12px;
+    color:#333;
+    margin-bottom:10px;
+}
+.reason-ul li:hover{
+    background:#337ab7;
+    color:#fff;
+}
+.image-ul-exchange li:hover{
+    background:#337ab7;
+    color:#fff;
+}
+.pop-reason-box{
+    position: relative;
+}
+
+/* 图片搜索栏的弹出窗样式 */
+.search-ul-exchange{
+    width:200px;
+    height:auto;
+    border: solid 1px #ccc;
+    position: absolute;
+    z-index:9999;
+    /*top:210px;*/
+    /*left:675px;*/
+    background: #fff;
+    padding:10px 0 0 0!important;
+    visibility: hidden;
+}
+.search-ul-exchange li{
+    list-style: none;
+    text-align:left;
+    cursor: pointer;
+    padding:3px 0 3px 12px;
+    color:#333;
+    margin-bottom:10px;
+}
+.search-ul-exchange li:hover{
+    background:#337ab7;
+    color:#fff;
+}

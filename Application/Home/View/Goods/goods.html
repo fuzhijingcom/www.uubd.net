@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品管理</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/goods.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/shop/css/page-manage.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/image.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+    <!-- 引入排序相关插件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/chili-1.8b.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <link href="__PUBLIC__/Home/css/ssi-uploader.min.css" rel="stylesheet"/>
+    <script src="__PUBLIC__/Home/js/ssi-uploader.min.js"></script>
+</head>
+<body>
+<a id="backToTop" href="javascript:void(0)" class="to-top btn btn-primary">Top</a>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="javascript:void(0)" onclick="changeGoodsModule(this)">商品图片管理</a></li>
+                <li ><a href="javascript:void(0)" onclick="changeGoodsModule(this)">商城页面管理</a></li>
+                <li ><a href="javascript:void(0)" onclick="changeGoodsModule(this)">商城图片管理</a></li>
+                <li><a href="javascript:void(0)" onclick="changeGoodsModule(this)">优惠券管理</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row image-management">
+        <div class="width-12" id="product-type">
+            <div class="list-group" id="modules-box">
+                <a href="javascript:void(0)" class="list-group-item active" title="" onclick="changeCategory(this)">全部商品</a>
+                <a href="javascript:void(0)" class="list-group-item" title="K" onclick="changeCategory(this)">框架眼镜</a>
+                <a href="javascript:void(0)" class="list-group-item" title="T" onclick="changeCategory(this)">太阳镜</a>
+                <a href="javascript:void(0)" class="list-group-item" title="G" onclick="changeCategory(this)">功能眼镜</a>
+                <a href="javascript:void(0)" class="list-group-item" title="Y" onclick="changeCategory(this)">隐形眼镜</a>
+                <a href="javascript:void(0)" class="list-group-item" title="U" onclick="changeCategory(this)">镜腿</a>
+                <a href="javascript:void(0)" class="list-group-item" title="H" onclick="changeCategory(this)">其他商品</a>
+            </div>
+            <div style="height:5px;"></div>
+        </div>
+        <div class="width-88" id="content">
+            <div id="controlBox-father">
+                <form class="form-inline control-box" style="width: 100%!important;" id="controlBox"
+                      onsubmit="return false;">
+
+                </form>
+            </div>
+
+            <div id="goods-table">
+            </div>
+        </div>
+    </div>
+
+    <div class="other-content" style="display: none">
+        <div class="page-manage">
+            <div class="control-btns">
+                <button class="btn btn-success add-page">新增微页面</button>
+                <button class="btn btn-success edit-bot-nav">编辑导航栏</button>
+            </div>
+            <table class="table table-bordered table-hover" id="pageTable">
+                <thead>
+                    <tr>
+                        <th title="页面标题">页面标题</th>
+                        <th title="链接后缀，每个页面特定链接">页面链接</th>
+                        <th>操作项</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--<tr>-->
+                        <!--<td class="width-40">商城首页</td>-->
+                        <!--<td class="width-30">index.html</td>-->
+                        <!--<td class="width-30">-->
+                            <!--<button class="btn btn-success">编辑</button>-->
+                            <!--<button class="btn btn-info">复制</button>-->
+                            <!--<button class="btn btn-danger">删除</button>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row" id="coupon-management" style="display: none;">
+        <div class="width-12">
+            <div class="list-group" id="coupon-modules-box" style="display: none;">
+                <a href="javascript:void(0)" class="list-group-item active" title="" onclick="changeCategory(this)">优惠券列表</a>
+            </div>
+            <div style="height:5px;"></div>
+        </div>
+
+        <div class="width-88" id="coupon-content">
+            <div id="coupon-controlBox-father">
+                <form class="form-inline control-box" style="width: 100%!important;" id="coupon-controlBox"
+                      onsubmit="return false;">
+                    <a class="btn btn-success" href="javascript:void(0)" onclick="addCouponClick()">新增优惠券</a>
+                </form>
+            </div>
+            <br>
+            <div id="coupon-table">
+            </div>
+
+
+            <div class="modal fade" id="coupon-modal" tabindex="-1" role="dialog" aria-labelledby="coupon-modal-label">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="coupon-modal-label">新增</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group clearfix" hidden>
+                                    <label for="coupon_id">优惠券id</label>
+                                    <input type="text" name="coupon_id" class="form-control" id="coupon_id" placeholder="优惠券id">
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="coupon_name">优惠券名称</label>
+                                    <input type="text" name="coupon_name" class="form-control" id="coupon_name" placeholder="优惠券名称">
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="goods_type">适用商品类型</label>
+                                    <input type="text" name="goods_type" class="form-control" id="goods_type" placeholder="适用商品类型">
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="coupon_price">面额</label>
+                                    <input type="text" name="coupon_price" class="form-control" id="coupon_price" placeholder="面额">
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="coupon_condition">最低消费金额</label>
+                                    <input type="text" name="coupon_condition" class="form-control" id="coupon_condition" placeholder="最低消费金额">
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="available_time">生效时间</label>
+                                    <input type="text" name="available_time" class="form-control" id="available_time" placeholder="生效时间">
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="invalid_time">失效时间</label>
+                                    <input type="text" name="invalid_time" class="form-control" id="invalid_time" placeholder="失效时间">
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="is_valid">是否有效</label>
+                                    <input type="text" name="is_valid" class="form-control" id="is_valid" placeholder="是否有效">
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="num_per_user">可领取数量</label>
+                                    <input type="text" name="num_per_user" class="form-control" id="num_per_user" placeholder="可领取数量">
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="superimposed">能否叠加使用</label>
+                                    <input type="text" name="superimposed" class="form-control" id="superimposed" placeholder="能否叠加使用">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                                <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="submitCoupon()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script>
+    var URL = "__URL__";
+    var MODULE = "__MODULE__";
+    var CONTROLLER = "__CONTROLLER__";
+    var optionCategory = '{$categoryData}';
+    var SITE_URL = '{$SITE_URL}';
+</script>
+<!--页面管理相关 js-->
+<script src="__PUBLIC__/Home/shop/js/page-manage.js"></script>
+<!-- 商品管理相关 js -->
+<script src="__PUBLIC__/Home/js/goods.js"></script>
+<script src="__PUBLIC__/Home/js/goods-components.js"></script>
+<script src="__PUBLIC__/Home/js/backup/image-components.js"></script>
+<script src="__PUBLIC__/Home/js/goods-controller.js"></script>
+<!-- 所有图片管理相关 js -->
+<script src="__PUBLIC__/Home/js/backup/image.js"></script>
+<script src="__PUBLIC__/Home/js/backup/image-controller.js"></script>
+<!-- 优惠券管理相关 js -->
+<script src="__PUBLIC__/Home/shop/js/coupon-management.js"></script>
+</body>
+</html>

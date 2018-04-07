@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客服消息查看</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/kefu/css/checkInfos.css?v=1">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <ul class="nav nav-tabs nav-justified choose-info-type">
+            <li role="presentation" class="unread active" data-info-type="unread"><a href="javascript:void(0)">未读信息</a></li>
+            <li role="presentation" class="star" data-info-type="star"><a href="javascript:void(0)">星标信息</a></li>
+            <li role="presentation" class="remark" data-info-type="remark"><a href="javascript:void(0)">备注信息</a></li>
+            <li role="presentation" class="read" data-info-type="read"><a href="javascript:void(0)">已读信息</a></li>
+        </ul>
+        <div class="info-box">
+            <div class="info-board">
+                <ul class="info-display" id="unread_box"></ul>
+            </div>
+            <div class="width-50 chat-board hide">
+                <i class="glyphicon glyphicon-remove-sign close-btn"></i>
+                <iframe id="chat_box" src="" frameborder="0"></iframe>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <audio id="new-warn">
+        <source src="__PUBLIC__/Common/music/notice.mp3">
+        <source src="__PUBLIC__/Common/music/notice.ogg">
+    </audio>
+
+    <script>
+        var PUBLIC = '__PUBLIC__';
+        var URL = '__URL__';
+        var old_unread_data = null;
+        var chatbox_contain = null;
+    </script>
+    <script src="__PUBLIC__/Home/kefu/js/checkInfos.js"></script>
+    <script src="__PUBLIC__/Home/kefu/js/checkInfos-common.js"></script>
+</body>
+</html>

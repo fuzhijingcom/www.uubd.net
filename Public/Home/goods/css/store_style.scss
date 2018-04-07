@@ -1,0 +1,395 @@
+#nav1,#nav2{padding:0 5%;background-color: #fff;}
+#nav1{
+    .brand-logo{ position: static; margin-right:5%;color: #333;
+        img{margin-top: 14px;}
+    }
+    background: #f3f3f3;
+    height: 50px;line-height: 50px;
+    ul.left{
+        li{float: left;}
+        li#help{
+            height: 400px;
+            font-family: "微软雅黑";
+            h4{margin-bottom: 150px;}
+            a{padding: 0 15px;}
+            a:hover{background-color: #333;color: #fff;}
+        }
+    }
+    ul{
+        margin: 0;
+        li{
+            a{color: #888;padding: 15px;}
+            a:hover {background-color: rgba(0, 0, 0, 0.2);color: #333;}
+        }
+    }
+    .brand-logo{height: 50px !important;img{width: auto;height: 45%;}}
+    .search-wrapper{
+        margin: 0;
+        li{ float: left;
+            a{color: #333;}
+            input[type=search]{
+                width: 100%;height: 2em;
+                margin: 0.8em 0 0 -100px;padding: 0.2em 7em 0.2em 1em;
+                border: 1px solid #333;border-radius: 2px;
+                font-size: 0.8em;color: #333;
+            }
+        }
+        li.input-field{margin: 0;}
+    }
+}
+#nav2{
+    height: 70px;line-height: 70px;
+    .brand-logo{
+        position: static; margin-right:5%;color: #333;
+        height: 50px !important;font-family: "微软雅黑";
+        font-size: 1.2em;font-weight: 600;
+    }
+    a.button-collapse{
+        margin-left: 20%;color: #333;
+        @media only screen and (max-width: 413px) { margin-left:13%;}
+        i{height: 70px;line-height: 70px;color: #333;font-size: 38px;}
+    }
+    ul{
+        li{
+            a{color: #333;}
+            a:hover {background-color: rgba(0, 0, 0, 0.6);color: #fff;}
+            &.active{
+                a.active{background-color: #333;color: #fff;}
+            }
+        }
+    }
+    ul#nav-mobile{
+        border: none;height: 100%;
+        box-shadow: none;margin: 0;
+        li{
+            position: relative;
+            width: 90px;
+            .collapsible-header{
+                border-bottom: none;line-height: 4.7rem;background-color: rgba(0,0,0,0);
+                i{color: #333;font-size: 38px;}
+                @media only screen and (max-width: 413px) {
+                    margin-left:13%;
+                }
+            }
+            .collapsible-header:hover {background-color: rgba(0, 0, 0, 0.6);color: #fff;}
+            .collapsible-body.table-of-contents{
+                li{
+                    a{height: auto;padding:1em;}
+                    a:hover{color: #fff;}
+                }
+            } 
+            .collapsible-body{
+                background-color: #f2f2f2;
+                li{
+                    float: left;width: 100%;
+                    a{display: block;color: #333;font-size: 0.85em;}
+                }
+            }
+            .collapsible-body:before {
+                    position: absolute;bottom: 100%;left: 0;
+                    border:solid transparent;
+                    content: " ";
+                    height: 0;width: 0;
+                    pointer-events: none;
+                    border-color: rgba(238,238,238,0);
+                    border-bottom-color: #e7e8ec;
+                    border-width: 8px;
+                }
+            .section{padding: 0;}
+            #dropdown1,#dropdown2{
+                z-index: 1;position: absolute;
+                width: 260px !important; 
+                top: 70px !important;
+                font-family: "微软雅黑";
+            }
+        }
+    }
+    #mobile-demo.side-nav {
+        .collapsible-header:hover{
+            background-color: #333;
+        }
+        .collapsible-body{background-color:rgba(0,0,0,.1);}
+    }
+    &.active{
+        z-index: 99;
+        position: fixed;top: 0;left: 0;
+        background-color: #333;
+        .dropdown-content{background-color: #aaa;}
+        li{a{color: #fff;}}
+        a.brand-logo,a.button-collapse i{color: #fff;}
+    }
+}
+//container  content1
+.content{
+    width: 100%;
+    padding: 0 5%;margin: 30px 0;
+    .row{
+        width: 100%;margin: 0;
+        .content1{
+            height: 450px;margin-bottom: 20px;
+            @media only screen and (min-width: 1200px) {
+                height: 450px;
+            }
+            @media only screen and (min-width: 994px) and (max-width: 1199px) {
+                height: 400px;
+            }
+            @media only screen and (max-width: 993px) {
+                height: 300px;
+            }
+            .col{
+                overflow: hidden;height: 100%;
+                a{img{width: 100%;height: 100%;}}
+            }
+            ul{
+                margin: 0;height: 100%;
+                li{
+                    margin: 0;height: 49%;width: 100%;
+                    overflow: hidden;
+                    a{img{height: 100%;}}
+                    &:first-child{margin-bottom: 2%;}
+                }
+                
+            } 
+        }
+        .content2{
+            margin-bottom: 40px;
+            .content2-1.col{
+                h4{font-family: "微软雅黑";}
+                ul{
+                    width: 100%;
+                    li{
+                        padding: 0;
+                        .card{box-shadow:none;}
+                        .card.horizontal{
+                            border-bottom: 1px solid #000000;
+                            .card-image{
+                                max-width: 35%;
+                            }
+                            .card-stacked .card-content{
+                                color: #555;
+                                .price{
+                                    margin-top: 20px;
+                                    span{a{  padding: 0.2rem 0.5rem;}}
+                                    .left{a{color: #E65100;}}
+                                    .right{
+                                        background-color: #E65100;
+                                        a{color: #fff;}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    li:hover{
+                        .card{
+                            border: none;
+                            box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                        }
+                    }
+                }
+            }
+            .content2-2.col{
+                ul{
+                    width: 100%;
+                    li{
+                        padding: 0 1%;
+                        .card{box-shadow:none;height: 225px;}
+                        .card{
+                            .card-stacked .card-content{
+                                color: #555;
+                                .price{
+                                    margin-top: 20px;
+                                    span{a{  padding: 0.2rem 0.5rem;}}
+                                    .left{a{color: #E65100;}}
+                                    .right{
+                                        background-color: #E65100;
+                                        a{color: #fff;}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    li:hover{
+                        .card{
+                            border: none;
+                            box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                        }
+                    }
+                }
+            }
+        }
+        .content3{
+            h4{font-family: "微软雅黑";}
+            height: 200px;
+            #test1,#test2{
+                height: 150px;
+                background: url(../img/store/mobile-StoreChoice2-Banner-576X244.jpg);
+                background-position-y: 90%;background-repeat: no-repeat;
+                .tab-txt{
+                    padding: 3% 0;
+                    text-align: center;
+                    width: 35%;height: 100%;
+                    background-color: #ddd;
+                }
+            }
+            .tabs .tab a{color: #333;}
+            .tabs .indicator{
+                    background-color: #333;
+            }
+        }
+        .content4{
+            .new-online{
+                .card{padding: 3% 0;}
+            }
+            .col{padding:0 ;}
+            .card{
+                background-size: cover;
+                @media only screen and (min-width: 1000px) {
+                    height:330px !important;
+                }
+                h4{
+                    text-align: center;font-family: "微软雅黑";
+                    a{color: #333;}
+                    a:hover{color: #DD2C00;}
+                }
+                .card-stacked{
+                    text-align: center;
+                    font-size: 0.8em;
+                }
+            }
+            .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating){
+                padding: 0.1em 0.5em;margin: 0;
+            }
+            .card .card-action a:last-child{background-color: #ef9109;color: #fff;}
+            .card .card-action a:last-child:hover{background-color: #555;}
+            .card:hover{    
+                box-shadow: 0 3px 0px 0 rgba(0, 0, 0, 0.1), 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 3px 10px -2px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+            }
+        }
+        .content5{
+           h4{font-family: "微软雅黑";}
+           .material-icons{
+              color: #0059BC;
+              font-size: 20px;font-weight: 800; 
+           }
+           
+           .card{
+               opacity: .7;
+                  .card-content{
+                   text-align: center;
+               }   
+           }
+           .card:hover{    
+                box-shadow: 0 3px 0px 0 rgba(0, 0, 0, 0.1), 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 3px 10px -2px rgba(0, 0, 0, 0.2);
+                z-index: 1;opacity: 1;
+            }
+        }
+    }
+}
+//footer
+footer.page-footer{
+    background: #eee;
+    padding:0 5%; 
+    .footer-top{
+        p a{color: #666;}
+        .input-field{
+            .prefix{
+                width: auto;
+                padding: 0 1.2em;border: 1px solid #333;border-right: none;
+                font-size: 0.5em;color: #333;
+                @media only screen and (min-width: 1200px) {
+                    height: 47px;line-height: 47px;
+                }
+                @media only screen and (min-width: 994px) and (max-width: 1199px) {
+                    height: 46px;line-height: 46px;
+                }
+                @media only screen and (max-width: 993px) {
+                    height: 44px;line-height: 44px;
+                }
+            }
+            a:hover{text-decoration: none;background-color: #333; color: #fff;}
+            a.active{background-color: #333; color: #fff;}
+            input{
+                border: 1px solid #333;border-left: none;padding-left: 4em;margin: 0;
+            }
+            input[type=email]:focus:not([readonly]){
+                box-shadow:none;
+            }
+        }
+    }
+    .footer-b{
+        ul{
+            margin: 0;
+            li a{color: #666;font-size: 0.88em;}
+        }
+        .collapsible{
+            border: none;box-shadow: none;
+            p{margin: 0;}
+            .collapsible-header{
+                background-color: #555;
+                color: #fff;
+                span.active{
+                    animation: Romate 0.5s ease-in-out forwards;
+                    -webkit-animation: Romate 0.5s ease-in-out forwards;
+                    -moz-animation: Romate 0.5s ease-in-out forwards;
+                    -ms-animation: Romate 0.5s ease-in-out forwards;
+                }
+                @keyframes Romate{
+                    from{transform: rotate(0);}
+                    to{transform: rotate(90deg);}
+                }
+                @-webkit-keyframes Romate{
+                    from{transform: rotate(0);}
+                    to{transform: rotate(90deg);}
+                }
+                @-moz-keyframes Romate{
+                    from{transform: rotate(0);}
+                    to{transform: rotate(90deg);}
+                }
+                @-ms-keyframes Romate{
+                    from{transform: rotate(0);}
+                    to{transform: rotate(90deg);}
+                }
+            }
+            .collapsible-body{
+                ul{
+                    padding: 1em 0;
+                    padding-left: 1em;background-color: #fff;
+                    li a{padding: 0.2em 0;font-size: 0.8em;color: #333;}
+                }
+            }
+        }
+    }
+    .footer-copyright{
+        .row{margin-bottom: 0;}
+        .row .col{height: auto;}
+        font-size: 0.7em;
+        .some1{
+            height: 30px;
+            line-height: 30px;
+            i{font-size: 2em;} 
+        }
+        .some2{
+            height: 30px !important;overflow: hidden;
+           a{margin: 0 0.5rem;color: #666;line-height: 30px;} 
+        }
+    }
+    a:hover{text-decoration: underline;}
+}
+
+.btn-floating {
+    position: relative; padding: 0;
+    display: inline-block;
+    overflow: hidden;
+    z-index: 1;
+    width: 40px;height: 40px;border-radius:5px;
+    line-height: 40px;color: #333;border: 1px solid #333;
+    background-color: #fff;
+    transition: .3s;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+}
+.btn-floating:hover{
+    color: #fff; background-color: #333;
+}

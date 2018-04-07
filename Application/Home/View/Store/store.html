@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>门店管理</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="shortcut icon" href="__PUBLIC__/Common/images/dingling.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/management.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/Home/css/daterangepicker-bs3.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Common/js/jquery.form.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/store.js"></script>
+    <!--腾讯地图-->
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+    <script>
+        var choosingPoint = null;
+        var EDITMAP = null;
+        var EDITMARKER = null;
+        var status = 'edit';
+        var jump = null;
+        var geocoder,addmap,editmap,addmarker,editmarker = null;
+        var init = function() {
+            //默认定位广州大学城
+            var center = new qq.maps.LatLng(23.05130,113.38805);
+            var ecenter = null;
+            console.log(choosingPoint);
+            if(choosingPoint==undefined){
+                ecenter = center;
+            }else{
+                choosingPoint = choosingPoint.split(',');
+                console.log(choosingPoint);
+                ecenter = new qq.maps.LatLng(choosingPoint[0],choosingPoint[1]);
+            }
+
+//            var addmap = new qq.maps.Map(document.getElementById('add-container'),{
+//                center: center,
+//                zoom: 13
+//            });
+            var editmap = new qq.maps.Map(document.getElementById('edit-container'),{
+                center: center,
+                zoom: 13
+            });
+            EDITMAP = editmap;
+
+            var anchor = new qq.maps.Point(10, 30);
+            var size = new qq.maps.Size(32, 30);
+            var origin = new qq.maps.Point(0, 0);
+            var icon = new qq.maps.MarkerImage('__PUBLIC__/Home/images/map-marker.png', size, origin, anchor);
+            size = new qq.maps.Size(52, 30);
+            var originShadow = new qq.maps.Point(32, 0);
+            var shadow =new qq.maps.MarkerImage(
+                    '__PUBLIC__/Home/images/map-marker.png',
+                    size,
+                    originShadow,
+                    anchor
+            );
+//            var addmarker = new qq.maps.Marker({
+//                icon: icon,
+//                shadow: shadow,
+//                map: addmap,
+//                position:center,
+//                animation: qq.maps.MarkerAnimation.BOUNCE
+//            });
+            var editmarker = new qq.maps.Marker({
+                icon: icon,
+                shadow: shadow,
+                map: editmap,
+                position:center,
+                animation: qq.maps.MarkerAnimation.BOUNCE
+            });
+            EDITMARKER = editmarker;
+
+//            addjump = function(event) {
+//                addmarker.setPosition(event.latLng);
+//                var storeAdd = document.getElementById('add-s_addr');
+//                var coordinateAdd = document.getElementById('add-s_coordinate');
+//                var lat = event.latLng.getLat().toFixed(5);
+//                var lng = event.latLng.getLng().toFixed(5);
+//                storeAdd.title = lat +','+lng;
+//                coordinateAdd.value=lat +','+lng;
+//
+//                //获取坐标对应的中文
+//                //调用web接口获取位置方法
+//                /*发送出去的完整URl*/
+//                var url = "http://apis.map.qq.com/ws/geocoder/v1/?location="+lat+","+lng+"&get_poi=1&key=UL5BZ-RIA3V-VGYPY-UA4D5-ZU2B7-PXBH7";
+//                $.ajax({
+//                    type:"get",
+//                    dataType:'jsonp',
+//                    data:'output=jsonp',
+//                    jsonp:"callback",
+//                    jsonpCallback:"funciton1",
+//                    url:url,
+//                    success:function(json){
+//                        console.log(json);
+//                        var storeAdd = document.getElementById('add-s_addr');
+//                        storeAdd.value = json.result.formatted_addresses.recommend;
+//                    },
+//                    error : function(err){
+//                        console.log(err);
+//                    }
+//                });
+//            };
+
+            editjump = function(event) {
+                editmarker.setPosition(event.latLng);
+                var storeAdd = document.getElementById('edit-s_addr');
+                var coordinateAdd = document.getElementById('edit-s_coordinate');
+                var lat = event.latLng.getLat().toFixed(5);
+                var lng = event.latLng.getLng().toFixed(5);
+                storeAdd.title = lat +','+lng;
+                coordinateAdd.value=lat +','+lng;
+
+                //获取坐标对应的中文
+                //调用web接口获取位置方法
+                /*发送出去的完整URl*/
+                var url = "http://apis.map.qq.com/ws/geocoder/v1/?location="+lat+","+lng+"&get_poi=1&key=UL5BZ-RIA3V-VGYPY-UA4D5-ZU2B7-PXBH7";
+                $.ajax({
+                    type:"get",
+                    dataType:'jsonp',
+                    data:'output=jsonp',
+                    jsonp:"callback",
+                    jsonpCallback:"funciton1",
+                    url:url,
+                    success:function(json){
+                        console.log(json);
+                        var storeAdd = document.getElementById('edit-s_addr');
+                        storeAdd.value = json.result.formatted_addresses.recommend;
+                    },
+                    error : function(err){
+                        console.log(err);
+                    }
+                });
+            };
+
+
+            //调用地址解析类
+            geocoder = new qq.maps.Geocoder({
+                complete : function(result){
+                    console.log(status);
+                    if(status=='add'){
+                        console.log(result.detail.location);
+                        addmap.setCenter(result.detail.location);
+                        addmarker.setPosition(result.detail.location);
+                    }else{
+                        editmap.setCenter(result.detail.location);
+                        editmarker.setPosition(result.detail.location);
+                    }
+                }
+            });
+
+//            qq.maps.event.addListener(addmap, 'click', addjump);
+            qq.maps.event.addListener(editmap, 'click', editjump);
+        };
+        //解析地址
+        function codeAddress(string) {
+//            if(string=="add"){
+//                status = 'add';
+//                var address = document.getElementById("add-s_addr").value;
+//            }else{
+                status = 'edit';
+                var address = document.getElementById("edit-s_addr").value;
+//            }
+            //通过getLocation();方法获取位置信息值
+            geocoder.getLocation(address);
+        }
+        //根据坐标点设置地图上的位置
+        function pointSetMap(point){
+            console.log(point);
+            var latlng = point.split(',',2);
+            console.log(latlng);
+            var LLObj = new qq.maps.LatLng(latlng[0], latlng[1]);
+            EDITMAP.setCenter(LLObj);
+            EDITMARKER.setPosition(LLObj);
+        }
+
+    </script>
+    <style type="text/css">
+    .btn-default{
+        border:none;
+        background-color: #f5f5f5;
+    }
+    .campus-heading{
+        padding: 0;
+    }
+    .setting-avatar {
+        display: block;
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        opacity: 0;
+        bottom: 0;
+        border:1px solid #F00;
+    }
+    img{
+        height: 200px;
+        width: 200px;
+        cursor:pointer;
+    }
+    #code_pic_td{
+        height: 60px;
+        width: 60px;
+    }
+    </style>
+</head>
+<body>
+    <div class="form-box container-fluid">
+        <div class="row">
+            <div class="col-xs-7">
+                <div class="panel panel-info">
+                    <div class="panel-heading">来源列表</div>
+                    <div class="panel-body" id="storeLists"></div>
+                </div>
+            </div>
+
+
+
+            <div class="col-xs-5">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-success">
+                        <div class="panel-heading" role="tab" id="store-headingTwo">
+                            <h4 class="panel-title">
+                                <a id="edit-optometry-time" role="button" data-toggle="collapse" data-parent="#accordion" href="#store-collapseTwo" aria-expanded="true" aria-controls="store-collapseOne">操作</a>
+                            </h4>
+                        </div>
+                        <div id="store-collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="store-headingTwo">
+                            <div class="panel-body">
+                                <form id="sform" enctype="multipart/form-data" method="post">
+                                    <input type="hidden" name="id" id="id" value="">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">类型：</span>
+                                        <select id="s_type" class="form-control" name="s_type" onchange="addressInputChange()">
+                                            <option value="0">门店</option>
+                                            <option value="1">推广员</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">名称：</span>
+                                        <input type="text" class="form-control" placeholder="来源名称" aria-describedby="s-name" name="s_name" id="s_name">
+                                    </div>
+                                    <br>
+                                    <div id="addressBox">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" style="text-align: left;">地址：</span>
+                                            <input type="text" class="form-control" placeholder="地址" aria-describedby="s-nickname" name="s_addr" id="edit-s_addr" title="">
+                                            <input type="hidden" name="s_coordinate" id="edit-s_coordinate" value="">
+                                            <span class="input-group-btn store-search-btn"><button class="btn btn-default" type="button" onclick="codeAddress('edit')">搜索</button></span>
+                                        </div>
+                                        <div class="map-box" id="edit-container">
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">电话：</span>
+                                        <input type="text" class="form-control" placeholder="联系电话" aria-describedby="s-name" name="s_phone" id="s_phone"></div>
+                                    <br />
+                                    <div class="checkbox">
+                                        <label>
+                                            <input onchange="changeCheckValue()" id="is_withdraw" type="checkbox" name="is_withdraw" class="is_withdraw">是否参与推广分成
+                                        </label>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">分成提现有效期：</span>
+                                        <select id="effectiveyear" class="form-control" name="effectiveyear">
+                                            <option >请选择...</option>
+                                            <option value="1">1年</option>
+                                            <option value="2">2年</option>
+                                            <option value="3">3年</option>
+                                        </select>
+                                    </div>
+                                    <br />
+                                    <img src="__PUBLIC__/Home/images/brand-logo-default.jpg" class="setting-upload-preview img-thumbnail" id="code_pic_edit"/>
+
+                                    <!--<a class="sthumbnail">-->
+                                        <!--<input type="file" class="setting-avatar" value="" name="s_code" id="s_code" onchange="selectIcon();"/>-->
+                                    <!--</a>-->
+                                </form>
+                                <br>
+                                <button type="button" class="btn btn-default" onclick="addStore();">添加</button>
+                                <button type="button" class="btn btn-default" onclick="saveStore();">保存</button>
+                                <button type="button" class="btn btn-default" onclick="deleteStore();">删除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var URL="__URL__";
+    var MODULE="__MODULE__";
+    var PUBLIC="__PUBLIC__";
+</script>
+</html>

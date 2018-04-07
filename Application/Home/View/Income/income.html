@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收入管理</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="shortcut icon" href="__PUBLIC__/Common/images/dingling.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/management.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/Home/css/daterangepicker-bs3.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/income.js"></script>
+    <style type="text/css">
+    .table {
+        margin-bottom: 0;
+    }
+    .order-iframe {
+        padding: 0;
+    }
+    h3 nav a{
+        float: left;
+    }
+    .pager .next>a, .pager .next>span {
+        float: left;
+    }
+    </style>
+</head>
+<body>
+    <div class="modal fade" id="withdrawModel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">提现申请:</h4>
+                </div>
+                <input type="hidden" id="id" value="">
+                <div class="modal-body">
+                    <p id="leftPayment_model">可提金额：￥ {$leftPayment}</p>
+                    <br>
+                    <input type="text" class="form-control" placeholder="提现金额" id="applyNum"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="subBtn">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-box">
+        <!--时间-->
+        <div class="calendar-box calendar-select" id="date-box">
+            <fieldset>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-prepend input-group">
+                            <span class="add-on input-group-addon"> <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                            <input type="text" readonly style="width: 200px; background: #fff;" name="reservation" id="reservation" class="form-control back-color-w" value="{$startDate} - {$endDate}" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <volist name="incomePackages" id="ip">
+            <if condition="$ip.p_option eq 'store_select'">
+                <select class="form-control select-btn" id="store">
+                    <option value="">选择门店</option>
+                    <volist name="stores" id="store">
+                        <option value="{$store.s_name}">{$store.s_name}</option>
+                    </volist>
+                </select>
+            </if>
+            <if condition="$ip.p_option eq 'addwithdraw_btn'">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-primary" id="addBtn" ata-toggle="tooltip" data-placement="top" title="提现">
+                        <span class="glyphicon glyphicon-plus nav-icon"></span>
+                    </button>
+                </div>
+            </if>
+        </volist>
+        <div class="clear"></div>
+
+        <div class="row" id="control-row">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>收入</h3>
+                        <p id="todayPayment">￥ {$todayPayment}</p>
+                    </div>
+                </div>
+            </div>
+            <notempty name="pointPayment">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3>门店分成金额</h3>
+                            <p id="pointPayment">￥ {$pointPayment}</p>
+                        </div>
+                    </div>
+                </div>
+            </notempty>
+            <notempty name="leftPayment">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3>可提金额</h3>
+                            <p id="leftPayment">￥ {$leftPayment}</p>
+                        </div>
+                    </div>
+                </div>
+            </notempty>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>总营业额</h3>
+                        <p id="totalPayment">￥ {$totalPayment}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table" id="table">
+            <thead>
+                <tr>
+                    <th>提现记录</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+        <div class="clear"></div>
+        <iframe id="orderTable" src="__MODULE__/Income/withdraw" class="order-iframe" frameborder="no" scrolling="auto"></iframe>
+    </div>
+</body>
+    <script>
+    var URL="__URL__";
+    var MODULE="__MODULE__";
+</script>
+</html>

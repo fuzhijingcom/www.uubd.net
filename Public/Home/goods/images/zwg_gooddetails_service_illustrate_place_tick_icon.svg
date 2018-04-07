@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.3 (16044) - http://www.bohemiancoding.com/sketch -->
+    <title>iconfont-zhengque</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="商品详情（弹窗）" sketch:type="MSArtboardGroup" transform="translate(-39.000000, -1026.000000)">
+            <g id="弹窗" sketch:type="MSLayerGroup" transform="translate(0.000000, -1.000000)">
+                <g id="正品保证-+-iconfont-zhengque" transform="translate(40.000000, 1020.000000)" sketch:type="MSShapeGroup">
+                    <g id="iconfont-zhengque" transform="translate(0.000000, 8.000000)">
+                        <g id="图形">
+                            <path d="M10.0071152,0.013546808 C4.49039837,0.013546808 0.0182533482,4.48569183 0.0182533482,10.0024086 C0.0182533482,15.5190112 4.49039837,19.9912705 10.0071152,19.9912705 C15.5237406,19.9912705 19.9959999,15.5190112 19.9959999,10.0024086 C19.9959999,4.48569183 15.5238548,0.013546808 10.0071152,0.013546808 L10.0071152,0.013546808 L10.0071152,0.013546808 Z" id="Shape" stroke="#FF5F00" fill="#FF5F00"></path>
+                            <path d="M8.81338739,14.4797387 L4.12276192,9.95635987 L5.29657179,8.73912801 L8.73088333,12.0509169 L14.6377128,5.52505571 L15.891537,6.6598292 L8.81338739,14.4797387 L8.81338739,14.4797387 Z" id="Shape" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

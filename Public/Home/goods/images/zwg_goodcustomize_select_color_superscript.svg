@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>角标</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="配镜页面" sketch:type="MSArtboardGroup" transform="translate(-175.000000, -779.000000)">
+            <g id="镜框颜色" sketch:type="MSLayerGroup" transform="translate(48.000000, 779.000000)">
+                <g id="Rectangle-378-Copy-8-+-亮黑色-copy" sketch:type="MSShapeGroup">
+                    <g id="Rectangle-404">
+                        <g id="角标" transform="translate(127.000000, 0.000000)">
+                            <path d="M21,20.5968514 L0.41612626,0.0129776844 L0.429103944,-1.73472348e-18 L21,0 L21,20.5968514 Z" id="Rectangle-404" fill="#09bb07"></path>
+                            <path d="M16.1475343,8.23771863 L13.8749927,8.23771863 C13.4701407,8.23771863 13.1319093,8.57350507 13.1319093,8.98771863 C13.1319093,9.40482002 13.4645991,9.73771863 13.8749927,9.73771863 L16.8888258,9.73771863 C17.1578589,9.73771863 17.3974729,9.58943892 17.527965,9.36840051 C17.6037195,9.25065151 17.6475343,9.11021266 17.6475343,8.9594155 L17.6475343,2.46465666 C17.6475343,2.05578608 17.3117478,1.71203608 16.8975343,1.71203608 C16.4804329,1.71203608 16.1475343,2.04899579 16.1475343,2.46465666 L16.1475343,8.23771863 Z" id="Rectangle-405" fill="#FFFFFF" transform="translate(15.389722, 5.724877) rotate(-330.000000) translate(-15.389722, -5.724877) "></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单表格</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/order.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/income.js"></script>
+    <style type="text/css">
+    td{
+        height: 51px;
+    }
+    a{
+        cursor: pointer;
+    }
+    .bs-example{
+        padding: 0 0;
+        margin: 0 0;
+    }
+    </style>
+</head>
+<body>
+    <form>
+        <!--表身-->
+        <div class="table-content-box-body">
+            <table class="table table-hover">
+                <tbody>
+                    <volist name="withdraws" id="withdraw" empty="暂时没有数据">
+                        <tr>
+                            <td>{$withdraw.w_utime}</td>
+                            <td>{$withdraw.nickname}</td>
+                            <td>{$withdraw.s_name}</td>
+                            <td>￥ {$withdraw.w_cash}</td>
+                            <td>
+                                <switch name="withdraw.w_status">
+                                    <case value="0">待处理</case>
+                                    <case value="1">已完成</case>
+                                    <case value="2">已撤销</case>
+                                    <default />
+                                    其他
+                                </switch>
+                            </td>
+
+                            <td>
+                                <if condition="$withdraw.w_status eq '0'">
+                                    <div class="bs-example" data-example-id="split-button-dropdown">
+                                        <volist name="menuPackages" id="mp">
+                                            <if condition="$mp.p_option eq 'edit_div'">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary" onclick="editWithdraw({$withdraw.w_id},{$withdraw.w_cash})">编辑</button>
+                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="caret"></span>
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a onclick="upWithdraw({$withdraw.w_id,2,this})">撤销</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </if>
+                                            <if condition="$mp.p_option eq 'agree_div'">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary" onclick="upWithdraw({$withdraw.w_id},1,this)">同意</button>
+                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="caret"></span>
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a onclick="upWithdraw({$withdraw.w_id},2,this)">撤销</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </if>
+                                        </volist>
+                                    </div>
+                                </if>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+        <!--换页按钮-->
+        <div class="page-change-box withdraw-page-change-box">{$page}</div>
+    </form>
+</body>
+    <script>
+var URL="__URL__";
+var MODULE="__MODULE__";
+</script>
+</html>

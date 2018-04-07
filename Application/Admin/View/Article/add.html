@@ -1,0 +1,216 @@
+<include file="Public:header" />
+<style>
+    #btnUploadImage{
+        float:left;
+        padding-left:10px;
+    }
+    .uploadify-queue{
+        float: left;
+        clear: both;
+    }
+    .uploadify-queue-item{
+        width: auto;
+    }
+    .cancel{
+        float: right;
+        padding-left: 10px;
+    }
+    .uploadify{
+        background-color: gray;
+        margin-left: 10px;
+    }
+    .uploadify-button{
+        line-height: 28px;
+        text-align: center
+    }
+</style>
+<script language="javascript" type="text/javascript" src="/Public/plugin/KindEditor/kindeditor-min.js"></script>
+<script language="javascript" type="text/javascript" src="/Public/plugin/KindEditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="content"]', {
+            resizeType : 1,
+            allowPreviewEmoticons : false,
+            allowImageUpload : true,
+            afterBlur: function(){this.sync();}
+        });
+    });
+    $(function(){
+        $('form').validate({
+            errorPlacement: function(error, element){
+                $(element).next('.field_notice').hide();
+                $(".ke-container").addClass("kindeditor-error");
+                $(element).after(error);
+            },
+            success       : function(label){
+                label.addClass('right').text('OK!');
+                $(".ke-container").removeClass("kindeditor-error");
+            },
+            onfocusout : false,
+            onkeyup    : false,
+            rules : {
+                title : {
+                    required : true,
+                    remote: {
+                        url: "{:U('/Admin/Article/CheckExists/')}",     //后台处理程序
+                        type: "post",               //数据发送方式
+                        dataType: "json",           //接受数据格式
+                        data: {                     //要传递的数据
+                            title: function() {
+                                return $("input[name=title]").val();
+                            }
+                        }
+                    }
+                },
+                cateid : {
+                    required : true,
+                },
+                thumb : {
+                    required : false,
+                },
+                description : {
+                    required : false,
+                },
+                content : {
+                    required : true,
+                },
+            },
+            messages : {
+                title : {
+                    required : '提示：资讯标题不能为空',
+                    remote   : "提示：此标题已经存在"
+                },
+                cateid : {
+                    required : '提示：请选择资讯分类'
+                },
+                thumb : {
+                    required : "提示：请上传缩略图",
+                },
+                description : {
+                    required : '提示：请填写资讯简介'
+                },
+                content : {
+                    required : '提示：请填写资讯详情'
+                }
+            }
+        });
+    });
+</script>
+<div id="forms" class="mt10">
+    <div class="box">
+        <div class="box_border">
+            <div class="box_top"><b class="pl15">添加资讯</b></div>
+            <div class="box_center">
+                <form class="jqtransform" name="form1" action="{:U('/Admin/Article/add')}" method="post">
+                    <table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="td_right">资讯标题：</td>
+                            <td class=""><input name="title" type="text" class="input-text lh30" size="40"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">所属分类：</td>
+                            <td class="">
+                                <select class="select" name="cateid" style="width: 258px;">
+                                    <option value="">选择资讯分类</option>
+                                    <foreach name="catelist" item="cate">
+                                        <option value="{$cate.cateid}">{$cate.name}</option>
+                                    </foreach>
+                                </select>
+                            </td>
+                        </tr>
+                        
+                      
+                        <tr>
+                            <td class="td_right">缩略图：</td>
+                            <td class="">
+                                <input name="thumb" style="float: left" readonly="readonly" id="thumb" type="text" class="input-text lh30" size="40">
+                                <input class="ext_btn ext_btn_submit" type="button" id="btnUploadImage" value="上传二维码" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">资讯简介：</td>
+                            <td class=""><textarea style="resize: none;font-size: 12px;" name="description" cols="30" rows="10" class="textarea"></textarea></td>
+                        </tr>
+                        <tr>
+                            <th style="width:15em;">资讯标签：</th>
+                            <td><input name="tags" type="text" class="input-text lh30" size="40"><span style="color:red;padding-left:3px;">提示：标签以英文逗号分隔</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">来源网址：</td>
+                            <td class=""><input name="fromsite" type="text" class="input-text lh30" size="40"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">排序值：</td>
+                            <td class=""><input name="list" type="text" value="0" class="input-text lh30" size="40"><span style="color:red;padding-left:3px;">提示：排序值影响资讯显示顺序，从大到小显示</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">浏览量：</td>
+                            <td class=""><input name="views" type="text" value="0" class="input-text lh30" size="40"><span style="color:red;padding-left:3px;">提示：资讯浏览次数</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">点赞量：</td>
+                            <td class=""><input name="digs" type="text" value="0" class="input-text lh30" size="40"><span style="color:red;padding-left:3px;">提示：资讯点赞次数</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">评论量：</td>
+                            <td class=""><input name="comments" type="text" value="0" class="input-text lh30" size="40"><span style="color:red;padding-left:3px;">提示：资讯评论次数</span></td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">资讯详情：</td>
+                            <td class=""><textarea style="width: 700px; height: 382px; resize:none;" name="content" cols="" rows="" class="textarea"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="td_right">&nbsp;</td>
+                            <td class="">
+                                <input type="submit" name="button" class="btn btn82 btn_save2" value="保存">
+                                <input type="button" onclick="javascript:history.go(-1);" name="button" class="btn btn82 btn_res" value="返回">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        //上传幻灯片
+        $("#btnUploadImage").uploadify({
+            'formData'     : {
+                '{:session_name()}':'{:session_id()}'
+            },
+            'fileSizeLimit'	: '2048KB',//限制大小 2M
+            'buttonText'	: '上传缩略图',
+            'fileObjName'   : 'Filedata',
+            'width'         : 94,
+            'height'        : 28,
+            'multi'         : false,//多个 默认true
+            'progressData' 	: 'percentage',
+            'fileTypeDesc'  : '请选择图片...',
+            'fileTypeExts'  : '*.jpg;*.jpeg;*.png',
+            'swf'           : '/Public/plugin/uploadify/uploadify.swf',
+            'uploader'      : "{:U('/Admin/Upload/upload/')}",
+            'onFallback' 	: function() {
+                $(this).click(function(){alert('浏览器检测不到Flash插件，无法上传！','error')});
+            },
+            'onUploadStart' : function(file) {
+            },
+            'onUploadSuccess' : function(file, data, response) {
+                data = $.parseJSON(data);
+                if(data.error==false){
+                    $("input[name=thumb]").val(data.picpath);
+                }else{
+                    alert(data.message);
+                }
+            },
+            'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                if("Cancelled"!=errorString){
+                    alert('文件 ' + file.name + ' 上传失败 ','error');
+                }
+            }
+        });
+    })
+</script>
+<include file="Public:footer" />
+  

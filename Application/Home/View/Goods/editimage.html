@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>商品图片管理</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/goods.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/goods-upload.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/upload.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jqueryui/1.10.1/jquery-ui.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap-tooltip.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap-confirmation.js"></script>
+    <link href="__PUBLIC__/Home/css/ssi-uploader.min.css" rel="stylesheet"/>
+    <script src="__PUBLIC__/Home/js/ssi-uploader.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <h1>
+                <small>{$selling_id}——{$goods_name} 商品图片编辑</small>
+            </h1>
+        </div>
+        <!-- 商品轮播图管理 -->
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">轮播图管理</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row" id="slide-panel">
+                    <!--<div class="col-xs-4 col-md-2">-->
+                        <!--<div class="upload-container">-->
+                            <!--<h5>这是一个好商品啊</h5>-->
+                            <!--<div class="slide-img"></div>-->
+                            <!--<form role="form">-->
+                                <!--<div class="form-group">-->
+                                    <!--<input type="file" name="image" class="form-control file-box">-->
+                                <!--</div>-->
+                                <!--<div class="form-group" style="display: none;">-->
+                                    <!--<input name="sku_id" type="text" class="form-control" placeholder="商品sku_id">-->
+                                <!--</div>-->
+                                <!--<button type="button" class="btn btn-success" onclick="uploadSlideImg(this)">开始上传</button>-->
+                            <!--</form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+
+        <!-- 商品详情图管理 -->
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">商品详情图管理 <a class="btn btn-info" href="{$preview_url}" target="_blank" style="color: #fff; margin-left: 20px;">商品购买页预览</a> <a class="btn btn-primary" href="{$true_url}" target="_blank" style="color: #fff; margin-left: 20px;">商品实际购买页</a> <a class="btn btn-danger" href="javascript:void(0)" target="_blank" style="color: #fff; margin-left: 20px;" onclick="removeAllPageImg()">删除全部详情图</a> </h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div id="page-left-show" class="bs-example" style="width: 440px;">
+                                <!--<img src="http://www.66mj.com/Public/Uploads/page/K1009/K1009-1-58538024468d4.jpg" width="400"><img src="http://www.66mj.com/Public/Uploads/page/K1009/K1009-1-58538024468d4.jpg" width="400">-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div href="#" class="thumbnail" id="page-upload-control">
+                                <!--<div class="page-upload-container">-->
+                                    <!--<div class="page-img"><img src="http://www.66mj.com/Public/Uploads/page/K1001/K1001-3-585b44e65e5c0.jpg" width="110"><h5 class="page-image-title">详情图 1 </h5></div>-->
+                                    <!--<form role="form" class="page-image-form">-->
+
+                                        <!--<div class="form-group"><input type="file" name="image" class="form-control file-box"></div>-->
+                                        <!--<div class="form-group" style="display: none;"><input value="K1001" name="selling_id" type="text" class="form-control" placeholder="商品selling_id"></div>-->
+                                        <!--<div class="form-group" style="display: none;"><input value="1" name="order" type="text" class="form-control" placeholder="详情图顺序号"></div> <button type="button" class="btn btn-success" onclick="uploadPageImg(this)">开始上传</button> <button type="button" class="btn btn-danger" onclick="removePageImg(this)"-->
+                                                                                                                                                                                                                                                                                    <!--data-toggle="confirmation">删除</button></form>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var selling_id = '{$selling_id}';
+    var URL = "__URL__";
+    var MODULE = "__MODULE__";
+    var CONTROLLER = "__CONTROLLER__";
+    var SITE_URL = '{$SITE_URL}';
+</script>
+<script src="__PUBLIC__/Home/js/goods-image-edit.js"></script>
+<script src="__PUBLIC__/Home/js/goods-upload-slide.js"></script>
+<script src="__PUBLIC__/Home/js/goods-upload-page.js"></script>
+</body>
+</html>
+
+<script>
+
+</script>

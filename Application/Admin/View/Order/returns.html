@@ -1,0 +1,117 @@
+<include file="Public:header" />
+<script type="text/javascript" src="/Public/plugin/laydate/laydate.js"></script>
+<div id="table" class="mt10">
+    <div id="search_bar" class="mt10" style="padding-bottom: 10px;">
+        <div class="box">
+            <div class="box_border">
+                <div class="box_top">
+                    <b class="pl15">退款订单列表</b>
+                </div>
+            </div>
+            <div style="border-top:1px solid #dadada;" class="box_bottom pb5 pt5 pr10">
+                <div style="text-align:right;" class="search_bar_btn">
+                    <form name="sform" method="get" action="__SELF__">
+                        <select name="search_type" class="input-text lh25">
+						<option <if condition="$Think.get.search_type eq 'receiver'">selected="selected"</if> value="receiver">收货人姓名</option>
+						<option <if condition="$Think.get.search_type eq 'buyer'">selected="selected"</if> value="buyer">买家</option>
+						<option <if condition="$Think.get.search_type eq 'ordersn'">selected="selected"</if> value="ordersn">订单号</option>
+					</select> 
+					：<input name="keyword" class="input-text lh25" type="text" value="{$Think.get.keyword}">
+					申请退款时间：
+						<input name="begindate" id="begindate" class="input-text lh25" type="text" value="{$Think.get.begindate}">~
+						<input name="enddate" id="enddate" class="input-text lh25" type="text" value="{$Think.get.enddate}"> 
+						
+                        <input type="submit" class="ext_btn ext_btn_submit" value="搜索">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box span10 oh">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <tr style="text-align: center">
+				<th width="70">ID</th>
+				<th width="100">订单号</th>
+				<th width="100">退款时间</th>
+				<th width="100">退款账号</th>
+				<th width="100">退款总额</th>
+				<th width="70">退款状态</th>
+				<th width="100">管理操作</th>
+            </tr>
+            <if condition="empty($infolist)">
+             <tr class="tr"><td colspan="13" style="text-align:center;">暂无任何信息</td></tr>
+            <else />
+            <foreach name='infolist' item="info">
+            <tr class="tr">
+				<td align='center'>{$info.order_id}</td>
+                <td align='center'>{$info.order_sn}</td>
+				<td align='center'>{$info.posttime|date="Y-m-d H:i:s",###}</td>
+				<td align='center'>{$info.buyer}</td>
+				<td align='center'>{$info.return_charge}</td>
+				<td align='center'>{$info.return_status_label}</td>
+				
+				<td align='center'>
+					<if condition="$info.returns_status eq 0">
+					<a href="javascript:;;" onclick="confirm('确定要通过审核该退款信息吗？', '{:U('/Admin/Order/pass',array('id'=>$info['order_id']))}')" target="main">【通过审核】</a>
+					<a href="javascript:;;" onclick="confirm('确定要拒绝审核该退款信息吗？', '{:U('/Admin/Order/refuse',array('id'=>$info['order_id']))}')" target="main">【拒绝审核】</a>
+					<else/>
+					--
+					</if>
+				
+				</td>
+            </tr>
+            </foreach>
+            </if>
+        </table>
+        <div class="page mt10">
+            <div class='pagination'>{$pageshow}</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	var begindate = {
+		elem: '#begindate',
+		format: 'YYYY/MM/DD hh:mm:ss',
+		skin:'molv',
+		max: '2099-06-16 23:59:59', //最大日期
+		istime: true,
+		istoday: false,
+		choose: function(datas){
+			enddate.min = datas; 
+			enddate.start = datas
+		}
+	};
+	var enddate = {
+		elem: '#enddate',
+		format: 'YYYY/MM/DD hh:mm:ss',
+		max: '2099-06-16 23:59:59',
+		istime: true,
+		istoday: false,
+		choose: function(datas){
+			begindate.max = datas;
+		}
+	};
+	laydate.skin('molv');
+	laydate(begindate);
+	laydate(enddate);
+	
+	function delivery(id,status){
+			$.ajax({
+				type:'post',
+				url: "/Admin/Order/deliv",
+				cache: false,
+				data:{id:id,status:status},
+				success: function(response){
+					if(response.status==1){
+						alert(response.message);
+						return;
+					}else{
+						alert(response.message);
+						return;
+					}
+				}
+			});
+	}
+</script>
+<include file="Public:footer" />
+  

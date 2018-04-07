@@ -1,0 +1,257 @@
+*{padding:0 0;margin:0 0;}
+img{border:none; display:block}
+html {
+    font-size: 62.5%;
+    height:100%;
+    /*10 ÷ 16 × 100% = 62.5%*/
+}
+body{
+    height:100%;
+}
+.fl{float: left;}
+.fr{float: right;}
+.clear{clear:both;}
+
+.fix-box{
+    width:100%;
+    background:#fff;
+    position: fixed;
+    top:0;
+    border-bottom:solid 2px #ccc;
+}
+.form-box{
+    width:100%;
+    padding:1.2rem 2.5rem;
+}
+.select-btn{
+    width:12rem!important;
+    margin-right:1rem;
+    float: left;
+}
+.calendar-select{
+    width:20rem;
+    margin-right:1rem;
+    float: left;
+}
+
+.navbar-left{
+    margin:0 0!important;
+    padding:0 0!important;
+}
+.search-box{
+    width:13.7rem!important;
+    margin-right:0.6rem!important;
+}
+.file-box{
+    width:20rem!important;
+    margin-right:0.6rem!important;
+}
+.order-iframe{
+    width:100%;
+    padding-left:2.5rem;
+    padding-right:2.5rem;
+    border-bottom:solid 1px #ccc;
+}
+.page-change-box{
+    padding-left:2.5rem;
+    height:4rem;
+}
+.page-btn-box{
+    margin:0.8rem 0 0 0!important;
+}
+.page-btn-box-whole-span{
+    margin:0.8rem 0 0 0!important;
+    line-height: 3.3rem;
+    padding-left: 1rem;
+    color:#333;
+}
+.deperation{
+    color:#ccc;
+}
+
+.btn-box-form{
+    padding:0 0 1rem 0;
+}
+.btn-box{
+    padding:0 2.5rem;
+}
+.text-num{
+    font-size:1.6rem;
+    display: inline-block;
+    margin-left:1rem;
+}
+.text-num span{
+    color:#ff7800;
+}
+
+.order-box{
+    width: 100%;
+    padding: 13.6rem 2.5rem 0 2.5rem;
+}
+.order-item{
+    position: relative;
+    list-style: none;
+    margin-bottom:1rem;
+}
+.info-part1{
+    width:100%;
+    background: #f6eff1;
+    padding:1.5rem 1.5rem 0.5rem 1.5rem;
+}
+.part1-up,.part1-down{
+    width:100%;
+}
+.o-text{
+    font-size:1.3rem;
+    color:#333;
+    padding:0 1.5rem 0 0;
+}
+.o-text span{
+    color:#999;
+}
+.o-link{
+    font-size:1.4rem;
+    color:#007ece;
+    float: right;
+}
+.info-part2{
+    width:100%;
+    border-left: solid #ddd 1px;
+    border-right: solid #ddd 1px;
+    border-bottom: solid #ddd 1px;
+    padding:1.5rem 1.5rem 0.5rem 1.5rem;
+}
+.p-pic{
+    width:100px;
+    height:76px;
+    margin-right:1.5rem;
+}
+.p-name-style{
+    width:300px;
+    height:76px;
+    margin-right: 1rem;
+}
+.p-name{
+    width:300px;
+    height:50px;
+    font-size:1.4rem;
+    line-height:1.6rem;
+    margin-right:1rem;
+    overflow: hidden;
+}
+.num-price-box{
+    width:100px;
+    height:76px;
+    border-right:dotted 1px #ccc;
+    margin-right:1.5rem;
+}
+.num-price-box p{
+    text-align: center;
+}
+.o-school{
+    width:150px;
+    height:76px;
+    border-right:dotted 1px #ccc;
+    margin-right:1.5rem;
+}
+.o-person{
+    width:70px;
+    height:76px;
+    border-right:dotted 1px #ccc;
+    margin-right:1.5rem;
+}
+.o-time{
+    width:85px;
+    height:76px;
+    border-right:dotted 1px #ccc;
+    margin-right:1.5rem;
+}
+.o-staus-box{
+    width:100px;
+    height:76px;
+    border-right:dotted 1px #ccc;
+    margin-right:1.5rem;
+}
+.o-btn{
+    width:80px;
+    padding:0.2rem 1rem;
+    color:#666;
+    text-align: center;
+}
+.o-whole-price{
+    width:100px;
+    text-align: right;
+}
+.item-head{
+    width:100%;
+    padding:0 2.5rem 0 2.5rem;
+    margin-bottom:0!important;
+}
+.item-head li{
+    list-style:none;
+    padding-left:1.5rem;
+}
+.item-head li p{
+    color:#333;
+    font-weight:700;
+}
+.i-1{
+    width:450px;
+}
+.i-2{
+    width:90px;
+}
+.i-3{
+    width:165px;
+}
+.i-4{
+    width:85px;
+}
+.i-5{
+    width:100px;
+}
+.i-6{
+    width:110px;
+}
+.o-product{
+    margin-bottom:1rem;
+}
+.show-address{
+    position: absolute;
+    top:1rem;
+    right:2rem;
+}
+.withdraw-page-change-box{
+    padding-left:0!important;
+}
+.page-change-box div a{
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    display: block;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.page-change-box div span{
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #337ab7;
+}
+.customer-cell,.state-cell,.pay-price-cell,.aftermarket-cell,.time-cell {
+    text-align: center!important;
+}
+/*.abs{*/
+    /*position: absolute;*/
+/*}*/
+/*.abs-right{*/
+    /*margin-left: 47px;*/
+/*}*/
+

@@ -1,0 +1,44 @@
+<include file="Public:header" />
+<div id="table" class="mt10">
+    <div id="search_bar" class="mt10" style="padding-bottom: 10px;">
+        <div class="box">
+            <div class="box_border">
+                <div class="box_top">
+                    <b class="pl15">用户组列表</b>
+                    <a href="{:U('/Admin/Group/add')}" target="main" style="margin: 3px;float: right" class="ext_btn"><span class="add"></span>添加</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box span10 oh">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <tr>
+                <th width="5%">ID</th>
+                <th width="15%">名称</th>
+                <th width="50%">描述</th>
+                <th width="15%">操作</th>
+            </tr>
+            <if condition="empty($grouplist)">
+                <tr class="tr"><td colspan="4" style="text-align:center;">暂无任何信息</td></tr>
+            <else />
+                <foreach name='grouplist' item="group">
+                    <tr class="tr">
+                        <td class="td_center">{$group.groupid}</td>
+                        <td class="td_center">{$group.name}</td>
+                        <td class="td_center">{$group.description}</td>
+                        <td class="td_center">
+                            <a href="javascript:;;" onclick="javascript:window.location.href='{:U('/Admin/Group/edit/',array('id'=>$group['groupid']))}'">【修改】</a>
+                            <a href="javascript:;;" onclick="confirm('确定要删除此信息吗？', '{:U('/Admin/Group/delete',array('id'=>$group['groupid']))}')">【删除】</a>
+                            <a href="javascript:;;" onclick="javascript:window.location.href='{:U('/Admin/Group/popedom/',array('id'=>$group['groupid']))}'">【设置权限】</a>
+                        </td>
+                    </tr>
+                </foreach>
+            </if>
+        </table>
+        <div class="page mt10">
+            <div class='pagination'>{$pageshow}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+  

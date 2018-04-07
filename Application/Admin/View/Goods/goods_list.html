@@ -1,0 +1,59 @@
+<include file="Public:header" />
+<div id="table" class="mt10">
+    <div id="search_bar" class="mt10" style="padding-bottom: 10px;">
+        <div class="box">
+            <div class="box_border">
+                <div class="box_top">
+                    <b class="pl15">商品列表</b>
+                </div>
+            </div>
+            <div style="border-top:1px solid #dadada;" class="box_bottom pb5 pt5 pr10">
+                <div style="text-align:right;" class="search_bar_btn">
+                    <form name="sform" method="get" action="__SELF__">
+                        商品名称：<input class="input-text lh25" type="text" size="15" name="title" value="{$Think.get.title}">
+                        <input type="submit" class="ext_btn ext_btn_submit" value="搜索">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box span10 oh">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <tr>
+				<th width="10%">ID</th>
+                <th width="55%">商品名称</th>
+				<th width="15%">分类</th>
+				<th width="10%">库存量</th>
+				<th width="10%">管理操作</th>
+            </tr>
+            <if condition="empty($infolist)">
+             <tr class="tr"><td colspan="5" style="text-align:center;">暂无任何信息</td></tr>
+            <else />
+            <foreach name='infolist' item="info">
+            <tr class="tr">
+                <td class="td_center">{$info.goodsid}</td>
+				<td class="td_center">{$info.title}</td>
+                <td align='center'>{$info.catename}</td>
+				<td align='center'>{$info.inventory}</td>
+				<td align='center'>
+					<a href="javascript:;;" onclick="add_select({$info.goodsid},'{$info.title}')">【添加】</a>
+				</td>
+            </tr>
+            </foreach>
+            </if>
+        </table>
+        <div class="page mt10">
+            <div class='pagination'>{$pageshow}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+<script type="text/javascript">
+function add_select(goodsid,goods_name){
+	var _result = window.parent.set_goods_info(goodsid,goods_name);
+	if(_result == true){
+		parent.layer.closeAll();
+	}
+}
+</script>
+  

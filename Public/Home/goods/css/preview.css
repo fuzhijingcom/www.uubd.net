@@ -1,0 +1,8 @@
+.preview-style, .preview-style#footButtom, .preview-style#topBar {
+    margin: 0 auto;
+    width:414px;
+}
+
+.preview-style#topBar {
+    left: auto;
+}

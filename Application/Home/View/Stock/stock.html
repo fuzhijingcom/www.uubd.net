@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>库存管理</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/stock-ng.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/stock-ng-fix.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/Home/css/daterangepicker-bs3.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 引入排序相关插件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/chili-1.8b.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Home/js/moment.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+</head>
+<body>
+<a id="backToTop" href="javascript:void(0)" class="to-top btn btn-primary" >Top</a>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li  class="active"><a href="javascript:void(0)" onclick="changeStockModule(this)">库存一览</a></li>
+                <li><a href="javascript:void(0)" onclick="changeStockModule(this)">库存调换</a></li>
+                <li><a href="javascript:void(0)" onclick="changeStockModule(this)">进货提醒</a></li>
+                <li><a href="javascript:void(0)" onclick="changeStockModule(this)">变更记录</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="width-12" id="product-type">
+            <div class="list-group" id="modules-box">
+                <a href="javascript:void(0)" class="list-group-item active" title="K" onclick="changeCategory(this)">框架眼镜</a>
+                <a href="javascript:void(0)" class="list-group-item" title="T" onclick="changeCategory(this)">太阳镜</a>
+                <a href="javascript:void(0)" class="list-group-item" title="G" onclick="changeCategory(this)">功能眼镜</a>
+                <a href="javascript:void(0)" class="list-group-item" title="Y" onclick="changeCategory(this)">隐形眼镜</a>
+                <a href="javascript:void(0)" class="list-group-item" title="U" onclick="changeCategory(this)">镜腿</a>
+                <a href="javascript:void(0)" class="list-group-item" title="H" onclick="changeCategory(this)">其他商品</a>
+            </div>
+            <div style="height:5px;"></div>
+        </div>
+        <div class="width-88" id="content">
+            <div id="controlBox-father" >
+                <form class="form-inline control-box" style="width: 100%!important;" id="controlBox" onSubmit="return false;">
+
+                </form>
+            </div>
+
+
+            <div id="goods-table">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade inbound-guide-box" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-name" id="gridSystemModalLabel">采购建议（按采购周期是7天来计算）</h4>
+            </div>
+            <div class="modal-body">
+                <form id="guideForm" method="post" action="__URL__/expGuideTable">
+                    <input type="hidden" id="guideData" name="guide_data"/>
+                    <button type="button" class="btn btn-success btn-guide-export" onclick="expGuideTable()">导出excel表</button>
+
+                </form>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <td>商城编号</td>
+                        <td>产品型号</td>
+                        <td>商品属性</td>
+                        <td>现有库存</td>
+                        <td>采购数量建议</td>
+                        <td>进货渠道</td>
+                        <td>建议补货日期</td>
+                    </tr>
+                    </thead>
+
+                    <tbody id="guideTbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var URL = "__URL__";
+    var MODULE = "__MODULE__";
+    var CONTROLLER = "__CONTROLLER__";
+    var initStartT = '{$date.startT}';
+    var initEndT = '{$date.endT}';
+    var optionCategory = '{$categoryData}';
+    var optionWarehouse = '{$warehouseData}';
+    var optionStocksupplier = '{$stockSupplierData}';
+    var operatorList = '{$name}';
+    operatorList = JSON.parse(operatorList);
+    // console.log(operatorList);
+    // 导出excel表数据
+    function exportTradeInfo(){
+        var salesBox = document.getElementById('salesExport');
+
+        if(salesBox.style.display == 'block'){
+            $('#salesExport').fadeOut('200');
+        }else{
+            $('#salesExport').fadeIn('200');
+            var aCheck = document.getElementsByClassName('s-check-all')[0];
+            aCheck.checked = true;
+            selectAll();
+        }
+    }
+    function closeSalesBox(){
+        $('#salesExport').fadeOut('200');
+    }
+
+    function selectAll(){
+        var aCheck = document.getElementsByClassName('s-check-all')[0];
+        var classifyList = document.getElementsByName('classify');
+        var checkValue = (aCheck.checked)?1:0;
+
+        for(var i=0;i<classifyList.length; i++){
+            if(checkValue){
+                classifyList[i].checked = true;
+            }else{
+                classifyList[i].checked = false;
+            }
+        }
+    }
+    function submitSaleExport(){
+        var timeBox = document.getElementById('salesDate');
+        var classifyList = document.getElementsByName('classify');
+        console.log(classifyList);
+        var onlyTrade = document.getElementById('onlyTrade');
+        var status = document.getElementById('status');
+        var exportAll = document.getElementById('exportAll');
+        var submitData = document.getElementById('submitData');
+        var subForm = document.getElementById('subForm');
+
+        // 判断是否有勾选商品分类
+        var selectingFrame = 0;
+        for(var i=0; i< classifyList.length; i++){
+            if(classifyList[i].checked){
+                selectingFrame++;
+            }
+        }
+        if(!selectingFrame){
+            alert('不勾选商品，导毛线啊！');
+            return false;
+        }
+
+        var postData = {
+            start_time: (timeBox.value).split(' - ')[0],
+            end_time: (timeBox.value).split(' - ')[1],
+            category: {
+                frame: (classifyList[0].checked)?1:0,
+                sunglasses: (classifyList[1].checked)?1:0,
+                function_glasses: (classifyList[2].checked)?1:0,
+                contact_lens: (classifyList[3].checked)?1:0,
+                liquid: (classifyList[4].checked)?1:0,
+                lens: (classifyList[5].checked)?1:0,
+                others: (classifyList[6].checked)?1:0
+            },
+            only_trade: (onlyTrade.checked)?1:0,
+            status: status.value,
+            exportAll: exportAll.value
+        };
+
+        postData = JSON.stringify(postData);
+        submitData.value = postData;
+        console.log(postData);
+        console.log(submitData.value);
+        subForm.submit();
+        $('#salesExport').fadeOut('200');
+    }
+</script>
+<!--库存管理相关js-->
+<script type="text/javascript" src="__PUBLIC__/Home/js/stock.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/stock-components.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/stock-see.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/stock-notice.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/stock-change.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/stock-inandout.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/stock-combo-change.js"></script>
+</body>
+</html>
